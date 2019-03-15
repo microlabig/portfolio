@@ -9,256 +9,208 @@ html(lang="ru")
     title Portfolio | Главная
   body
     .wrapper
-      .maincontent
+      main.maincontent          
 
-        section.hero
-          .container          
+        .wrapper-home
+          section.hero
             header.header
               .logo
                 h2.logo__title ИБ
               nav.menu
                 ul.menu__list
-                  li.menu__item
-                    a(href="#").menu__link Главная
-                  li.menu__item
-                    a(href="#").menu__link Обо мне
-                  li.menu__item
-                    a(href="#").menu__link Навыки
-                  li.menu__item
-                    a(href="#").menu__link Работы
-                  li.menu__item
-                    a(href="#").menu__link Отзывы
-                  li.menu__item
-                    a(href="#").menu__link Связаться
-              .social
-                ul.social__list
-                  li.social__item
-                    a(href="#").social__link
-                      svg.social__icon-instagram
-                  li.social__item
-                    a(href="#").social__link
-                      svg.social__icon-vk
-                  li.social__item
-                    a(href="#").social__link
-                      svg.social__icon-git
+                  - var items = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
+                  each item in items
+                    li.menu__item
+                      a(href="#").menu__link #{item}                   
+              .header__social
+                .social
+                  ul.social__list
+                    - var socials = ['insta', 'vk', 'github'];
+                    each social in socials
+                      li.social__item
+                        a(href="#").social__link
+                          +icon(social, 'social__icon')   
+            .scroll
+              .scroll__block            
+                .scroll__image  
+                  //- +icon('scroll', 'scroll__image-icon')    
+            .hero__block
+              .hero__profession
+                .hero__profession-elem Личный сайт веб разработчика
+              .hero__name
+                h1.hero__name-elem Игорь Безместин            
 
-        section.main
-          .container
-            .main__block
-              .main__profession
-                .main__profession-block Личный сайт веб разработчика
-              .main__name
-                h1.main__name-block Игорь Безместин
+          section.about
+            .container
+              .avatar
+                .avatar__block
+                  +image(`content/user.jpg`, 'avatar__image')                             
+                .avatar__info
+                  table.avatar__info-table
+                    -
+                      var informations = [
+                        ['Проживаю','Арзамас'], 
+                        ['Возраст', '30 лет'], 
+                        ['Родился', '29 марта 1988'] 
+                      ];
+                    each info in informations
+                      tr.avatar__info-row
+                        td.avatar__info-key #{info[0]}
+                        td.avatar__info-value #{info[1]}
 
-        .scroll
-          .scroll__block            
-            .scroll__image
-              svg.scroll__image-icon 
-
-        section.about
-          .container
-            .avatar
-              .avatar__block
-                img(alt="Игорь Безместин").avatar__image                              
-              .avatar__info
-                ul.avatar__info-list
-                  li.avatar__info-item
-                    .avatar__info-text Проживаю
-                    .avatar__info-value Арзамас
-                  li.avatar__info-item
-                    .avatar__info-text Возраст
-                    .avatar__info-value 30 лет
-                  li.avatar__info-item
-                    .avatar__info-text Родился
-                    .avatar__info-value 29 марта 1988
-            .description
-              .descrition__name
-                .description__name-welcome Привет, меня зовут
-                h2.description__name Игорь Безместин
-                .description__name-about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-              .description__text
-                .description__text-block Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!              
+              .description
+                .descrition__name
+                  .description__name-welcome Привет, меня зовут
+                  h2.description__name Игорь Безместин
+                  .description__name-about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                .description__block
+                  .description__content Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!              
 
         section.useful
           .container
             .useful__title
-              h3.useful__title-block Чем я могу быть полезен вам
+              h3.useful__title-elem Чем я могу быть полезен вам
             .skills
               .skills__image
-                img(alt="Багаж знаний").skills__image-icon
-              .skills
+                +image('content/backpack.png', 'skills__image-icon')
+              .skills__content
                 .skills__description
                   .skills__text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-                .skills__frontend
-                  .skills__title Front-end
-                  ul.skills__list
-                    li.skills__item
-                      svg.skills__circle
-                      .skills__text HTML5
-                    li.skills__item
-                      svg.skills__circle
-                      .skills__text CSS3
-                    li.skills__item
-                      svg.skills__circle
-                      .skills__text Javascript
-                    li.skills__item
-                      svg.skills__circle
-                      .skills__text Jquery и Vue.js
-                .skills__workflow
-                  .skills__title Front-end
-                  ul.skills__list
-                    li.skills__item
-                      svg.skills__circle
-                      .skills__text GIT
-                    li.skills__item
-                      svg.skills__circle
-                      .skills__text Terminal
-                    li.skills__item
-                      svg.skills__circle
-                      .skills__text Gulp
-                    li.skills__item
-                      svg.skills__circle
-                      .skills__text Webpack
-
+                ul.skills__list
+                  -
+                    var skills = [
+                      ['Front-end', ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js']],
+                      ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']]
+                    ];
+                  each skill in skills
+                    li.skills__list
+                      .skills__title #{skill[0]}
+                      ul.skills__tech-list
+                        each tech in skill[1]
+                          li.skills__tech-item
+                            svg.skills__circle
+                            .skills__text #{tech}                      
+                
         section.work
           .container
             .title
-              h2.title-block Мои работы
+              h2.title-elem Мои работы
             .slider
               .slider__preview
                 .slider__preview-block
                   img(alt="Превью работы").slider__preview-image
                 ul.slider__list
-                  li.slider__item.active
-                    img(alt="Превью работы").slider__image
-                  li.slider__item
-                    img(alt="Превью работы").slider__image
-                  li.slider__item
-                    img(alt="Превью работы").slider__image
-                  li.slider__item
-                    img(alt="Превью работы").slider__image
+                  - var previews = ['1'];
+                  each prev in previews
+                    li.slider__item.active                    
+                      +image(`content/${prev}.jpg`, 'slider__image')
+                  
                 .slider__navigation
-                  a(href="#").slider__button.up                    
-                  a(href="#").slider__button.down
+                  a(href="#").slider__button.slider__button--up                    
+                  a(href="#").slider__button.slider__button--down
               .slider__currnumber 4                              
               .slider__description
                 .slider__tag
                   ul.slider__tag-list
-                    li.slider__tag-item
-                      .slider__tag-text HTML
-                    li.slider__tag-item
-                      .slider__tag-text CSS
-                    li.slider__tag-item
-                      .slider__tag-text Javascript
-                    .slider__work
-                      h3.slider__work-title Сайт школы образования
-                      .slider__work-description Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-                    .slider__linkblock
-                      svg.slider__icon
-                      a(href="#").slider__link Посмотреть сайт
-
-        section.review
-          .container
-            .title
-              h2.title-block Что обо мне говорят
-              .review__navigation
-                a(href="#").review__button.left
-                a(href="#").review__button.right
-            .review__block
-              ul.review__list
-                li.review__item
-                  .review__image
-                    img.review__icon
-                  .review__description
-                    .review__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                    .review__autor
-                      .review__avatar
-                        img.review__avatar-image
-                      .review__about
-                        .review__name Ковальчук Дмитрий
-                        .review__profession Основатель Loftschool
-                li.review__item
-                  .review__image
-                    img.review__icon
-                  .review__description
-                    .review__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-                    .review__autor
-                      .review__avatar
-                        img.review__avatar-image
-                      .review__about
-                        .review__name Владимир Сабанцев
-                        .review__profession Преподаватель                         
-
-        section.feedback
-          .container
-            .title
-              h2.title__block Связаться со мной
-            form.form__wrapper
-              .form__content
-                .form__row
-                  label.form__elem
-                    .form__text Введите ваше имя
-                    .form__container
-                      svg.form__icon
-                      input(type="text" placeholder="Ковальчук Дмитрий").form__input
-                  label.form__elem
-                    .form__text Введите ваш email
-                    .form__container
-                      svg.form__icon
-                      input(type="text" placeholder="loftschool@study.com").form__input
-                .form__row
-                  lavel.form__elem
-                    .form__text Сообщение к письму
-                    .form__container
-                      svg.form__icon
-                      textarea(type="textarea" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса").form__input.textarea
-                .form__row
-                  lavel.form__elem
-                    a(href="#").button Отправить     
+                    - var tags = ['HTML', 'CSS', 'Javascript'];
+                    each tag in tags
+                      li.slider__tag-item
+                        .slider__tag-text #{tag}                      
+                  .slider__work
+                    h3.slider__work-title Сайт школы образования
+                    .slider__work-description Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+                  .slider__linkblock
+                    +icon('link', 'slider__icon')
+                    a(href="#").slider__link Посмотреть сайт
+        
+        .wrapper-end
+          section.review
+            .container
+              .title
+                h2.title-elem Что обо мне говорят
+                .review__navigation
+                  a(href="#").review__button.review__button--left
+                  a(href="#").review__button.review__button--right
+              .review__block
+                ul.review__list
+                  -
+                    var reviews = [
+                      ['Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!', 'Ковальчук Дмитрий', 'Основатель Loftschool'],
+                      ['Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах', 'Владимир Сабанцев', 'Преподаватель']
+                    ], i = 1;
+                  each review in reviews
+                    li.review__item
+                      .review__image
+                        +icon('quote', 'review__icon')
+                      .review__description
+                        .review__text #{review[0]}
+                        .review__autor
+                          .review__avatar
+                            +image(`content/reviews/review${i++}.jpg`, 'review__avatar-image')
+                          .review__about
+                            .review__name #{review[1]}
+                            .review__profession #{review[2]} 
+            
+          section.feedback
+            .container
+              .title
+                h2.title__elem Связаться со мной
+              form.form__wrapper
+                .form__content
+                  .form__row
+                    label.form__elem
+                      .form__text Введите ваше имя
+                      .form__container
+                        svg.form__icon
+                        input(type="text" placeholder="Ковальчук Дмитрий").form__input
+                    label.form__elem
+                      .form__text Введите ваш email
+                      .form__container
+                        svg.form__icon
+                        input(type="text" placeholder="loftschool@study.com").form__input
+                  .form__row
+                    lavel.form__elem
+                      .form__text Сообщение к письму
+                      .form__container
+                        svg.form__icon
+                        textarea(type="textarea" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса").form__input.textarea
+                  .form__row
+                    lavel.form__elem
+                      a(href="#").button Отправить     
 
       footer.footer
-        .container
-          .footer__year
-            .footer__year-block © 2019
-          .footer__copyright
-            .main__block.footer
-              .main__name
-                h1.main__name-block Игорь Безместин
-              .main__profession
-                .main__profession-block Личный сайт веб разработчика              
-          .footer__navigation
-            nav.menu.footer
-              ul.menu__list
-                li.menu__item
-                  a(href="#").menu__link Главная
-                li.menu__item
-                  a(href="#").menu__link Обо мне
-                li.menu__item
-                  a(href="#").menu__link Навыки
-                li.menu__item
-                  a(href="#").menu__link Работы
-                li.menu__item
-                  a(href="#").menu__link Отзывы
-                li.menu__item
-                  a(href="#").menu__link Связаться
-          .footer__social
-            .footer__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
-            .social.footer
-                ul.social__list
-                  li.social__item
-                    a(href="#").social__link
-                      svg.social__icon-instagram
-                  li.social__item
-                    a(href="#").social__link
-                      svg.social__icon-vk
-                  li.social__item
-                    a(href="#").social__link
-                      svg.social__icon-git
-          .footer__greatthink
-            .footer__text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
-            .footer__thinker Martin Golding
+        .container 
+          .footer__left         
+            .copyright
+              .copyright__year
+                .copyright__year-text © 2019
+              .footer__hero
+                .hero__name
+                  h1.hero__name-elem Игорь Безместин
+                .hero__profession
+                  .hero__profession-elem Личный сайт веб разработчика 
+          .footer__right    
+            .footer__navigation
+              nav.menu.menu--col-white
+                ul.menu__list
+                  each item in items
+                    li.menu__item
+                      a(href="#").menu__link #{item}
+            .footer__text
+              .footer__mythink
+                article.footer__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool            
+                .social.social--footer
+                  ul.social__list
+                    - var socials = ['insta', 'vk', 'github'];
+                    each social in socials
+                      li.social__item
+                        a(href="#").social__link
+                          +icon(social, 'social__icon') 
+              .footer__greatthink
+                article.footer__text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                .footer__thinker Martin Golding
 
 
-//- +image('content/user.jpg', 'user-pic')
+//- +image('content/user.jpg', 'user-pic-class')
 //- +icon('link', 'link-class')
 //- .icon-bg
