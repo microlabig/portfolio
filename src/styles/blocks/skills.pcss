@@ -1,0 +1,71 @@
+.skills {
+    display: flex;
+}
+
+.skills__image {
+    flex-shrink: 0;
+    width:460px;
+    height:600px;
+    overflow: hidden;
+}
+
+.skills__image-icon {
+    object-fit: contain;
+}
+
+.skills__description {
+    margin-bottom: 96px;
+}
+
+.skills__description-text {
+    font-weight: $semi-bold;
+    color: rgba($light-color, 0.4);
+}
+
+//----skills list-----
+
+.skills__list {
+    margin-bottom: 50px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.skills__title{
+    font-weight: $bold;
+    font-size: 24px;
+    color: $text-color;
+}
+
+.skills__tech-list{
+    display: flex;
+}
+
+.skills__tech-item {
+    margin-right: 55px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.skills__tech-item-box{
+    position: relative;
+    width: 134px;
+    height:134px;
+}
+
+.skills__text {
+    display: inline-block;
+    position: absolute;
+
+    text-align: center;
+    font-weight: $bold;
+    font-size: 18px;
+    color: rgba($light-color, 0.4);
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}

@@ -1,0 +1,47 @@
+.avatar {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar__block {
+    width: 200px;
+    height:200px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    margin-bottom: 80px;
+}
+
+.avatar__image {    
+    object-fit: cover;
+}
+
+.avatar__info-row {
+    height: 25px;
+}
+
+.avatar__info-key {
+    padding-right: 27%;
+    font-weight: $semi-bold;
+    color: rgba($light-color, 0.4);
+}
+
+.avatar__info-value {
+    font-weight: $semi-bold;
+    color: $text-color;
+}
+
+//------ review ------
+
+.avatar--review {
+    align-items: flex-start;
+    margin-right: 31px;
+    
+    .avatar__block {
+        width: 75px;
+        height:75px;
+        margin-bottom: 0;
+    }
+}

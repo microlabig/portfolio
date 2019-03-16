@@ -1,0 +1,99 @@
+.review {
+    margin-top: 165px;
+} 
+
+.review__titlebox {
+    display: flex;
+    
+    & .title {
+        margin-right: 100px;
+    }
+
+    margin-bottom: 96px;
+}
+
+.review__navigation {
+    .navigation__button {
+        background-color: transparent;
+        border-radius: 50%;
+        border: 1px solid $slider-button;
+        margin-right: 30px;
+        
+        &:last-child{
+            margin-right: 0;
+        }
+
+        &.navigation__button--up {
+            transform: rotate(180deg); 
+        } 
+        &.navigation__button--down {
+            transform: rotate(0); 
+        } 
+    }
+    .navigation__button-icon,
+    & .no-active .navigation__button-icon {
+        fill: $slider-button;
+    }    
+}
+
+//------- review__block ---------
+
+.review__list {
+    display: flex;
+    overflow: hidden;
+    width: 80%;
+}
+
+.review__item {
+    flex: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    
+    margin-right: 74px;
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.review__image {
+    padding: 0 5%;
+}
+
+.review__icon {
+    width: 75px;
+    height: 63px;
+    fill: rgba($text-color,0.05);
+}
+
+.review__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.review__text {
+    font-size: 16px;
+    font-weight: $semi-bold;
+    color: rgba($light-color, 0.5);
+    line-height: 30px;
+
+    margin-bottom: 32px;
+}
+
+.review__autor {
+    display: flex;
+    align-items: center;
+}
+
+.review__name {
+    font-size: 18px;
+    color: $text-color;
+    font-weight: bold;
+    margin-bottom: 19px;
+}
+
+.review__profession {
+    font-size: 16px;
+    font-weight: $semi-bold;
+    color: rgba($light-color, 0.3);
+}

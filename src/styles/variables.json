@@ -1,8 +1,23 @@
 {
   "text-color": "#414c63",
   "links-color": "#4b6fd7",
+  "light-color": "#414c63",
+  "white-color": "#fff",
+  "stroke-color": "#eaeaea",
+  "tag-color": "#7aa0c5",
+  "slider-active-color": "#f29400",
+  "slider-button": "#2d3c4e",
+  "footer-color": "#1f232d",
+
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
-  "bp-phones": "480px"
+  "bp-phones": "480px",
+  "bp-phones-small": "320px",
+
+  "light": 300,
+  "regular": 400,
+  "semi-bold": 600,
+  "bold": 700,
+  "extra-bold": 800
 }

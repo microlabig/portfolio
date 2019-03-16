@@ -63,7 +63,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: normal;
+  //font-weight: normal;
   margin: 0;
 }
 
@@ -80,10 +80,43 @@ button[type="button"] {
 a {
   color: inherit;
   cursor: pointer;
+  text-decoration: none;
 }
 
 img {
   display: block;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+//------my-----
+h1 {
+  font-size: 72px;
+  font-weight: $extra-bold;
+}
+h2 {
+  font-size: 36px;
+  font-weight: $extra-bold;
+}
+h3 {
+  font-size: 30px;
+  font-weight: $bold;
+}
+
+.wrapper-home {
+  background-image: url("../images/content/bg/mountain-baloon.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper-end {
+  background-image: url("../images/content/bg/budda.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
