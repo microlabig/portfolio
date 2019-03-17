@@ -1,0 +1,122 @@
+.form {
+    width: 60%;
+}
+
+.form__row {    
+    display: flex;
+
+    margin-bottom: 41px;
+    &:last-child {
+        margin-bottom: 0;
+        .form__elem {
+            &:before {
+                padding-left: 0;
+                margin-bottom: 0;
+            }
+        }
+    } 
+    &--textarea {
+        margin-bottom: 60px;
+    } 
+}
+
+.form__elem {
+    flex: 1;  
+
+    margin-right: 51px;
+    &:last-child {
+        margin-right: 0;       
+    }      
+
+    &:before {
+        content: attr(data-text);
+        display: block;
+        font-size: 16px;
+        font-weight: $semi-bold;
+        color: rgba($light-color, 0.3);
+
+        padding-left: 49px;
+        margin-bottom: 23px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        .form__elem-container {
+            border-bottom-color: $active-menu-color;
+            transition: .3s;
+
+            &:before {
+                fill: $active-menu-color;
+            }
+        }
+    }
+}
+
+.form__elem-container {
+    display: flex;
+    border-bottom: 2px solid $text-color;
+}
+@each $icon in (user, envelope, message) {           
+    .form__elem-container--#{$icon}:before {   
+        content:"";
+        display: block;
+        background: svg-load('#{$icon}.svg', fill=rgba($text-color,0.3), width=30px, height=30px) no-repeat;
+        background-position: top left;
+        width: 40px;
+        height: 35px;
+        margin-right: 17px;
+    }     
+} 
+
+.form__elem-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.form__elem-input { 
+       
+    width: 100%;
+
+    border:0 none;
+    background-color: transparent;
+
+    padding-bottom: 13px;   
+   
+    &::placeholder {
+        color:currentColor;
+        font-size: 18px;
+        font-weight: $bold;
+        transition: color 0.3s;
+    }
+
+    &:focus {
+        outline: none;
+    }
+    &:focus::placeholder {
+        color: transparent;
+    }
+    
+    &--textarea {
+        resize: none;
+        line-height: 36px;
+    }    
+}
+
+
+.form__elem-button {    
+    width: 347px;
+    background-image: linear-gradient(to right, $linear-startcolor, $linear-endcolor);
+
+    color: $white-color;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: $bold;
+
+    padding: 28px 120px;
+
+    border-radius: 50px 5px;
+
+    &:hover {
+        background-image: linear-gradient(to right, $linear-startcolor-hover, $linear-endcolor-hover);        
+    }
+}

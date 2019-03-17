@@ -1,15 +1,15 @@
 .review {
-    margin-top: 165px;
-} 
+    margin-bottom: 200px;
+}
 
 .review__titlebox {
     display: flex;
     
     & .title {
-        margin-right: 100px;
+        margin-right: 6%;
     }
 
-    margin-bottom: 96px;
+    margin-bottom: 6%;
 }
 
 .review__navigation {
@@ -38,21 +38,28 @@
 
 //------- review__block ---------
 
+.review__block {
+    overflow: hidden;
+    width: 80%;
+}
+
 .review__list {
     display: flex;
     overflow: hidden;
-    width: 80%;
+    justify-content: flex-start;
 }
 
 .review__item {
     flex: 1;
     display: flex;
     flex-wrap: nowrap;
+
+    //padding: 0 6%;
     
-    margin-right: 74px;
+    /* margin-right: 74px;
     &:last-child {
         margin-right: 0;
-    }
+    } */
 }
 
 .review__image {
@@ -77,7 +84,8 @@
     color: rgba($light-color, 0.5);
     line-height: 30px;
 
-    margin-bottom: 32px;
+    width: 80%;
+    margin-bottom: 8%;
 }
 
 .review__autor {

@@ -9,3 +9,14 @@
         margin-right: 0;
     }
 }
+
+.menu__link {
+    border-bottom: 3px solid transparent;
+    transition: border-bottom-color .2s;
+}
+
+.menu__link:hover,
+.menu__link.is--active {
+    color: $active-menu-color;
+    border-bottom-color: $active-menu-color;    
+}

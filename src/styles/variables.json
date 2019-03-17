@@ -8,6 +8,11 @@
   "slider-active-color": "#f29400",
   "slider-button": "#2d3c4e",
   "footer-color": "#1f232d",
+  "linear-startcolor": "#ad00ed",
+  "linear-endcolor": "#5500f2",
+  "linear-startcolor-hover": "#bb02ff",
+  "linear-endcolor-hover": "#610cff",
+  "active-menu-color": "#5500f2",
 
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
@@ -21,3 +26,4 @@
   "bold": 700,
   "extra-bold": 800
 }
+

@@ -1,6 +1,25 @@
-.skills {
+ .skills__content {
+    position: relative;
+
     display: flex;
-}
+    justify-content: space-between;
+
+    &:before {
+        content: "";
+        position: absolute;
+        //left: 0;
+        display: block;
+        background-image: url('../images/content/backpack.png');
+        background-position: top left;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        width: 712px;
+        height: 627px;
+        left: -16%;
+        top: -40%;
+    }
+} 
 
 .skills__image {
     flex-shrink: 0;
@@ -9,23 +28,12 @@
     overflow: hidden;
 }
 
-.skills__image-icon {
-    object-fit: contain;
-}
-
-.skills__description {
-    margin-bottom: 96px;
-}
-
-.skills__description-text {
-    font-weight: $semi-bold;
-    color: rgba($light-color, 0.4);
-}
 
 //----skills list-----
 
 .skills__list {
-    margin-bottom: 50px;
+    align-self: flex-end;
+    margin-bottom: 42px;
 
     &:last-child {
         margin-bottom: 0;
@@ -36,6 +44,8 @@
     font-weight: $bold;
     font-size: 24px;
     color: $text-color;
+
+    margin-bottom: 27px;
 }
 
 .skills__tech-list{
@@ -52,8 +62,8 @@
 
 .skills__tech-item-box{
     position: relative;
-    width: 134px;
-    height:134px;
+    width: 150px;
+    height:150px;
 }
 
 .skills__text {
@@ -68,4 +78,9 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+}
+
+.svg__lineargradient {
+    width: 0;
+    height: 0;
 }

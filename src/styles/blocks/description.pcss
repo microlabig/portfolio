@@ -1,6 +1,9 @@
 .description {
     flex:1;
     //padding: 0 20% 0 20%;     
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .description__name-welcome,
@@ -11,13 +14,23 @@
 }
 
 .description__name-welcome {
-    margin-bottom: 30px;
+    font-weight: $semi-bold;
+    color: rgba($light-color, 0.5);
+    margin-bottom: 23px;
 }
 
 .description__name {
-    margin-bottom: 38px;
+    margin-bottom: 30px;
 }
 
 .description__name-about {
+    font-weight: $semi-bold;
+    color: rgba($light-color, 0.5);
     margin-bottom: 105px;
+}
+
+.description__content {
+    font-style: normal;
+    color: rgba($light-color, 0.5);
+    font-style: italic;
 }
