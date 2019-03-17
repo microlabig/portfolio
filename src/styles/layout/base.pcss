@@ -24,6 +24,9 @@ body {
   overflow: hidden;
   min-height: 100%;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -102,6 +105,16 @@ h3 {
   font-size: 30px;
   font-weight: $bold;
 }
+
+.maincontent,
+.footer {    
+  flex: 0 0 auto;
+}
+
+.maincontent {    
+  flex: 1 0 auto;
+}
+
 
 .wrappersections {
   background-repeat: no-repeat;
