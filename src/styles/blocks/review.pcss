@@ -29,6 +29,14 @@
         &.navigation__button--down {
             transform: rotate(0); 
         } 
+
+        &:hover {
+            border-color: $active-menu-color;
+            transition: .3s;
+            .navigation__button-icon {
+                fill:$active-menu-color;
+            }
+        }
     }
     .navigation__button-icon,
     & .no-active .navigation__button-icon {
@@ -53,13 +61,6 @@
     flex: 1;
     display: flex;
     flex-wrap: nowrap;
-
-    //padding: 0 6%;
-    
-    /* margin-right: 74px;
-    &:last-child {
-        margin-right: 0;
-    } */
 }
 
 .review__image {

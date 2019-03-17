@@ -11,12 +11,18 @@
 }
 
 .menu__link {
+
     border-bottom: 3px solid transparent;
     transition: border-bottom-color .2s;
+
+    &:hover {
+        color: rgba($hover-menu-color,1);
+    }
+
+    &.is--active {
+        color: $active-menu-color;
+        font-weight: $bold;
+        border-bottom-color: $active-menu-color;    
+    }
 }
 
-.menu__link:hover,
-.menu__link.is--active {
-    color: $active-menu-color;
-    border-bottom-color: $active-menu-color;    
-}
