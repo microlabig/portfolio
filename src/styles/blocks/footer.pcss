@@ -40,6 +40,14 @@
 
 .footer__navigation {
     margin-bottom: 6%;
+
+    .menu__item:first-child .menu__link {
+        padding-left: 0;
+    }
+
+    .menu__item:last-child .menu__link {
+        padding-right: 0;
+    }
 }
 
 .footer__thinks {
@@ -73,7 +81,7 @@
             border-color: $active-menu-color;
             transition: .3s;
             .social__icons {
-                fill: $active-menu-color;
+                //fill: $active-menu-color;
                 transition: .3s;
             }
         }

@@ -3,7 +3,7 @@
 }
 
 .menu__item {
-    margin-right: 60px;
+    //margin-right: 60px;
 
     &:last-child {
         margin-right: 0;
@@ -14,15 +14,15 @@
 
     border-bottom: 3px solid transparent;
     transition: border-bottom-color .2s;
+    padding-bottom: 40px;
+    padding-left:32px;
+    padding-right:32px;
 
     &:hover {
-        color: rgba($hover-menu-color,1);
-    }
-
-    &.is--active {
+        color: rgba($active-menu-color,1);
         color: $active-menu-color;
         font-weight: $bold;
-        border-bottom-color: $active-menu-color;    
-    }
+        border-bottom-color: $active-menu-color;
+    }    
 }
 
