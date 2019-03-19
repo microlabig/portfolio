@@ -49,6 +49,13 @@
                 fill: $active-menu-color;
             }
         }
+
+        @each $icon in (user, envelope, message) {           
+            .form__elem-container--#{$icon}:before {
+                background: svg-load('#{$icon}.svg', fill=rgba($active-menu-color,0.3), width=30px, height=30px) no-repeat;
+            } 
+        }
+
     }
 }
 
@@ -60,12 +67,16 @@
     .form__elem-container--#{$icon}:before {   
         content:"";
         display: block;
+        
         background: svg-load('#{$icon}.svg', fill=rgba($text-color,0.3), width=30px, height=30px) no-repeat;
         background-position: top left;
+
         width: 40px;
         height: 35px;
-        margin-right: 17px;
-    }     
+
+        margin-right: 17px;  
+        padding-bottom: 13px;       
+    }         
 } 
 
 .form__elem-icon {

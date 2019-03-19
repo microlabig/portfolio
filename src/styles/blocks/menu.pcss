@@ -2,27 +2,36 @@
     display: flex;
 }
 
-.menu__item {
-    //margin-right: 60px;
+.menu__item {    
 
     &:last-child {
         margin-right: 0;
-    }
+    }    
 }
 
 .menu__link {
+    display: inline-block;
+
+    padding: 40px 32px;
 
     border-bottom: 3px solid transparent;
     transition: border-bottom-color .2s;
-    padding-bottom: 40px;
-    padding-left:32px;
-    padding-right:32px;
 
     &:hover {
         color: rgba($active-menu-color,1);
         color: $active-menu-color;
         font-weight: $bold;
         border-bottom-color: $active-menu-color;
-    }    
+    } 
+
+    &:after {  //костыль
+        display: block;
+        content: attr(title);
+        font-weight: bold;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;        
+    }
+    
 }
 

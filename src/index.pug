@@ -24,7 +24,7 @@ html(lang="ru")
                       - var items = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
                       each item in items
                         li.menu__item
-                          a(href="#").menu__link.is--active #{item}                   
+                          a(href="#" title=`${item}`).menu__link #{item}                   
                 .header__social
                   .social
                     ul.social__list
@@ -238,7 +238,7 @@ html(lang="ru")
                 ul.menu__list
                   each item in items
                     li.menu__item
-                      a(href="#").menu__link #{item}
+                      a(href="#" title=`${item}`).menu__link #{item}
             .footer__thinks
               .footer__mythink
                 article.footer__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool            

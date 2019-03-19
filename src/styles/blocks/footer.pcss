@@ -22,8 +22,7 @@
 }
 .footer__right {
     width: 65%;
-}
- 
+} 
  
 .footer__hero {
     //width: 40%;
@@ -45,15 +44,26 @@
 }
 
 .footer__navigation {
-    margin-bottom: 6%;
+    margin-bottom: 1%;
 
-    .menu__item:first-child .menu__link {
-        padding-left: 0;
+    .menu__item {
+        .menu__link {
+            padding-top: 0;
+        }
+
+        &:first-child .menu__link{
+            padding-left: 0;
+        }
+
+        &:last-child .menu__link{
+            padding-right: 0;
+        }
+
+        &:hover .menu__link {
+            border-bottom-color: transparent;
+        }
     }
 
-    .menu__item:last-child .menu__link {
-        padding-right: 0;
-    }
 }
 
 .footer__thinks {
@@ -61,7 +71,8 @@
 }
 
 .footer__mythink {
-    margin-right: 193px;
+    flex: 1;
+    padding-right: 100px;
 }
 
 .footer__text {
@@ -103,6 +114,10 @@
         top:50%;
         transform: translate(-50%,-50%);
     }
+}
+
+.footer__greatthink {
+    flex:1;    
 }
 
 .footer__thinker {
