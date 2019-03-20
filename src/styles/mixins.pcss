@@ -11,7 +11,7 @@
 }
 
 @mixin tablets() {
-  @media screen and (max-width: $bp-tablets) {
+  @media screen and (max-width: $bp-tablets), print {
     @content;
   }
 }

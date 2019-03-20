@@ -9,6 +9,10 @@
     z-index: 1;   
 
     margin-right: 11%;
+
+    @include desktop { 
+        margin-right: 15%;
+    }
 }
 
 .slider__preview-block {
@@ -31,6 +35,15 @@
         color: rgba($light-color, 0.05); 
         
         margin-left: -8%;
+
+        @include desktop { 
+            margin-left: -11%;
+        }
+    }
+
+    @include desktop { 
+        width: 623px;
+        height: 354px;
     }
 }
 
@@ -38,7 +51,11 @@
     position: absolute;
     
     top: 27%;
-    right: 0;     
+    right: 0;  
+    
+    @include desktop { 
+        top: 15%;
+    }   
 }
 
 .slider__item {
@@ -46,6 +63,12 @@
     cursor: pointer;
     &.active {
         border: 3px solid $slider-active-color;
+    }
+
+    &:first-child {
+        @include desktop { 
+            display: none;
+        }
     }
 }
 
