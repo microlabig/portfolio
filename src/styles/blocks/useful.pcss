@@ -2,12 +2,21 @@
     .title {       
         
         .title-elem {
-            text-align: center;
-            margin-bottom: 59px;
+            text-align: center;            
+        }
+
+        margin-bottom: 59px;
+
+        @include desktop {
+            margin-bottom: 50px;
         }
     }
 
     margin-bottom: 168px;
+
+    @include desktop {
+        margin-bottom: 66px;
+    }
 }
 
 .useful__description {
@@ -16,4 +25,11 @@
     padding: 0 27%;   
 
     margin-bottom: 96px;
+
+    @include desktop {
+        margin-bottom: 80px;
+
+        padding-left: 26%;
+        line-height: 30px;
+    }
 }

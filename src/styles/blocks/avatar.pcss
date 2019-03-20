@@ -13,15 +13,23 @@
 
     box-shadow: 0px 0px 27px 2px #414C63;
 
-    margin-bottom: 70px;    
+    margin-bottom: 70px;  
+    
+    @include desktop {
+        margin-bottom: 85px;
+    }    
 }
 
 .avatar__image {    
     object-fit: cover;
 }
 
-.avatar__info {
+.avatar__info {        
     width: 74%;
+
+    @include desktop {
+        width: 68%;
+    }  
 }
 
 .avatar__info-row {
@@ -32,6 +40,10 @@
     padding-right: 27%;
     font-weight: $semi-bold;
     color: rgba($light-color, 0.4);
+
+    @include desktop {
+        padding-right: 29%;
+    }  
 }
 
 .avatar__info-value {

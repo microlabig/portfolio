@@ -6,6 +6,10 @@
     z-index: 0;
 
     background-color: $footer-color;
+
+    @include desktop { 
+        position: initial;
+    }
 }
 
 .footer-container {    
@@ -15,23 +19,41 @@
     justify-content: space-between;
 
     padding: 5% 0;
+
+    @include desktop { 
+        padding: 7% 0;
+    }   
 }
 
 .footer__left {
     width: 30%;
+
+    @include desktop { 
+        width: 26%;
+    }   
 }
 .footer__right {
     width: 65%;
+
+    @include desktop { 
+        width: 74%;
+    }   
 } 
  
 .footer__hero {
-    //width: 40%;
+    .hero__name {
+        margin-bottom: 28%; 
+
+        @include desktop { 
+            margin-bottom: 6%; 
+        }
+    }
+    
     .hero__name-elem {
         font-size: 18px;
         line-height: 30px;
         text-transform: uppercase;
-        text-align: left;   
-        margin-bottom: 28%;     
+        text-align: left;              
     }
 
     .hero__profession-elem {
@@ -41,6 +63,7 @@
         padding: 0;
         margin-bottom: 0;
     }
+    
 }
 
 .footer__navigation {
@@ -49,6 +72,10 @@
     .menu__item {
         .menu__link {
             padding-top: 0;
+
+            @include desktop { 
+                padding: 0 27px 40px;
+            }   
         }
 
         &:first-child .menu__link{
@@ -72,7 +99,12 @@
 
 .footer__mythink {
     flex: 1;
-    padding-right: 100px;
+    margin-right: 100px;
+
+    @include desktop { 
+        flex: 0.8;
+        margin-right: 36px;
+    }   
 }
 
 .footer__text {
@@ -80,6 +112,10 @@
     color: rgba($white-color, 0.3);
     line-height: 30px;
     margin-bottom: 7%;
+
+    @include desktop { 
+        margin-bottom: 5%;
+    }   
 }
 
 .footer__social {

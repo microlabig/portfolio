@@ -1,9 +1,17 @@
 .about {    
     margin-bottom: 156px;
+
+    @include desktop {
+        margin-bottom: 220px;
+    }  
 }
 
 .about-container {
     display: flex;
     justify-content: center;
-    padding: 0 10%;    
+    padding: 0 10%;  
+
+    @include desktop {
+        padding: 0 2%; 
+    }  
 }

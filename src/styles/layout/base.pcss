@@ -1,6 +1,6 @@
 html {
   @include desktop {
-    font-size: 15px;
+    font-size: 16px;
   }
   @include tablets {
     font-size: 14px;
@@ -35,8 +35,9 @@ body {
   width: 95%;
   // width: 1490px;
 
-  @include desktop { 
-    max-width: 1080px;
+  @include desktop {
+    width: 100%; 
+    max-width: 1080PX;
   }
 
   @include phones {
@@ -119,8 +120,13 @@ h3 {
   flex: 1 0 auto;
 
   z-index: 10;
+
   margin-bottom: 375px;
   background-color: $white-color;
+
+  @include desktop { 
+    margin-bottom: 0;
+  }
 }
 
 

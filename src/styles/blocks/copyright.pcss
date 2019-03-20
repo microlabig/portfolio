@@ -1,5 +1,15 @@
 .copyright {
     display: flex;
+
+    @include desktop { 
+        flex-direction: column;
+    }
+}
+
+.copyright__year {
+    @include desktop { 
+        margin-bottom: 10%;
+    }
 }
 
 .copyright__year-text {
@@ -9,4 +19,8 @@
     line-height: 30px;
     white-space: nowrap;
     margin-right: 60px;
+
+    @include desktop { 
+        margin-right: 0;
+    }
 }
