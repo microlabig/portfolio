@@ -56,7 +56,9 @@
     right: 0;  
 
     @include desktop { 
-        top: -13%;
+        height: 84%;
+        overflow: hidden;
+        top: 16%;
     }   
 }
 
@@ -67,11 +69,11 @@
         border: 3px solid $slider-active-color;
     }
 
-    &:first-child {
+    /* &:first-child {
         @include desktop { 
             visibility: hidden;
         }
-    }
+    } */
 }
 
 .slider__preview-image,
