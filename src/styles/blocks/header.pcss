@@ -2,7 +2,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    padding-top: 64px;
+    
+    padding-top: 64px;       
 }
 
+.header__menu {
+    & .menu__list {
+        @include tablets {
+            display: none;
+        }
+    }
+}
+
+.header__social {
+    @include tablets {
+        margin-right: 110px;
+    }
+}

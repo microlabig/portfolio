@@ -1,5 +1,9 @@
 .hero {
     margin-bottom: 15%;
+
+    @include tablets {
+        margin-bottom: 0;
+    }   
 }
 
 .hero-container {
@@ -12,7 +16,11 @@
 
 .hero__scroll {
     display: flex;
-    justify-content: center;    
+    justify-content: center; 
+
+    @include tablets {
+        display: none;
+    }   
 }
 
 .hero__block {
@@ -31,12 +39,26 @@
         flex-wrap: nowrap;
         padding: 24% 20%;
     }
+
+    @include tablets {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; 
+    }
 }
 
 .hero__profession {
-    @include desktop {  
+    margin-bottom: 30px;
+
+    @include desktop { 
+        margin-bottom: 0; 
         flex-basis: 27%;      
     }
+    @include tablets {  
+        flex-basis: 0;
+        margin-bottom: 14px;
+    }    
 }
 
 .hero__profession-elem {
@@ -46,19 +68,23 @@
     line-height: 1.67;
     color: rgba($light-color, 0.4);
 
-    margin-bottom: 30px;
-
     @include desktop {       
         text-align: right;      
-        width: 100%;
-        margin-bottom: 0;
+        width: 100%;        
+    }
+
+    @include tablets {  
+        text-align: center;       
     }
 }
 
 .hero__name {
     @include desktop {        
         flex-basis: 30%;
-     }
+    }
+    @include tablets {  
+        flex-basis: 0;
+    }
 }
 
 .hero__name-elem {
@@ -69,6 +95,13 @@
         width: 50%;     
         text-align: left;
         margin-bottom: 0;
-     }
+    }
+
+    @include tablets {  
+        font-size: 48px;
+        line-height: 48px;
+        text-align: center;
+        width: 100%;
+    }
 }
 

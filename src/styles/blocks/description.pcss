@@ -9,6 +9,11 @@
         flex: 0.9;
         justify-content: space-evenly;
     }  
+
+    @include tablets {
+        flex-basis: 10%;
+        font-size: 14px;
+    } 
 }
 
 .description__name-welcome,
@@ -26,16 +31,27 @@
     @include desktop {
         margin-bottom: 19px;
     }  
+    @include tablets {
+        margin-bottom: 11px;
+    }  
 }
 
 .description__name {
     margin-bottom: 30px;
+
+    @include tablets {
+        flex: 1;
+        margin-bottom: 46px;
+    }  
 }
 
 .description__name-about {
     font-weight: $semi-bold;
     color: rgba($light-color, 0.5);
     margin-bottom: 105px;
+    @include tablets {
+        margin-bottom: 41px;
+    }  
 }
 
 .description__content {

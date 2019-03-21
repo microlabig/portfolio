@@ -23,6 +23,10 @@
     @include desktop { 
         padding: 7% 0;
     }   
+
+    @include desktop { 
+        padding: 8% 0;
+    }   
 }
 
 .footer__left {
@@ -37,6 +41,10 @@
 
     @include desktop { 
         width: 74%;
+    }   
+
+    @include desktop { 
+        width: 64%;
     }   
 } 
  
@@ -62,6 +70,10 @@
         line-height: 30px;
         padding: 0;
         margin-bottom: 0;
+
+        @include tablets { 
+            font-size: 14px; 
+        }
     }
     
 }
@@ -69,13 +81,25 @@
 .footer__navigation {
     margin-bottom: 1%;
 
+    .menu__list {
+        @include tablets { 
+            flex-wrap: wrap;
+        } 
+    }
+
     .menu__item {
+
         .menu__link {
             padding-top: 0;
 
             @include desktop { 
                 padding: 0 27px 40px;
             }   
+
+            @include tablets { 
+                padding: 0 51px 12px 0;
+                font-size: 14px;
+            } 
         }
 
         &:first-child .menu__link{
@@ -91,10 +115,17 @@
         }
     }
 
+    @include tablets { 
+        margin-bottom: 8%;
+    } 
 }
 
 .footer__thinks {
-    display: flex;
+    display: flex; 
+
+    @include tablets { 
+        flex-direction: column;
+    }   
 }
 
 .footer__mythink {
@@ -105,6 +136,12 @@
         flex: 0.8;
         margin-right: 36px;
     }   
+
+    @include desktop {
+        flex: 0;
+        margin-right: 0;
+        margin-bottom: 10%;
+    }
 }
 
 .footer__text {
@@ -116,6 +153,11 @@
     @include desktop { 
         margin-bottom: 5%;
     }   
+
+    @include tablets {         
+        font-size: 14px;
+        margin-bottom: 0;
+    } 
 }
 
 .footer__social {
@@ -138,6 +180,10 @@
                 transition: .3s;
             }
         }
+
+        @include tablets { 
+            margin-right: 4%;
+        } 
     }
     .social__icons {
         position: absolute;
@@ -153,11 +199,15 @@
 }
 
 .footer__greatthink {
-    flex:1;    
+    flex: 1;    
 }
 
 .footer__thinker {
     font-size: 16px;
     font-style: italic;
     color: $white-color;
+
+    @include tablets { 
+        font-size: 14px;
+    }
 }

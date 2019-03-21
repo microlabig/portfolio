@@ -10,12 +10,29 @@
         @include desktop {
             margin-bottom: 50px;
         }
+
+        @include tablets {
+            margin-bottom: 14px;
+        }
+
+        & .span-block {
+            display: inline;
+
+            @include tablets {
+                display: block;
+            }
+        }        
     }
 
     margin-bottom: 168px;
 
     @include desktop {
         margin-bottom: 66px;
+    }
+
+    @include tablets {
+        font-size: 14px;
+        margin-bottom: 0;
     }
 }
 
@@ -31,5 +48,12 @@
 
         padding-left: 26%;
         line-height: 30px;
+    }
+
+    @include tablets {
+        margin-bottom: 60px;
+        padding: 0 17%;
+        line-height: 24px;
+        text-align: center;
     }
 }

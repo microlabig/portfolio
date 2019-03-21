@@ -24,15 +24,26 @@ html(lang="ru")
                       - var items = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
                       each item in items
                         li.menu__item
-                          a(href="#" title=`${item}`).menu__link #{item}                   
+                          a(href="#" title=`${item}`).menu__link #{item}                      
                 .header__social
                   .social
                     ul.social__list
                       - var socials = ['insta', 'vk', 'github'];
                       each social in socials
                         li.social__item
-                          a(href="#").social__link
+                          - var soclink = ''                          
+                          case social
+                            when 'insta'
+                              - soclink='//instagram.com'
+                            when 'vk'
+                              - soclink='//vk.com'
+                            when 'github'
+                              - soclink='//github.com'
+                          a(href=`${soclink}` target="blank").social__link
                             +icon(social, 'social__icons') 
+                .mobile-nav
+                  - for (var i=0; i<3; i++)                
+                    .mobile-nav__line
               .hero__block
                 .hero__profession
                   .hero__profession-elem Личный сайт #[span.span-block] веб-разработчика
@@ -83,7 +94,7 @@ html(lang="ru")
             .container
               .useful__title
                 .title
-                  h3.title-elem Чем я могу быть полезен вам
+                  h3.title-elem Чем я могу быть #[span.span-block]полезен вам
                 .useful__description Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
               .skills
                 .skills__content                    
@@ -216,9 +227,9 @@ html(lang="ru")
                   .form__row.form__row--textarea 
                     lavel(data-text="Сообщение к письму").form__elem
                       .form__elem-container.form__elem-container--message                        
-                        textarea(type="textarea" placeholder="Требуется ваша помощь в создании сайта.\n Интересуют сроки и цена вопроса").form__elem-input.form__elem-input--textarea
+                        textarea(type="textarea" placeholder="Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса").form__elem-input.form__elem-input--textarea
                   .form__row
-                    lavel.form__elem
+                    lavel.form__elem.form__elem--button
                       button(type="submit").form__elem-button Отправить     
 
       footer.footer
@@ -248,13 +259,16 @@ html(lang="ru")
                       - var socials = ['insta', 'vk', 'github'];
                       each social in socials
                         li.social__item
-                          a(href="#").social__link
+                          - var soclink = ''                          
+                          case social
+                            when 'insta'
+                              - soclink='//instagram.com'
+                            when 'vk'
+                              - soclink='//vk.com'
+                            when 'github'
+                              - soclink='//github.com'
+                          a(href=`${soclink}` target="blank").social__link
                             +icon(social, 'social__icons')  
               .footer__greatthink
                 article.footer__text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                 .footer__thinker Martin Golding
-
-
-//- +image('content/user.jpg', 'user-pic-class')
-//- +icon('link', 'link-class')
-//- .icon-bg 

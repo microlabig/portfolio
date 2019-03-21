@@ -1,5 +1,9 @@
 .slider {
     display: flex;   
+
+    @include tablets { 
+        flex-direction: column;
+    }
 }
 
 
@@ -12,6 +16,9 @@
 
     @include desktop { 
         margin-right: 10%;
+    }
+    @include tablets { 
+        margin-bottom: 8%;
     }
 }
 
@@ -47,6 +54,11 @@
         width: 625px;
         height: 355px;
     }
+
+    @include tablets { 
+        width: 623px;
+        height: 353px;
+    }
 }
 
 .slider__workimages{
@@ -63,17 +75,10 @@
 }
 
 .slider__item {
-    // border: 3px solid transparent;
     cursor: pointer;
     &.active {
         border: 3px solid $slider-active-color;
     }
-
-    /* &:first-child {
-        @include desktop { 
-            visibility: hidden;
-        }
-    } */
 }
 
 .slider__preview-image,
@@ -111,6 +116,13 @@
 
 //----- description -------
 
+.slider__description {
+    @include tablets { 
+        text-align: center;
+    }   
+}
+
+
 .slider__tag-list {
     display: flex;
     margin-bottom: 12%;
@@ -118,16 +130,27 @@
     @include desktop { 
         margin-bottom: 11%;
     }   
+    @include tablets { 
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+        margin-bottom: 2%;
+    }   
 }
 
 .slider__tag-item {    
     background-color: rgba($tag-color, 0.1);
     border-radius: 22.5px; 
     padding: 0 5%;
-    margin-right: 6%;
+    margin-right: 6%;       
 
     &:last-child {
         margin-right: 0;
+    }
+
+    @include tablets { 
+        padding: 0 3%;
+        margin-right: 3%;
     }
 }
 
@@ -144,12 +167,18 @@
     @include desktop { 
         margin-bottom: 11%;
     }   
+    @include tablets { 
+        margin-bottom: 3%;        
+    } 
 }
 
 .slider__work-title {
     margin-bottom: 40px;
     @include desktop { 
         margin-bottom: 34px;
+    }   
+    @include tablets { 
+        margin-bottom: 18px;
     }   
 }
 
@@ -158,6 +187,12 @@
     font-size: 16px;
     color: rgba($light-color, 0.7);
     line-height: 30px;
+
+    @include tablets {         
+        font-size: 14px;
+        line-height: 24px;
+        padding: 0 16%;        
+    } 
 }
 
 .slider__icon{
@@ -178,4 +213,8 @@
     &:hover {
         border-bottom-color: $active-menu-color;    
     }
+
+    @include tablets { 
+        font-size: 14px;       
+    } 
 }

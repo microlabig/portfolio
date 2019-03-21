@@ -1,6 +1,9 @@
 .triangles {
     display: flex;
     margin-bottom: 15%;
+    @include tablets { 
+        margin-bottom: 13%;
+    }  
 }
 
 .triangle__item {
@@ -8,7 +11,16 @@
     height: 93px;
     width: 50%;
     fill: $white-color;
-    margin-top: -93px;    
+    margin-top: -93px;  
+    
+    @include desktop { 
+        height: 64px;
+        margin-top: -64px;
+    }  
+    @include tablets { 
+        height: 40px;
+        margin-top: -40px;
+    }  
 }
 
 .triangles--two {    
@@ -20,4 +32,8 @@
     @include desktop { 
         margin-bottom: 8%;
     }   
+
+    @include desktop { 
+        margin-bottom: 21%;
+    }  
 }

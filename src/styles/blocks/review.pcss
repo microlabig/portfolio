@@ -4,6 +4,10 @@
     @include desktop { 
         margin-bottom: 184px;
     }   
+
+    @include tablets { 
+        margin-bottom: 120px;
+    }  
 }
 
 .review__titlebox {
@@ -14,7 +18,10 @@
 
         @include desktop { 
             margin-right: 8%;
-        }   
+        }  
+        @include tablets { 
+            margin-right: 9%;
+        }  
     }
 
     margin-bottom: 6%;
@@ -65,6 +72,9 @@
     @include desktop { 
         width: 90%;
     }   
+    @include tablets { 
+        width: 100%;
+    } 
 }
 
 .review__list {
@@ -77,6 +87,10 @@
     flex: 1;
     display: flex;
     flex-wrap: nowrap;
+
+    @include tablets { 
+        padding-left: 7%;
+    } 
 }
 
 .review__image {
@@ -85,6 +99,10 @@
     @include desktop { 
         padding: 0 3%;
     }   
+
+    @include tablets { 
+        display: none;
+    } 
 }
 
 .review__icon {
@@ -107,6 +125,24 @@
 
     width: 80%;
     margin-bottom: 8%;
+
+    @include tablets { 
+        font-weight: $semi-bold;
+        font-size: 14px;
+        line-height: 24px;
+        width: 100%;
+
+        /* 
+        // скрытие строк текста
+        display: block; // or inline-block 
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 7.2em; // делим на line-height и получаем кол-во строк 
+        text-overflow: ellipsis;
+        line-height: 1.8em; 
+        */
+    }  
 }
 
 .review__autor {
@@ -119,10 +155,18 @@
     color: $text-color;
     font-weight: bold;
     margin-bottom: 19px;
+
+    @include tablets { 
+        font-size: 16px;
+    } 
 }
 
 .review__profession {
     font-size: 16px;
     font-weight: $semi-bold;
     color: rgba($light-color, 0.3);
+
+    @include tablets { 
+        font-size: 14px;
+    } 
 }
