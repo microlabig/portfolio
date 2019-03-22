@@ -42,6 +42,11 @@
 
             flex-shrink: 0;
         }
+
+        @include phones-small {  
+            width: 280px;
+            height: 361px;
+        } 
     }
 } 
 
@@ -58,13 +63,14 @@
 .skills__list {
     align-self: flex-end;    
 
-    &:last-child {
-        margin-bottom: 0;        
-    }    
-
     @include tablets { 
         margin: 0 auto;
+        margin-bottom: 34px;
     }
+
+    @include phones-small {  
+        margin-bottom: 2px;
+    } 
 }
 
 .skills__item {
@@ -76,6 +82,14 @@
 
     @include tablets {         
         margin-bottom: 39px;
+    }
+
+    @include phones-small {  
+        margin-bottom: 55px;
+    } 
+
+    &:last-child {
+        margin-bottom: 0;
     }
 }
 
@@ -99,6 +113,11 @@
 
 .skills__tech-list{
     display: flex;
+
+    @include phones-small {         
+        flex-wrap: wrap;
+        width: 102%;
+    }
 }
 
 .skills__tech-item {
@@ -110,6 +129,10 @@
 
     @include desktop { 
         margin-right: 20px;
+    }
+
+    @include phones-small {         
+        margin-right: 0;
     }
 }
 

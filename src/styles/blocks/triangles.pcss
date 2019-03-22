@@ -21,6 +21,10 @@
         height: 40px;
         margin-top: -40px;
     }  
+    @include phones-small {
+        height: 23px;
+        margin-top: -23px;
+    } 
 }
 
 .triangles--two {    
@@ -30,10 +34,14 @@
     margin-bottom: 9%;
 
     @include desktop { 
-        margin-bottom: 8%;
+        margin-bottom: 10%;
     }   
 
-    @include desktop { 
+    @include tablets { 
         margin-bottom: 21%;
     }  
+
+    @include phones-small {  
+        margin-bottom: 28%;
+    } 
 }

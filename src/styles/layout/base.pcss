@@ -42,12 +42,11 @@ body {
   }
 
   @include tablets {
-    width: 100%; 
     max-width: 688PX;
   }
 
-  @include phones {
-    width: 85%;
+  @include phones-small {
+    max-width: 260PX;
   }
 }
 
@@ -111,13 +110,22 @@ h1 {
 h2 {
   font-size: 36px;
   font-weight: $extra-bold;
+
   @include tablets {
     font-size: 30px;
+  }   
+
+  @include phones-small {
+    font-size: 23px;
   } 
 }
 h3 {
   font-size: 30px;
   font-weight: $bold;
+
+  @include phones-small {
+    font-size: 24px;
+  } 
 }
 
 .maincontent,

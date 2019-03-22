@@ -59,6 +59,10 @@
         flex-basis: 0;
         margin-bottom: 14px;
     }    
+
+    @include phones-small {  
+        margin-bottom: 3px;
+    }    
 }
 
 .hero__profession-elem {
@@ -84,7 +88,7 @@
     }
     @include tablets {  
         flex-basis: 0;
-    }
+    }    
 }
 
 .hero__name-elem {
@@ -102,6 +106,11 @@
         line-height: 48px;
         text-align: center;
         width: 100%;
+    }
+
+    @include phones-small {  
+        font-size: 36px;
+        line-height: 48px;
     }
 }
 

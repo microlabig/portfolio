@@ -6,6 +6,10 @@
 
     @include tablets {
         align-items: flex-start;
+    }     
+
+    @include phones-small {  
+        margin-bottom: 35px;
     } 
 }
 
@@ -27,6 +31,10 @@
         height:170px;
         margin-bottom: 47px;
     }   
+    @include phones-small {
+        margin: 0 auto;  
+        margin-bottom: 19px;        
+    } 
 }
 
 .avatar__image {    
@@ -49,6 +57,9 @@
     @include tablets {
         height:32px;        
     }   
+    @include phones-small {  
+        height: 29px;
+    } 
 }
 
 .avatar__info-key {
@@ -62,6 +73,9 @@
     @include tablets {
         padding-right: 11%;
     } 
+    @include phones-small {  
+        padding-right: 22%
+    } 
 }
 
 .avatar__info-value {
@@ -72,18 +86,3 @@
     }  
 }
 
-//------ review ------
-
-.avatar--review {
-    display: inline-block;
-    align-items: flex-start;
-    margin-right: 31px;
-    flex: 0;
-    
-    .avatar__block {
-        width: 75px;
-        height:75px;
-        margin-bottom: 0;
-        box-shadow: none;
-    }
-}

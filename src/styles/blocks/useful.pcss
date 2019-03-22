@@ -1,8 +1,10 @@
 .useful {    
-    .title {       
-        
+    .title {   
         .title-elem {
-            text-align: center;            
+            text-align: center;  
+            @include phones-small {
+                text-align: left;
+            }          
         }
 
         margin-bottom: 59px;
@@ -27,7 +29,7 @@
     margin-bottom: 168px;
 
     @include desktop {
-        margin-bottom: 66px;
+        margin-bottom: 114px;
     }
 
     @include tablets {
@@ -51,9 +53,16 @@
     }
 
     @include tablets {
+        text-align: center;
+        
         margin-bottom: 60px;
         padding: 0 17%;
-        line-height: 24px;
-        text-align: center;
+        line-height: 24px;        
+    }
+
+    @include phones-small {
+        text-align: left;
+        padding: 0;
+        margin-bottom: 40px;
     }
 }

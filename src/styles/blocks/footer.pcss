@@ -24,9 +24,14 @@
         padding: 7% 0;
     }   
 
-    @include desktop { 
+    @include tablets { 
         padding: 8% 0;
     }   
+
+    @include phones-small { 
+        padding: 22% 0;
+        flex-direction: column;
+    }
 }
 
 .footer__left {
@@ -35,6 +40,11 @@
     @include desktop { 
         width: 26%;
     }   
+
+    @include phones-small {  
+        width: 100%;
+        margin-bottom: 13%;;
+    } 
 }
 .footer__right {
     width: 65%;
@@ -43,8 +53,12 @@
         width: 74%;
     }   
 
-    @include desktop { 
+    @include tablets { 
         width: 64%;
+    }   
+
+    @include phones-small { 
+        width: 100%;
     }   
 } 
  
@@ -55,13 +69,18 @@
         @include desktop { 
             margin-bottom: 6%; 
         }
+
+        @include phones-small { 
+           white-space: nowrap; 
+           margin-bottom: 1%;
+        }
     }
     
     .hero__name-elem {
         font-size: 18px;
         line-height: 30px;
         text-transform: uppercase;
-        text-align: left;              
+        text-align: left;                
     }
 
     .hero__profession-elem {
@@ -74,6 +93,14 @@
         @include tablets { 
             font-size: 14px; 
         }
+        @include phones-small { 
+            white-space: nowrap; 
+        }
+        & span {
+            @include phones-small { 
+                display: inline;
+            }
+        }        
     }
     
 }
@@ -100,6 +127,11 @@
                 padding: 0 51px 12px 0;
                 font-size: 14px;
             } 
+
+            @include phones-small {  
+                padding-bottom: 22px;
+                padding-right: 65px;
+            } 
         }
 
         &:first-child .menu__link{
@@ -117,6 +149,10 @@
 
     @include tablets { 
         margin-bottom: 8%;
+    } 
+
+    @include phones-small {  
+        margin-bottom: 3%;
     } 
 }
 
@@ -137,11 +173,15 @@
         margin-right: 36px;
     }   
 
-    @include desktop {
+    @include tablets {
         flex: 0;
         margin-right: 0;
         margin-bottom: 10%;
     }
+
+    @include phones-small {  
+        margin-bottom: 17%;
+    } 
 }
 
 .footer__text {
@@ -157,6 +197,11 @@
     @include tablets {         
         font-size: 14px;
         margin-bottom: 0;
+    } 
+    
+    @include phones-small {  
+        line-height: 24px;
+        margin-bottom: 14px;
     } 
 }
 
@@ -183,7 +228,11 @@
 
         @include tablets { 
             margin-right: 4%;
-        } 
+        }     
+        
+        @include phones-small {  
+            margin-right: 10%;
+        }     
     }
     .social__icons {
         position: absolute;
@@ -195,7 +244,7 @@
         left:50%;
         top:50%;
         transform: translate(-50%,-50%);
-    }
+    }    
 }
 
 .footer__greatthink {

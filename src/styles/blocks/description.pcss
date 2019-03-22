@@ -43,19 +43,29 @@
         flex: 1;
         margin-bottom: 46px;
     }  
+    @include phones-small {
+        margin-bottom: 30px;
+        font-size: 30px;
+    } 
 }
 
 .description__name-about {
     font-weight: $semi-bold;
     color: rgba($light-color, 0.5);
     margin-bottom: 105px;
+
     @include tablets {
         margin-bottom: 41px;
-    }  
+        line-height: 24px;
+    }      
 }
 
 .description__content {
     font-style: normal;
     color: rgba($light-color, 0.5);
     font-style: italic;
+
+    @include phones-small {  
+        line-height: 24px;
+    } 
 }

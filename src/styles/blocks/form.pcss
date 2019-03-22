@@ -29,6 +29,11 @@
     @include tablets { 
         margin-bottom: 30px;
     } 
+
+    @include phones-small { 
+        flex-direction: column;
+        margin-bottom: 12px;
+    } 
 }
 
 .form__elem {
@@ -53,6 +58,10 @@
         @include tablets { 
             margin-bottom: 7px;
         } 
+
+        @include phones-small { 
+            font-size: 14px;
+        } 
     }
 
     &:hover {
@@ -72,6 +81,10 @@
 
     @include tablets { 
         margin-right: 19px;
+    } 
+    @include phones-small {  
+        margin-right: 0;
+        margin-bottom: 15%;
     } 
 }
 
@@ -122,7 +135,11 @@
 
         @include tablets { 
             font-size: 14px;
-        }  
+        }    
+
+        @include phones-small { 
+            line-height: 24px;
+        }          
     }
 
     &:focus {
@@ -160,11 +177,16 @@
     font-size: 18px;
     font-weight: $bold;
 
-    padding: 28px 120px;
+    padding: 28px 0;
 
     border-radius: 50px 5px;
 
     &:hover {
         background-image: linear-gradient(to right, $linear-startcolor-hover, $linear-endcolor-hover);        
     }    
+
+    @include phones-small { 
+        padding: 24px 0;
+        width: 260px;
+    } 
 }

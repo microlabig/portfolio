@@ -20,6 +20,10 @@
     @include tablets { 
         margin-bottom: 8%;
     }
+    @include phones-small {
+        margin-right: 0;
+        margin-bottom: 19%;
+    }
 }
 
 .slider__preview-block {
@@ -48,6 +52,10 @@
             margin-left: -9%;
             font-size: 300px;
         }
+
+        @include phones-small { 
+            display: none;
+        }
     }
 
     @include desktop { 
@@ -59,18 +67,27 @@
         width: 623px;
         height: 353px;
     }
+
+    @include phones-small { 
+        width: 328px;
+        height: 184px;
+    }
 }
 
 .slider__workimages{
     position: absolute;
     
-    top: 27%;
+    bottom: 0;
     right: 0;  
 
     @include desktop { 
         height: 84%;
         overflow: hidden;
         top: 16%;
+    }   
+
+    @include phones-small { 
+        display: none;
     }   
 }
 
@@ -109,9 +126,24 @@
     }
 }
 
+//------- navigation -------
+
+.slider__navigation {
+    @include phones-small {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+
 //------- number --------
 .slider__content{
     position: relative;
+
+    @include phones-small {
+        max-width: 260PX;
+        margin: 0 auto;
+    }
 }
 
 //----- description -------
@@ -119,6 +151,10 @@
 .slider__description {
     @include tablets { 
         text-align: center;
+    }   
+
+    @include phones-small { 
+        text-align: left;
     }   
 }
 
@@ -131,10 +167,13 @@
         margin-bottom: 11%;
     }   
     @include tablets { 
-        display: flex;
         justify-content: center;
         flex-wrap: nowrap;
         margin-bottom: 2%;
+    }   
+    @include phones-small {         
+        justify-content: flex-start;
+        margin-bottom: 5%;
     }   
 }
 
@@ -152,6 +191,10 @@
         padding: 0 3%;
         margin-right: 3%;
     }
+
+    @include phones-small {  
+        padding: 0 7%;
+    } 
 }
 
 .slider__tag-text {
@@ -170,6 +213,9 @@
     @include tablets { 
         margin-bottom: 3%;        
     } 
+    @include phones-small {  
+        margin-bottom: 9%;  
+    } 
 }
 
 .slider__work-title {
@@ -180,6 +226,9 @@
     @include tablets { 
         margin-bottom: 18px;
     }   
+    @include phones-small {  
+        margin-bottom: 10px;
+    } 
 }
 
 .slider__work-description {
@@ -192,6 +241,10 @@
         font-size: 14px;
         line-height: 24px;
         padding: 0 16%;        
+    } 
+
+    @include phones-small {    
+        padding: 0;        
     } 
 }
 

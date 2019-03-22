@@ -3,7 +3,7 @@
 
     @include desktop { 
         flex-direction: column;
-    }
+    }    
 }
 
 .copyright__year {
@@ -11,9 +11,13 @@
         margin-bottom: 10%;
     }
 
-    @include desktop { 
+    @include tablets { 
         margin-bottom: 16%;
     }
+    
+    @include phones-small {  
+        margin-bottom: 10%;
+    } 
 }
 
 .copyright__year-text {
