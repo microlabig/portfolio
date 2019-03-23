@@ -3,7 +3,19 @@
     justify-content: space-between;
     align-items: center;
     
-    padding-top: 64px;       
+    padding-top: 64px;  
+    
+    @include tablets {
+        padding-top: 50px; 
+     }
+}
+
+.header__logo {
+    padding: 0 2%;
+
+    @include tablets {
+       padding: 0 0.2%;
+    }
 }
 
 .header__menu {
@@ -16,7 +28,7 @@
 
 .header__social {
     @include tablets {
-        margin-right: 110px;
+        margin-right: 126px;
     }
     @include phones-small {
        display: none;

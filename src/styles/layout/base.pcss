@@ -37,16 +37,18 @@ body {
   // width: 1490px;
 
   @include desktop {
-    width: 100%; 
-    max-width: 1080PX;
+    //width: 95%; 
+    //max-width: 1080PX;
   }
 
   @include tablets {
-    max-width: 688PX;
+    width: 90%;
+    //max-width: 688PX;
   }
 
   @include phones-small {
-    max-width: 260PX;
+    width: 85%;
+    //max-width: 260PX;
   }
 }
 
@@ -107,6 +109,7 @@ h1 {
   font-size: 72px;
   font-weight: $extra-bold;
 }
+
 h2 {
   font-size: 36px;
   font-weight: $extra-bold;
@@ -119,6 +122,7 @@ h2 {
     font-size: 23px;
   } 
 }
+
 h3 {
   font-size: 30px;
   font-weight: $bold;
@@ -148,6 +152,7 @@ h3 {
 
 
 .wrappersections {
+  position: relative;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -155,11 +160,21 @@ h3 {
   height: 100%;
 
   &--home {
-    background-image: url("../images/content/bg/mountain-baloon.jpg");
-    
+    @include tablets {
+      background-image: url("../images/content/bg/mountain-baloon.jpg");    
+    }
   }
+
   &--end {
-    background-image: url("../images/content/bg/budda.jpg"); 
+    @include tablets {
+      background-image: url("../images/content/bg/budda.jpg");
+    }
+
+    & .container {
+        @include desktop { 
+            width: 91%;
+        }  
+    }   
   }
 }
 

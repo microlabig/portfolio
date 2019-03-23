@@ -12,6 +12,15 @@ html(lang="ru")
       main.maincontent          
 
         .wrappersections.wrappersections--home
+          section.parallax            
+            .parallax__layer.parallax__layer--bg
+              +image('content/parallax/mountain/bg.jpg', 'parallax__image-bg', 'Изображение')
+            - for (var numpic=1; numpic<=6; numpic++)
+              - var speed = numpic / 10;
+              .parallax__layer(data-speed=speed)
+                +image(`content/parallax/mountain/${numpic}.png`, 'parallax__image', 'Изображение')
+            //- .parallax__content
+
           section.fullscreen-section.hero
             .container.hero-container
               header.header
@@ -71,9 +80,9 @@ html(lang="ru")
                         td.avatar__info-key #{info[0]}
                         td.avatar__info-value #{info[1]}
               .description
-                .descrition__name
+                .description__name
                   .description__name-welcome Привет, меня зовут
-                  h2.description__name Игорь Безместин
+                  h2.description__title Игорь Безместин
                   .description__name-about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                 .description__block
                   .description__content Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!              
@@ -252,7 +261,7 @@ html(lang="ru")
                       a(href="#" title=`${item}`).menu__link #{item}
             .footer__thinks
               .footer__mythink
-                article.footer__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool            
+                article.footer__text Этот сайт я сделал в рамках обучения в #[span.span-block]Школе онлайн образования Loftschool            
                 .footer__social
                   .social
                     ul.social__list

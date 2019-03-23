@@ -1,11 +1,20 @@
 .avatar {
-    flex:1;
+    flex: 0.95;
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    @include desktop {
+        flex: 0.6;
+        margin-right: 5.7%;
+    }  
+
     @include tablets {
+        flex: 0.7;
         align-items: flex-start;
+
+        padding-left: 1%;
+        margin-right: 4%;
     }     
 
     @include phones-small {  
@@ -24,7 +33,7 @@
     margin-bottom: 70px;  
     
     @include desktop {
-        margin-bottom: 85px;
+        margin-bottom: 69px;
     }    
     @include tablets {
         width: 170px;
@@ -45,17 +54,32 @@
     width: 74%;
 
     @include desktop {
-        width: 68%;
+        width: 100%;
     }  
     @include desktop {
         font-size: 14px;
     }  
 }
 
+
+// ------ table ---------
+
+.avatar__info-table {
+    font-size: 16px;
+    margin-left: 11%;
+
+    @include desktop {
+        margin-left: 6%;       
+    }  
+    @include tablets {
+        margin-left: -3%;      
+    }  
+}
+
 .avatar__info-row {
     height: 35px;
     @include tablets {
-        height:32px;        
+        height:29px;        
     }   
     @include phones-small {  
         height: 29px;

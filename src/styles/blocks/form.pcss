@@ -1,5 +1,5 @@
 .form {
-    width: 60%;
+    width: 59%;
     @include desktop { 
         width: 81%;
     }  
@@ -11,7 +11,7 @@
 .form__row {    
     display: flex;
 
-    margin-bottom: 41px;
+    margin-bottom: 3%;
     
     &:last-child {
         margin-bottom: 0;
@@ -24,6 +24,10 @@
     } 
     &--textarea {
         margin-bottom: 60px;
+
+        @include tablets { 
+            margin-bottom: 29px;
+        } 
     } 
 
     @include tablets { 
@@ -151,7 +155,7 @@
     
     &--textarea {
         resize: none;
-        line-height: 36px;
+        line-height: 36px;        
     }   
     
     @include desktop { 
@@ -161,7 +165,7 @@
 
 // -------- button --------
 
-.form__elem--button {        
+.form__elem--button {  
     @include tablets { 
         display: flex;
         justify-content: center;
@@ -183,7 +187,12 @@
 
     &:hover {
         background-image: linear-gradient(to right, $linear-startcolor-hover, $linear-endcolor-hover);        
-    }    
+    }  
+    
+    @include desktop { 
+        width: 352px;
+        padding: 33px 0;
+    } 
 
     @include phones-small { 
         padding: 24px 0;

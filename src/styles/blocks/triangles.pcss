@@ -1,25 +1,31 @@
 .triangles {
     display: flex;
-    margin-bottom: 15%;
-    @include tablets { 
+    margin-bottom: 8%;
+
+    @include desktop { 
         margin-bottom: 13%;
+    }  
+
+    @include tablets { 
+        margin-bottom: 14%;
     }  
 }
 
 .triangle__item {
     display: block;
-    height: 93px;
+    height: 109px;
     width: 50%;
     fill: $white-color;
-    margin-top: -93px;  
+    margin-top: -109px;  
     
     @include desktop { 
-        height: 64px;
-        margin-top: -64px;
+        height: 80px;
+        margin-top: -80px;
     }  
     @include tablets { 
         height: 40px;
         margin-top: -40px;
+        z-index: 1;
     }  
     @include phones-small {
         height: 23px;
@@ -30,15 +36,20 @@
 .triangles--two {    
     .triangle__item {
         margin-top: 0;
+
+        @include desktop {         
+            height: 48px;
+        }   
     }
+
     margin-bottom: 9%;
 
-    @include desktop { 
-        margin-bottom: 10%;
+    @include desktop {         
+        margin-bottom: 12%;
     }   
 
     @include tablets { 
-        margin-bottom: 21%;
+        margin-bottom: 18%;
     }  
 
     @include phones-small {  

@@ -1,6 +1,10 @@
 .work {
 
     .container {
+        @include desktop {
+            width: 90%;
+        }
+
         @include phones-small {
            max-width: 320px;
         }
@@ -23,7 +27,7 @@
         }
     }   
 
-    margin-bottom: 173px;
+    margin-bottom: 109px;
 
     @include desktop {
         margin-bottom: 84px;
