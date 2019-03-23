@@ -10,7 +10,7 @@
     }  
 
     @include phones-small {  
-        margin-bottom: 152px;
+        margin-bottom: 144px;
     }     
 }
 
@@ -30,7 +30,13 @@
             text-align: center;
             margin-right: 0;
             margin-bottom: 10%;            
-        }         
+        }      
+        
+        & .title-elem {
+            @include phones-small {
+                font-size: 24px;
+            }
+        }
     }
 
     margin-bottom: 6%;
@@ -42,7 +48,7 @@
     @include phones-small { 
         flex-direction: column;
         align-items: center;
-        margin-bottom: 10%;
+        margin-bottom: 7%;
     } 
 }
 
@@ -90,6 +96,10 @@
     @include tablets { 
         width: 100%;
     } 
+    @include phones-small {
+        width: 88%;
+        margin: 0 auto;
+    }
 }
 
 .review__list {
@@ -166,12 +176,11 @@
         overflow: hidden;
         max-height: 7.2em; // делим на line-height и получаем кол-во строк 
         text-overflow: ellipsis;
-        line-height: 1.8em; 
-        
+        line-height: 1.8em;         
     }  
 
     @include phones-small {  
-        margin-bottom: 5%;
+        margin-bottom: 8%;
     } 
 }
 

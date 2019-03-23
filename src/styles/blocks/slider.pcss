@@ -142,7 +142,7 @@
     position: relative;
 
     @include phones-small {
-        max-width: 260PX;
+        width: 80%;
         margin: 0 auto;
     }
 }
@@ -174,7 +174,7 @@
     }   
     @include phones-small {         
         justify-content: flex-start;
-        margin-bottom: 5%;
+        margin-bottom: 3%;
     }   
 }
 
@@ -195,6 +195,7 @@
 
     @include phones-small {  
         padding: 0 7%;
+        margin-right: 5%;
     } 
 }
 
@@ -204,6 +205,10 @@
     font-size: 15px;
     line-height: 48px;
     color: rgba($light-color, 0.7);
+    
+    @include phones-small {
+        font-size: 13px;
+    }
 }
 
 .slider__work {

@@ -1,16 +1,16 @@
 .work {
 
-    .container {
+    & .container {
         @include desktop {
             width: 90%;
         }
 
         @include phones-small {
-           max-width: 320px;
+           width: 100%;
         }
     }
 
-    .title {
+    & .title {
         margin-bottom: 92px;
 
         @include desktop {
@@ -25,6 +25,12 @@
             text-align: center;
             margin-bottom: 28px;
         }
+
+        & .title-elem {
+            @include phones-small {
+                font-size: 24px;
+            }
+        }
     }   
 
     margin-bottom: 109px;
@@ -38,7 +44,7 @@
     }
 
     @include phones-small {  
-        margin-bottom: 84px;
+        margin-bottom: 97px;
     } 
 }
 
