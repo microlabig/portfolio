@@ -117,29 +117,8 @@ html(lang="ru")
                         )
                           stop(offset="0%" stop-color=`${begin}`)
                           stop(offset="100%" stop-color=`${end}`)
-                  ul.skills__list
-                    -
-                      var skills = [
-                        ['Front-end', ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js']],
-                        ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']]
-                      ];
-                    each skill in skills
-                      li.skills__item
-                        .skills__title #{skill[0]}
-                        ul.skills__tech-list
-                          each tech in skill[1]
-                            li.skills__tech-item
-                              .skills__tech-item-box
-                                svg(viewBox="0 0 200 200" preserveAspectRatio="none").skills__circle
-                                  circle(
-                                    r="80" cx="100" cy="100"
-                                  ).skill__circle.skill__circle--under   
-                                  circle(
-                                    r="80" cx="100" cy="100"
-                                    stroke="url(#gradient)"
-                                  ).skill__circle.skill__circle--above
-                                .skills__text #{tech}                      
-                
+                  #skills__component
+
           section.work
             .container
               .work__title
@@ -281,3 +260,5 @@ html(lang="ru")
               .footer__greatthink
                 article.footer__text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                 .footer__thinker Martin Golding
+
+include ../templates/entry.pug
