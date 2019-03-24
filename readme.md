@@ -5,5 +5,5 @@
 
 **Наставник:** Максим Иванов
  
-**Ссылка на проект:** [https://microlabig.github.io/portfolio/dist](https://microlabig.github.io/portfolio/dist "Проект Портфолио")
+**Ссылка на проект:** [https://microlabig.github.io/portfolio/](https://microlabig.github.io/portfolio/ "Проект Портфолио")
 
