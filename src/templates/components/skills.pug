@@ -1,0 +1,21 @@
+
+script(type="text/x-template")#skills__list
+    .widget__skills
+        ul.skills__list
+
+            li.skills__item
+                .skills__title  78
+                ul.skills__tech-list() 2
+                
+                    li.skills__tech-item
+                    .skills__tech-item-box
+                        svg(viewBox="0 0 200 200" preserveAspectRatio="none").skills__circle
+                        circle(
+                            r="80" cx="100" cy="100"
+                        ).skill__circle.skill__circle--under   
+                        circle(
+                            r="80" cx="100" cy="100"
+                            stroke="url(#gradient)"
+                        ).skill__circle.skill__circle--above
+                        .skills__text()  1                   
+                    
