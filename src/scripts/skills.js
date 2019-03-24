@@ -38,7 +38,7 @@ new Vue ({
     components: {   //в основной Vue-экземпляр положим skillsRow
         skillsRow
     },
-    data() {
+    data() {    // данные
         return {
             skills: {}
         }
