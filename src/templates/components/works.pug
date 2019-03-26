@@ -6,7 +6,9 @@ script(type="text/x-template")#slider-container
         //- прокидываем внутрь массив works из data() основного компонента в display        
         display(            
             :works="works",
-            :currentWork="currentWork"
+            :currentWork="currentWork",
+            :currentIndex="currentIndex",
+            @slide="handleSlide"
         )
         info(
             :currentWork="currentWork"
@@ -17,14 +19,18 @@ script(type="text/x-template")#slider-container
 //-  ---------------------------------
 script(type="text/x-template")#slider-display
     .slider__preview
-        .slider__preview-block(data-slide="4")
+        .slider__preview-block(:data-slide="currentIndex + 1")
             //+image('content/work/preview.jpg', 'slider__preview-image','Превью')
             img(:src="currentWork.photo" alt="Крупный план").slider__preview-image
             //- прокидываем внутрь массив works из data() основного компонента в thumbs
             thumbs(
-                :works="works" 
-            )            
-        btns
+                :works="reversedWorks",
+                :currentWork="currentWork" 
+            )
+        //- прокидываем в btns событие и связываем с переменной direction            
+        btns(
+            @slide="direction => $emit('slide', direction)"
+        )
 
 //-  ---------------------------------
 //-  миниатюры thumbs
@@ -32,7 +38,11 @@ script(type="text/x-template")#slider-display
 script(type="text/x-template")#slider-thumbs 
     .slider__workimages 
         ul.slider__list            
-            li.slider__item(v-for="work in works" :key="work.id")                
+            //- переберем все работы из массива объектов works
+            //- переключим класс active если совпадают id currentWork и work 
+            li.slider__item(v-for="work in works" :key="work.id"
+            :class="{active: currentWork.id === work.id}"            
+            )                
                 .slider__image                    
                     img(:src="work.photo" alt="Превью").slider__image-icon
 
@@ -42,9 +52,9 @@ script(type="text/x-template")#slider-thumbs
 script(type="text/x-template")#slider-btns        
     .slider__navigation
         .navigation
-            button(type="button").navigation__button.navigation__button--up.no-active
+            button(type="button" @click.prevent="$emit('slide', 'next')").navigation__button.navigation__button--up
                 +icon('arrow-down', 'navigation__button-icon')                    
-            button(type="button").navigation__button.navigation__button--down
+            button(type="button" @click.prevent="$emit('slide', 'prev')").navigation__button.navigation__button--down
                 +icon('arrow-down', 'navigation__button-icon') 
 
 //-  ---------------------------------
@@ -54,7 +64,9 @@ script(type="text/x-template")#slider-info
     .slider__content                               
         .slider__description
             .slider__tag
-                tags                     
+                tags(
+                    :tagsArray="tagsArray"
+                )                     
                 .slider__work
                     h3.slider__work-title {{currentWork.title}}
                     .slider__work-description {{currentWork.desc}}
@@ -66,8 +78,6 @@ script(type="text/x-template")#slider-info
 //-  теги tags
 //-  ---------------------------------
 script(type="text/x-template")#slider-tags
-                ul.slider__tag-list
-                    - var tags = ['HTML', 'CSS', 'Javascript'];
-                    each tag in tags
-                        li.slider__tag-item
-                            .slider__tag-text #{tag} 
+    ul.slider__tag-list
+        li.slider__tag-item(v-for="tag in tagsArray")
+            .slider__tag-text {{tag}} 

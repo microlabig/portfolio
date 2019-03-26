@@ -1,0 +1,30 @@
+@keyframes colorfilterAnimation {
+    from {
+        filter: invert(.5%);
+        color: rgba($text-color, .5);
+    }
+
+    70%{
+        filter: invert(100%);
+        color: rgba($text-color, 1);
+    }
+
+    to {
+        filter: invert(.5%);   
+        color: rgba($text-color, .5);     
+    }    
+}
+
+@keyframes Up-Down {
+    from {
+        transform: scale(1.05);
+    }
+
+    35%{
+        transform:  scale(.8);
+    }
+
+    to {
+        transform: scale(1.05);
+    }    
+}

@@ -1,34 +1,34 @@
 [
     {
       "id": 1,
-      "title": "Сайт компании AirLines",
-      "skills": "Html, Css, JavaScript",
-      "photo": "slider-image1.jpg",
-      "link": "//google.com",
-      "desc": "1 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+      "title": "Лендинг бургерной Mr. Burger",
+      "skills": "HTML, Sass, JavaScript, JQuery, YandexAPI, FlexBox",
+      "photo": "slider-image3.jpg",
+      "link": "//rambler.ru",
+      "desc": "Дипломная работа. Сайт адаптивен для всех устройств. Здесь реализованы такие технологии, как OnePageScroll, Api-медиа (работа с видео), Yandex-Maps и форма обратной связи"
     },
     {
       "id": 2,
-      "title": "Сайт коворкинга",
-      "skills": "Html, Css, JavaScript",
-      "photo": "slider-image2.jpg",
-      "link": "//yandex.ru",
-      "desc": "2 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+      "title": "Сайт компании AirLines",
+      "skills": "HTML, CSS",
+      "photo": "slider-image1.jpg",
+      "link": "//google.com",
+      "desc": "Это первый проект"
     },
     {
       "id": 3,
-      "title": "Лендинг бургерной Mr. Burger",
-      "skills": "Html, Css, JavaScript, JQuery",
-      "photo": "slider-image3.jpg",
-      "link": "//rambler.ru",
-      "desc": "3 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
-    },
+      "title": "Сайт коворкинга",
+      "skills": "HTML, CSS",
+      "photo": "slider-image2.jpg",
+      "link": "//yandex.ru",
+      "desc": "Это второй проект"
+    },   
     {
         "id": 4,
-        "title": "Лендинг бургерной Mr. Burger",
-        "skills": "Html, Css, JavaScript, JQuery",
+        "title": "Заголовок",
+        "skills": "HTML, CSS, JavaScript, JQuery",
         "photo": "slider-image4.jpg",
         "link": "//rambler.ru",
-        "desc": "4 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+        "desc": "Описание"
       }
   ]

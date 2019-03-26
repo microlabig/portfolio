@@ -17,18 +17,20 @@
         transform: rotate(90deg); 
         background-color: $slider-button; 
     } 
-    &.no-active .navigation__button-icon {
-        fill: rgba($white-color, 0.3);
+    &:focus .navigation__button-icon {
+        fill: $white-color;
+        transition: fill .3s;
     }
 
     &:hover {
         background-color: $active-menu-color;  
+        transition: background-color .2s;
     }
 }
 
 .navigation__button-icon {
     position: absolute;
-    fill: $white-color;
+    fill: rgba($white-color, 0.3);
 
     width: 10px;
     height: 8px;

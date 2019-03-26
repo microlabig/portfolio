@@ -89,11 +89,12 @@
                 fill:$active-menu-color;
             }
         }
-    }
-    .navigation__button-icon,
-    & .no-active .navigation__button-icon {
-        fill: $slider-button;
-    }    
+
+        .navigation__button-icon,
+        &:focus .navigation__button-icon {
+            fill: $slider-button;
+        }  
+    }      
 }
 
 //------- review__block ---------

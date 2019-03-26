@@ -176,8 +176,7 @@ html(lang="ru")
               polygon(
                 points="0,0 0,100 1000,0"
               )
-          
-          
+                    
           section.review
             .container
               .review#review
@@ -186,7 +185,7 @@ html(lang="ru")
                     h2.title-elem Что обо мне говорят
                   .review__navigation
                     .navigation
-                      button(type="button" @click="previous()").navigation__button.navigation__button--up.no-active
+                      button(type="button" @click="previous()").navigation__button.navigation__button--up
                         +icon('arrow-down', 'navigation__button-icon')                    
                       button(type="button" @click="next()").navigation__button.navigation__button--down
                         +icon('arrow-down', 'navigation__button-icon')                
