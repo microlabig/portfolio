@@ -1,3 +1,5 @@
+//параллакс экрана hero
+
 const paralax = document.querySelector('.parallax');
 const layers = paralax.children;
 

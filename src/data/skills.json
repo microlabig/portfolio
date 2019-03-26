@@ -2,10 +2,10 @@
     {
         "skillGroup": "Front-end",
         "skills": {
-            "HTML5": 70,
-            "CSS3": 60,
-            "JavaScript": 30,
-            "JQuery и Vue.js": 25
+            "HTML5": 90,
+            "CSS3": 80,
+            "JavaScript": 45,
+            "JQuery и Vue.js": 30
         }
     },
     {

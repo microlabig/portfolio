@@ -208,11 +208,18 @@
     
     @include phones-small {  
         line-height: 24px;
-        margin-bottom: 19px;
-        & span {
+        margin-bottom: 19px;        
+    } 
+
+    & span {
+        @include desktop {
             display: inline;
         }
-    } 
+
+        @include phones-small {
+            display: inline;
+        }
+    }
 }
 
 .footer__social {

@@ -124,39 +124,49 @@ html(lang="ru")
               .work__title
                 .title
                   h2.title-elem Мои работы
-              .slider
-                .slider__preview
-                  div(data-slide="4").slider__preview-block
-                    +image('content/work/preview.jpg', 'slider__preview-image','Превью')
-                    .slider__workimages
-                      ul.slider__list
-                        - var previews = ['slider-image1','slider-image2','slider-image3','slider-image4'];
-                        each prev in previews
-                          li.slider__item                    
-                            .slider__image
-                              +image(`content/work/${prev}.jpg`, 'slider__image-icon','Работа')
-                  .slider__navigation
-                    .navigation
-                      button(type="button").navigation__button.navigation__button--up.no-active
-                        +icon('arrow-down', 'navigation__button-icon')                    
-                      button(type="button").navigation__button.navigation__button--down
-                        +icon('arrow-down', 'navigation__button-icon')                   
-                .slider__content                               
-                  .slider__description
-                    .slider__tag
-                      ul.slider__tag-list
-                        - var tags = ['HTML', 'CSS', 'Javascript'];
-                        each tag in tags
-                          li.slider__tag-item
-                            .slider__tag-text #{tag}                      
-                      .slider__work
-                        h3.slider__work-title Сайт школы образования
-                        .slider__work-description Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-                      .slider__linkblock
-                        +icon('link', 'slider__icon')
-                        a(href="#" target="blank").slider__link Посмотреть сайт
+              #slider-component
+              //- .slider
+              //-   .slider__preview
+              //-     div(data-slide="4").slider__preview-block
+              //-       +image('content/work/preview.jpg', 'slider__preview-image','Превью')
+              //-       .slider__workimages
+              //-         ul.slider__list
+              //-           - var previews = ['slider-image1','slider-image2','slider-image3','slider-image4'];
+              //-           each prev in previews
+              //-             li.slider__item                    
+              //-               .slider__image
+              //-                 +image(`content/work/${prev}.jpg`, 'slider__image-icon','Работа')
+              //-     .slider__navigation
+              //-       .navigation
+              //-         button(type="button").navigation__button.navigation__button--up.no-active
+              //-           +icon('arrow-down', 'navigation__button-icon')                    
+              //-         button(type="button").navigation__button.navigation__button--down
+              //-           +icon('arrow-down', 'navigation__button-icon')                   
+              //-   .slider__content                               
+              //-     .slider__description
+              //-       .slider__tag
+              //-         ul.slider__tag-list
+              //-           - var tags = ['HTML', 'CSS', 'Javascript'];
+              //-           each tag in tags
+              //-             li.slider__tag-item
+              //-               .slider__tag-text #{tag}                      
+              //-         .slider__work
+              //-           h3.slider__work-title Сайт школы образования
+              //-           .slider__work-description Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+              //-         .slider__linkblock
+              //-           +icon('link', 'slider__icon')
+              //-           a(href="#" target="blank").slider__link Посмотреть сайт
         
         .wrappersections.wrappersections--end
+
+          section.parallax.parallax--budda            
+              .parallax__layer.parallax__layer--bg
+                +image('content/parallax/budda/bg.jpg', 'parallax__image-bg', 'Изображение')
+              - for (var numpic=1; numpic<=7; numpic++)
+                - var speed = numpic / 10;
+                .parallax__layer(data-speed=speed)
+                  +image(`content/parallax/budda/${numpic}.png`, 'parallax__image', 'Изображение')
+
           .triangles.triangles--two
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
               polygon(
@@ -166,7 +176,8 @@ html(lang="ru")
               polygon(
                 points="0,0 0,100 1000,0"
               )
-
+          
+          
           section.review
             .container
               .review#review

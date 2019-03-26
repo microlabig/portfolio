@@ -1,0 +1,73 @@
+//-  ---------------------------------
+//-  основной компонент
+//-  ---------------------------------
+script(type="text/x-template")#slider-container
+    .slider
+        //- прокидываем внутрь массив works из data() основного компонента в display        
+        display(            
+            :works="works",
+            :currentWork="currentWork"
+        )
+        info(
+            :currentWork="currentWork"
+        )             
+
+//-  ---------------------------------
+//-  картинки display
+//-  ---------------------------------
+script(type="text/x-template")#slider-display
+    .slider__preview
+        .slider__preview-block(data-slide="4")
+            //+image('content/work/preview.jpg', 'slider__preview-image','Превью')
+            img(:src="currentWork.photo" alt="Крупный план").slider__preview-image
+            //- прокидываем внутрь массив works из data() основного компонента в thumbs
+            thumbs(
+                :works="works" 
+            )            
+        btns
+
+//-  ---------------------------------
+//-  миниатюры thumbs
+//-  ---------------------------------
+script(type="text/x-template")#slider-thumbs 
+    .slider__workimages
+        ul.slider__list            
+            li.slider__item(v-for="work in works" :key="work.id")                
+                .slider__image                    
+                    img(:src="work.photo" alt="Превью").slider__image-icon
+
+//-  ---------------------------------
+//-  кнопки навигации btns
+//-  ---------------------------------
+script(type="text/x-template")#slider-btns        
+    .slider__navigation
+        .navigation
+            button(type="button").navigation__button.navigation__button--up.no-active
+                +icon('arrow-down', 'navigation__button-icon')                    
+            button(type="button").navigation__button.navigation__button--down
+                +icon('arrow-down', 'navigation__button-icon') 
+
+//-  ---------------------------------
+//-  информация info
+//-  ---------------------------------
+script(type="text/x-template")#slider-info
+    .slider__content                               
+        .slider__description
+            .slider__tag
+                tags                     
+                .slider__work
+                    h3.slider__work-title {{currentWork.title}}
+                    .slider__work-description {{currentWork.desc}}
+                .slider__linkblock
+                    +icon('link', 'slider__icon')
+                    a(:href="currentWork.link" target="blank").slider__link Посмотреть сайт
+
+//-  ---------------------------------
+//-  теги tags
+//-  ---------------------------------
+script(type="text/x-template")#slider-tags
+                ul.slider__tag-list
+                    - var tags = ['HTML', 'CSS', 'Javascript'];
+                    each tag in tags
+                        li.slider__tag-item
+                            .slider__tag-text #{tag} 
