@@ -16,10 +16,14 @@
   "hover-menu-color":"3a414e",
 
   "bp-desktop-hd": "1800px",
-  "bp-desktop": "1200px",
+  "bp-desktop": "1200px",  
   "bp-tablets": "768px",
   "bp-phones": "480px",
   "bp-phones-small": "320px",
+
+  "bp-desktop1350": "1350px",
+  "bp-desktop1110": "1110px",
+  "bp-desktop960": "960px",
 
   "light": 300,
   "regular": 400,

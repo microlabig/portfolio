@@ -12,6 +12,15 @@ html(lang="ru")
       main.maincontent          
 
         .wrappersections.wrappersections--home
+          section.parallax            
+            .parallax__layer.parallax__layer--bg
+              +image('content/parallax/mountain/bg.jpg', 'parallax__image-bg', 'Изображение')
+            - for (var numpic=1; numpic<=6; numpic++)
+              - var speed = numpic / 10;
+              .parallax__layer(data-speed=speed)
+                +image(`content/parallax/mountain/${numpic}.png`, 'parallax__image', 'Изображение')
+            //- .parallax__content
+
           section.fullscreen-section.hero
             .container.hero-container
               header.header
@@ -24,15 +33,26 @@ html(lang="ru")
                       - var items = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
                       each item in items
                         li.menu__item
-                          a(href="#" title=`${item}`).menu__link #{item}                   
+                          a(href="#" title=`${item}`).menu__link #{item}                      
                 .header__social
                   .social
                     ul.social__list
                       - var socials = ['insta', 'vk', 'github'];
                       each social in socials
                         li.social__item
-                          a(href="#").social__link
+                          - var soclink = ''                          
+                          case social
+                            when 'insta'
+                              - soclink='//instagram.com'
+                            when 'vk'
+                              - soclink='//vk.com'
+                            when 'github'
+                              - soclink='//github.com'
+                          a(href=`${soclink}` target="blank").social__link
                             +icon(social, 'social__icons') 
+                .mobile-nav
+                  - for (var i=0; i<3; i++)                
+                    .mobile-nav__line
               .hero__block
                 .hero__profession
                   .hero__profession-elem Личный сайт #[span.span-block] веб-разработчика
@@ -60,9 +80,9 @@ html(lang="ru")
                         td.avatar__info-key #{info[0]}
                         td.avatar__info-value #{info[1]}
               .description
-                .descrition__name
+                .description__name
                   .description__name-welcome Привет, меня зовут
-                  h2.description__name Игорь Безместин
+                  h2.description__title Игорь Безместин
                   .description__name-about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                 .description__block
                   .description__content Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!              
@@ -83,7 +103,7 @@ html(lang="ru")
             .container
               .useful__title
                 .title
-                  h3.title-elem Чем я могу быть полезен вам
+                  h3.title-elem Чем я могу быть #[span.span-block]полезен вам
                 .useful__description Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
               .skills
                 .skills__content                    
@@ -97,29 +117,8 @@ html(lang="ru")
                         )
                           stop(offset="0%" stop-color=`${begin}`)
                           stop(offset="100%" stop-color=`${end}`)
-                  ul.skills__list
-                    -
-                      var skills = [
-                        ['Front-end', ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js']],
-                        ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']]
-                      ];
-                    each skill in skills
-                      li.skills__list
-                        .skills__title #{skill[0]}
-                        ul.skills__tech-list
-                          each tech in skill[1]
-                            li.skills__tech-item
-                              .skills__tech-item-box
-                                svg(viewBox="0 0 200 200" preserveAspectRatio="none").skills__circle
-                                  circle(
-                                    r="80" cx="100" cy="100"
-                                  ).skill__circle.skill__circle--under   
-                                  circle(
-                                    r="80" cx="100" cy="100"
-                                    stroke="url(#gradient)"
-                                  ).skill__circle.skill__circle--above
-                                .skills__text #{tech}                      
-                
+                  #skills-component                  
+
           section.work
             .container
               .work__title
@@ -170,35 +169,36 @@ html(lang="ru")
 
           section.review
             .container
-              .review__titlebox
-                .title
-                  h2.title-elem Что обо мне говорят
-                .review__navigation
-                  .navigation
-                    button(type="button").navigation__button.navigation__button--up.no-active
-                      +icon('arrow-down', 'navigation__button-icon')                    
-                    button(type="button").navigation__button.navigation__button--down
-                      +icon('arrow-down', 'navigation__button-icon')                
-              .review__block
-                ul.review__list
-                  -
-                    var reviews = [
-                      ['Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!', 'Ковальчук Дмитрий', 'Основатель Loftschool'],
-                      ['Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах', 'Владимир Сабанцев', 'Преподаватель']
-                    ], i = 1;
-                  each review in reviews
-                    li.review__item
-                      .review__image
-                        +icon('quote', 'review__icon')
-                      .review__description
-                        .review__text #{review[0]}
-                        .review__autor
-                          .avatar.avatar--review
-                            .avatar__block
-                              +image(`content/reviews/review${i++}.jpg`, 'avatar__image','Аватар')
-                          .review__about
-                            .review__name #{review[1]}
-                            .review__profession #{review[2]} 
+              .review#review
+                .review__titlebox
+                  .title
+                    h2.title-elem Что обо мне говорят
+                  .review__navigation
+                    .navigation
+                      button(type="button" @click="previous()").navigation__button.navigation__button--up.no-active
+                        +icon('arrow-down', 'navigation__button-icon')                    
+                      button(type="button" @click="next()").navigation__button.navigation__button--down
+                        +icon('arrow-down', 'navigation__button-icon')                
+                .review__block
+                  .review__content                  
+                    flickity(ref="flickity" :options="flickityOptions").review__list
+                      -
+                        var reviews = [
+                          ['Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!', 'Ковальчук Дмитрий', 'Основатель Loftschool'],
+                          ['Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах', 'Владимир Сабанцев', 'Преподаватель'],
+                          ['Этот код выдержит любые испытания', 'Владимир Сабанцев', 'Преподаватель']
+                        ], i = 1;
+                      each review in reviews
+                        .review__item.carousel-cell
+                          .review__description
+                            .review__text #{review[0]}
+                            .review__autor
+                              .avatar.avatar--review
+                                .avatar__block
+                                  +image(`content/reviews/review${i++}.jpg`, 'avatar__image','Аватар')
+                              .review__about
+                                .review__name #{review[1]}
+                                .review__profession #{review[2]} 
             
           section.feedback
             .container
@@ -216,9 +216,9 @@ html(lang="ru")
                   .form__row.form__row--textarea 
                     lavel(data-text="Сообщение к письму").form__elem
                       .form__elem-container.form__elem-container--message                        
-                        textarea(type="textarea" placeholder="Требуется ваша помощь в создании сайта.\n Интересуют сроки и цена вопроса").form__elem-input.form__elem-input--textarea
+                        textarea(type="textarea" placeholder="Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса").form__elem-input.form__elem-input--textarea
                   .form__row
-                    lavel.form__elem
+                    lavel.form__elem.form__elem--button
                       button(type="submit").form__elem-button Отправить     
 
       footer.footer
@@ -241,20 +241,24 @@ html(lang="ru")
                       a(href="#" title=`${item}`).menu__link #{item}
             .footer__thinks
               .footer__mythink
-                article.footer__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool            
+                article.footer__text Этот сайт я сделал в рамках обучения в #[span.span-block]Школе онлайн образования Loftschool            
                 .footer__social
                   .social
                     ul.social__list
                       - var socials = ['insta', 'vk', 'github'];
                       each social in socials
                         li.social__item
-                          a(href="#").social__link
+                          - var soclink = ''                          
+                          case social
+                            when 'insta'
+                              - soclink='//instagram.com'
+                            when 'vk'
+                              - soclink='//vk.com'
+                            when 'github'
+                              - soclink='//github.com'
+                          a(href=`${soclink}` target="blank").social__link
                             +icon(social, 'social__icons')  
               .footer__greatthink
                 article.footer__text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                 .footer__thinker Martin Golding
-
-
-//- +image('content/user.jpg', 'user-pic-class')
-//- +icon('link', 'link-class')
-//- .icon-bg 
+    include ./templates/entry.pug

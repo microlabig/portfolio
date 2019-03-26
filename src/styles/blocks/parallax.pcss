@@ -1,0 +1,162 @@
+.parallax {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    @include tablets {
+        display: none;
+    }
+}
+
+.parallax__layer--bg {
+    & .parallax__image {
+        top:0;
+        object-fit: cover;
+        position: absolute;
+        width: initial;
+        height: initial;
+    }
+    height: 100%;
+}
+
+.parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    will-change: transform;   
+
+    &:nth-child(2) {
+        .parallax__image {
+            right: 0;
+            top: 460px;   
+                     
+            width: 100%;
+
+            @include desktop {
+                top: 610px;
+            }
+        }
+    }
+
+    &:nth-child(3) { // шар
+        .parallax__image {
+            top: 518px;
+            left: 50%;
+            margin-left: 12%;
+
+            @include desktop {
+                top: 418px;
+                margin-left: 27%;
+                transform: scale(0.7);
+            }
+        }
+    }
+
+    &:nth-child(4) {  // облака м/у man и горами
+        .parallax__image {
+           left: 0;
+           top: 610px;
+           width: 100%;
+
+           @include desktop {
+                top: 810px;
+            }
+        }
+    }
+
+    &:nth-child(5) { // man
+        .parallax__image {
+            left: 0;
+            top: 710px;
+
+            @include desktop {
+                left: -100px;
+                top: 960px;
+            }
+        }
+    }
+
+    &:nth-child(6) {
+        .parallax__image {
+            right: 0;
+            bottom: 0;
+
+            @include desktop {
+                bottom: -270px;
+            }
+        }
+    }
+
+    &:nth-child(7) { 
+        .parallax__image {
+            bottom: -200px;
+            left: 0;
+
+            @include desktop {
+                bottom: -500px;
+            }
+        }
+    }    
+}
+
+.parallax__image {
+    position: absolute;
+    width: initial;
+    height: initial;
+}
+
+/* 
+.parallax {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.parallax__image {
+    position: absolute;
+    width: initial;
+    height: initial;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.parallax__layer--bg {
+    & .parallax__image {
+        top:0;
+    }
+    height: 100%;
+}
+
+.parallax__content {
+    height: 2000px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #f8f7fc;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 100px;
+    transform: translateZ(0);
+}
+
+$layers: 6;
+
+@for $layerNum from $layers through 1 {
+    .parallax__layer:nth-child($layerNum) {
+        $currentLayer: $layers - $layerNum;
+        $perspective: $currentLayer * 50px;
+        $scale: $currentLayer * .5 + 1;
+        content:$layerNum;
+        transform: translateZ($perspective) scale($scale);
+    }
+} */

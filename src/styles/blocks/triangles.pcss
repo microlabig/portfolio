@@ -1,19 +1,66 @@
 .triangles {
     display: flex;
-    margin-bottom: 15%;
+    margin-bottom: 8%;
+
+    @include desktop { 
+        margin-bottom: 13%;
+    }  
+
+    @include tablets { 
+        margin-bottom: 14%;
+    }  
+    
+    @include phones-small {
+         margin-bottom: 27%;
+    }
 }
 
 .triangle__item {
     display: block;
-    height: 93px;
+    height: 109px;
     width: 50%;
     fill: $white-color;
-    margin-top: -93px;    
+    margin-top: -109px;  
+    
+    @include desktop { 
+        height: 80px;
+        margin-top: -80px;
+    }  
+    @include tablets { 
+        height: 40px;
+        margin-top: -40px;
+        z-index: 1;
+    }  
+    @include phones-small {
+        height: 23px;
+        margin-top: -23px;
+    } 
 }
 
 .triangles--two {    
     .triangle__item {
         margin-top: 0;
+
+        @include desktop {         
+            height: 48px;
+        }   
+
+        @include phones-small {
+            height: 16px;
+        }
     }
+
     margin-bottom: 9%;
+
+    @include desktop {         
+        margin-bottom: 12%;
+    }   
+
+    @include tablets { 
+        margin-bottom: 18%;
+    }  
+
+    @include phones-small {  
+        margin-bottom: 25%;
+    } 
 }

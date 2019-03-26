@@ -1,10 +1,17 @@
 .social__list {
     display: flex;
     align-items: center;
+
+    padding-top: 3%;
 }
 
 .social__item {
+    flex-shrink: 0;
     margin-right: 40px;
+
+    @include tablets {
+        margin-right: 39px;
+    }
     
     &:last-child {
         margin-right: 0;
@@ -23,4 +30,14 @@
     width: 31px;
     height: 31px;
     fill: $text-color;
+
+    @include desktop {
+        width: 28px;
+        height: 28px;
+    }
+
+    @include tablets {
+        width: 25px;
+        height: 25px;
+    }
 }

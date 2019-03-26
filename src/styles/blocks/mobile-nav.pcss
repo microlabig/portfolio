@@ -1,0 +1,28 @@
+.mobile-nav {    
+    display: none; 
+
+    @include tablets {  
+        display: inline-block;  
+        position: fixed;
+        right: 5%;          
+
+        cursor: pointer;
+        width: 26px;        
+    }
+
+    @include phones-small {
+        right: 9%; 
+    }
+}
+
+.mobile-nav__line {    
+    border: 2px solid $text-color;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    background-color: $text-color;
+    transition: .4s;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

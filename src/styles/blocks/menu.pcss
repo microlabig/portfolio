@@ -19,7 +19,6 @@
 
     &:hover {
         color: rgba($active-menu-color,1);
-        color: $active-menu-color;
         font-weight: $bold;
         border-bottom-color: $active-menu-color;
     } 
@@ -32,6 +31,11 @@
         overflow: hidden;
         visibility: hidden;        
     }
-    
+
+    @include desktop { 
+        white-space: nowrap;
+        padding: 40px 29px;
+    }    
 }
+
 

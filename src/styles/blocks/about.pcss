@@ -1,9 +1,29 @@
 .about {    
-    margin-bottom: 156px;
+    margin-bottom: 262px;
+
+    @include desktop {
+        margin-bottom: 230px;
+    }  
+
+    @include tablets {
+        margin-bottom: 142px;
+    }  
+
+    @include phones-small {
+         margin-bottom: 105px;
+    }
 }
 
 .about-container {
     display: flex;
     justify-content: center;
-    padding: 0 10%;    
+    padding: 0 10%;  
+
+    @include desktop {
+        padding: 0; 
+    }  
+
+    @include phones-small {
+        flex-direction: column;
+    }
 }
