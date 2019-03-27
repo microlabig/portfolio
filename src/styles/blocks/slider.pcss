@@ -8,8 +8,9 @@
 
 
 //--------- image --------
-.slider__preview{
-    position: relative;     
+.slider__preview{    
+    position: relative; 
+    flex-shrink: 0;   
     z-index: 1;   
 
     margin-right: 11%;
@@ -28,9 +29,7 @@
 }
 
 .slider__preview-block {
-    position: relative;
-    width: 975px;
-    height: 549px;
+    position: relative;    
 
     &:before {
         content: attr(data-slide);
@@ -57,21 +56,28 @@
         @include phones-small { 
             display: none;
         }
-    }
+    }    
+}
+
+.slider__preview-image {
+    overflow: hidden;
+    width: 100%;
+    max-width: 975px;
+    max-height: 549px;
 
     @include desktop { 
-        width: 625px;
-        height: 355px;
+        max-width: 625px;
+        max-height: 355px;
     }
 
     @include tablets { 
-        width: 631px;
-        height: 357px;
+        max-width: 631px;
+        max-height: 357px;
     }
 
     @include phones-small { 
-        width: 328px;
-        height: 184px;
+        max-width: 328px;
+        max-height: 184px;
     }
 }
 
@@ -93,14 +99,17 @@
 }
 
 .slider__item {
-    cursor: pointer;    
+    cursor: pointer; 
+
     &.active {
     //&:focus {
         border: 3px solid $slider-active-color;
+        //outline: 3px solid $slider-active-color;
+        z-index: 10;
     }
 }
 
-.slider__preview-image,
+.slider__preview-icon,
 .slider__image-icon {
     object-fit: cover;
 }

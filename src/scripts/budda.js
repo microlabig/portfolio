@@ -1,64 +1,51 @@
-/* //параллакс экрана budda
+const wrapper = document.querySelector('.wrappersections--end');
+const buddaWrapper = document.querySelector('.parallax--budda');
+const layers = buddaWrapper.children;
+const center = { // центр секции
+    x:Math.round(wrapper.clientWidth/2),
+    y:Math.round(wrapper.clientHeight/2)
+};
+const K = 50; // коэффициент смещения параллакса
 
-const paralax = document.querySelector('.parallax--budda');
-const layers = paralax.children;
+let Is_active = false; // для определения нахождения курсора мыши на секции wrapper с буддой
 
-function moveLayersDependOnScroll(wScroll) {
-    Array.from(layers).forEach(layer => {
-        let divider = layer.dataset.speed;
-        
-        if (divider == 0.2) {    // увеличим скорость шара        
-            divider = 3;            
-        }
+// если курсор наведен на wrapper
+wrapper.addEventListener('mouseenter', e=> {
+    Is_active = true;
+});
+// если курсор убрали c wrapper
+wrapper.addEventListener('mouseleave', e=> {
+    Is_active = false;
+});
 
-        const strafe = wScroll * divider / 37; // strafe - разнести              
-
-        if (divider < 0.6 || divider >= 2) { // не фон и не передние облака
-            layer.style.transform = `translateY(-${strafe}%)`;
-        }        
-    });    
-}
-
-window.addEventListener('scroll', e=> {    
-    const wScroll = window.pageYOffset; // смещение по скролу
-    moveLayersDependOnScroll(wScroll);
-}); */
-
-/*
-// Навигация по точкам
-(function () {   
-    // показывать/скрывать Состав в секции Бургер
-    let compositionVisible = () => {
-        let btnComposition = $('.burgers__composition-btn-block');
-
-        btnComposition.on({
-            mouseenter() {
-                $(this).addClass("active");
+// если курсор наведен на wrapper то делаем парралакс с буддой
+wrapper.addEventListener('mousemove', e=> {
+    if (Is_active) {
+        let divider = 0, // делитель (значение атрибута data-set слоя)
+            currPos = { // текущая позиция курсора
+                x:0,
+                y:0
             },
-            mouseleave() {
-                $(this).removeClass("active");
+            strafe = { // для смещения
+                x:0,
+                y:0
             }
-        });
+                     
+        for (let i=0; i<layers.length; i++) {
+            if (i===1 || i===2 || i===5 || i===6) { // 1 - горы, 2 - будда, 5 - облако под формой, 6 - облако слева от будды
+                currPos.x = e.clientX;
+                currPos.y = e.clientY;
+                divider = layers[i].dataset.speed;
 
-        $(".burgers__charakter-cross").on("click touchstart", e => {
-            e.preventDefault();
-            btnComposition.removeClass("active");
-        });
-    };
-    compositionVisible();
-})();
+                if (divider == 0.1) {    // уменьшим скорость гор        
+                    divider = 0.04;            
+                }       
 
-*/
+                strafe.x = (center.x - currPos.x) * divider / K;
+                strafe.y = (center.y - currPos.y) * divider / K;
 
-const budda = document.querySelector('.parallax--budda');
-const layers = budda.children;
-
-let Is_active = false;
-
-window.addEventListener('mouseover', e=> {
-    //console.log(event.target.className);
-      if (event.target.className == "parallax--budda") {
-          console.log(1);
-          
-      }
+                layers[i].style.transform = `translate(${strafe.x}%,${strafe.y}%)`;
+            }
+        }        
+    }
 });

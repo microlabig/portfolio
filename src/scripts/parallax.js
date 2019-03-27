@@ -9,13 +9,20 @@ function moveLayersDependOnScroll(wScroll) {
         
         if (divider == 0.2) {    // увеличим скорость шара        
             divider = 3;            
-        }
+        }   
+        if (divider == 0.4) {    // уменьшим скорость человека        
+            divider = 0.2;            
+        }       
 
-        const strafe = wScroll * divider / 37; // strafe - разнести              
-
-        if (divider < 0.6 || divider >= 2) { // не фон и не передние облака
+        const strafe = wScroll * divider / 35; // strafe - разнести  
+        
+        if ((divider < 0.6 || divider >= 2) && divider!= 0.4) { // не фон и не передние облака
             layer.style.transform = `translateY(-${strafe}%)`;
-        }        
+        }  
+
+        /* if ((divider < 0.6 || divider >= 2) && divider!= 0.4) { // не фон и не передние облака
+            layer.style.transform = `translateY(-${strafe}%)`;
+        }    */     
     });    
 }
 

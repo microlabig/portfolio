@@ -122,6 +122,10 @@ new Vue ({
                     this.currentIndex--;
                     break;
             }
+        },
+        //обработка нажатий на миниатюры
+        handleClickThumbs(currentIDthumbs) {
+            this.currentIndex = currentIDthumbs-1;  
         }
     },
     created() { // на стадии сохдания (не DOM-дерево)

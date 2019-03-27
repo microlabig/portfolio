@@ -1,4 +1,4 @@
-@keyframes colorfilterAnimation {
+/* @keyframes colorfilterAnimation {
     from {
         filter: invert(.5%);
         color: rgba($text-color, .5);
@@ -13,9 +13,9 @@
         filter: invert(.5%);   
         color: rgba($text-color, .5);     
     }    
-}
+} */
 
-@keyframes Up-Down {
+@keyframes Scale-Up-Down {
     from {
         transform: scale(1.05);
     }
@@ -28,3 +28,35 @@
         transform: scale(1.05);
     }    
 }
+
+@keyframes RotateBall {
+    from {
+        transform:  rotate(-1deg);
+    }
+
+    to {
+        transform: rotate(1deg);
+    }    
+}
+
+/* @keyframes RotateBall {
+    from {
+        transform: rotate(0);
+    }
+
+    20%{
+        transform:  rotate(-1deg);
+    }
+
+    50%{
+        transform:  rotate(0);
+    }
+
+    80%{
+        transform:  rotate(1deg);
+    }
+
+    to {
+        transform: rotate(0);
+    }    
+} */
