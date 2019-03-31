@@ -1,0 +1,91 @@
+.button {
+    cursor: pointer;
+
+    background-repeat: no-repeat;
+    background-position: center center; 
+
+    &--add {
+        font-size: 16px;
+        color: $white-color;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end);               
+    }
+
+    &--apply {
+        background: svg-load('tick.svg', fill=$admin-button-add-color) center center no-repeat / contain; 
+        width:17px; 
+        height:17px;
+
+        margin-right: 20px;
+    }
+
+    &--discard {
+        background: svg-load('remove.svg', fill=$admin-button-discard-color) center center no-repeat / contain; 
+        width:17px; 
+        height:17px;
+    }
+
+    &--edit {
+        background: svg-load('pencil.svg', fill=$admin-border-bottom-color) center center no-repeat / contain; 
+        width:17px; 
+        height:17px;
+    }
+
+    &--delete {
+        background: svg-load('trash.svg', fill=$admin-border-bottom-color) center center no-repeat / contain; 
+        width:17px; 
+        height:17px;
+    }    
+
+    &.button--save,
+    &.image-load__button {
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: $bold;
+        color: $white-color;
+        padding: 20px 50px;
+
+        border-radius: 30px 30px;
+
+        background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end);  
+    }
+
+    &.button--cancel {
+        margin-right: 59px;
+        color: $links-color;
+        font-size: 16px;
+        font-weight: $semi-bold;
+    }
+
+}
+
+//----- btn-container
+
+.btn-container__add {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    color: $white-color;    
+}
+
+.btn-container__add-button {
+    font-size: 72px;
+    font-weight: $light;
+    border: 2px solid $white-color;  
+    border-radius: 100%; 
+
+    padding: 26px 56px;
+    margin-bottom: 30px;
+}
+
+.btn-container__add-title {
+    text-align: center;
+    font-weight: $bold;
+    line-height: 30px;
+}

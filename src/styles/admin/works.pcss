@@ -1,0 +1,134 @@
+.works__title {
+    margin-bottom: 60px;
+}
+
+//--------- список работ
+
+.works__listwrapper {
+    margin-bottom: 40px;
+}
+
+.works__list {
+    display: flex;     
+    flex-wrap: wrap;   
+}
+
+.works__item { 
+    background-color: $white-color;
+    box-shadow: 0 0 8px 0px $admin-border-bottom-color;  
+
+    max-width: 340px;
+
+    margin-right: 25px;
+    margin-bottom: 30px;
+
+    &:first-child {
+        box-shadow: none; 
+    }
+
+    &:last-child {
+        margin: 0;
+    }
+
+    &.works__item--add .btn-container {
+        background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end); 
+        padding: 165px 95px;
+    }
+
+    &.edittable { // для редактирования
+        opacity: .3;
+    }
+}
+
+.works__image {
+    position: relative;
+
+    width: 340px;
+    height: 190px;
+    overflow: hidden;
+
+    margin-bottom: 38px;
+}
+
+.works__tag-list {
+    position: absolute;
+    
+    /* display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-wrap: wrap; */
+
+    margin-bottom: 10px;
+    margin-right: 10px;
+    
+    bottom: 10px;
+    right: 10px;
+}
+
+.works__tag-item {
+    //position: absolute;
+    border-radius: 30px 30px;
+
+    font-size: 13px;
+    font-weight: $semi-bold;
+
+    padding: 10px 16px;
+    background-color: $white-color;
+}
+
+.works__description {
+    padding: 0 30px;
+    padding-bottom: 40px;
+}
+
+.works__title {
+    color: black;
+    font-size: 18px;
+    font-weight: $bold;
+
+    margin-bottom: 26px;
+}
+
+.works__text {
+    color: $text-color;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: $semi-bold;
+
+    margin-bottom: 25px;
+}
+
+.works__link {
+    display: inline-block;
+    color: $links-color;
+    font-size: 16px;
+    font-weight: $semi-bold;
+
+    margin-bottom: 40px;
+}
+
+.works__btns-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.works__btns {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &:before {
+        content: attr(data-text);
+        display: block;
+        font-size: 16px;
+        font-weight: $regular;
+        color: $text-color;
+
+        margin-right: 11px;
+    }
+
+    & .button--edit {
+        background: svg-load('pencil.svg', fill=$links-color) center center no-repeat / contain; 
+    }
+}

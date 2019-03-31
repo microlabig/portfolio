@@ -32,6 +32,12 @@
   "extra-bold": 800,
 
 
-  "admin-header":"#3f3f5e"
+  "admin-header-color":"#3f3f5e",
+  "admin-link-color":"#383bcf",
+  "admin-button-color-start": "#006aed",
+  "admin-button-color-end": "#3f35cb",
+  "admin-border-bottom-color": "rgba($light-color,.95)",
+  "admin-button-add-color": "#00d70a",
+  "admin-button-discard-color": "#bf2929"
 }
 

@@ -1,0 +1,290 @@
+.form {
+    height: 100%;
+    background-color: $white-color;
+    padding: 30px 20px;
+}
+
+.form__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.form__header {
+    border-bottom: 1px solid $admin-border-bottom-color;
+
+    & .form__elem-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    & .form__elem-input {
+        min-width: 273px;
+    }
+}
+
+.form__elem-input {
+    border: none;
+    padding: 14px 0;
+    margin-bottom: 14px;
+
+    border-bottom: 2px solid black;
+
+    font-size: 18px;
+    font-weight: $semi-bold;
+
+    &::placeholder {
+        color: $admin-border-bottom-color;
+    }
+}
+
+.form__footer {
+    align-self: flex-end;
+
+    & .form__elem-container {
+        display: flex;
+        align-items: center;
+    }
+
+    & .form__elem-input:first-child {
+        margin-right: 10px;
+        padding-left: 20px;
+    }
+
+    & .form__elem-percent {
+
+        & .form__elem-input {
+            margin-right: 0;
+            width: 65px;
+        }
+
+        &:after {
+            content: "%";
+            display: inline;
+            padding: 12px 0;
+            padding-right: 10px;
+            font-size: 16px;
+            font-weight: $regular;
+            color: $admin-border-bottom-color;
+            border-bottom: 2px solid black;
+        }
+
+        margin-right: 32px;
+    }
+
+    & .button--add {
+        font-size: 30px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+//------- works
+
+.form--works {
+    padding: 0;
+
+    & .form__row--tags {
+        margin-bottom: 40px;
+    }
+
+    .form__elem {
+        &:before {
+            content: attr(data-text);
+            display: block;
+            font-size: 16px;
+            font-weight: $semi-bold;
+            color: $admin-border-bottom-color;
+        }
+
+        & .form__elem-input {
+            &::placeholder {
+                color: black;
+            }
+
+            margin-bottom: 30px;
+        }
+
+        & .form__elem-textarea {
+            width: 100%;
+            resize: none;
+
+            height: 145px;
+
+            line-height: 30px;
+            font-size: 16px;
+            color: black;
+
+            font-weight: $semi-bold;
+
+            padding: 10px 20px;
+            border: 1px solid $admin-border-bottom-color;
+
+            &::placeholder {
+                color: black;
+            }
+
+            margin-bottom: 30px;
+        }
+
+        & .form__list--tags {
+            display: flex;
+
+            & .form__item {
+                display: flex;
+                align-items: center;
+                flex-wrap: nowrap;
+
+                margin-right: 10px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            & .button--tag {
+                border-radius: 30px 0 0 30px;
+
+                font-size: 13px;
+                font-weight: $regular;
+
+                padding: 10px 16px;
+
+                background-color: rgba($light-color, .2);
+            }
+
+            & .button-tagdelete {
+                padding: 6.2px 0;
+                padding-right: 14px;
+                background-color: rgba($light-color, .2);
+
+                border-radius: 0 30px 30px 0;
+            }
+
+            & .button--discard {
+                background: svg-load('remove.svg', fill=black) center center no-repeat / contain;
+                width: 15px;
+                height: 15px;
+            }
+
+
+        }
+    }
+
+    & .form__row--textarea {
+        & .form__elem:before {
+            margin-bottom: 20px;
+        }
+    }
+
+    & .form__elem-input {
+        width: 100%;
+    }
+
+    & .form__row--btns {
+        text-align: right;
+    }
+
+}
+
+
+//----- form-edit
+
+.form-edit {
+    background-color: $white-color;
+    padding: 30px 20px;
+    box-shadow: 0 0 8px 0px $admin-border-bottom-color;
+    margin-bottom: 32px;
+}
+
+.form-edit__title-box {
+    border-bottom: 1px solid $admin-border-bottom-color;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
+.form-edit__wrapper {
+    padding: 0 10px;
+    display: flex;
+}
+
+.form-edit__side {
+    flex: 1;
+
+    &.form-edit__side--left {
+        margin-right: 29px;
+    }
+}
+
+
+//--------- reviews
+
+.form-edit--reviews {   
+
+    & .form__elem {
+        flex: 1;
+        margin-right: 30px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:before {
+            content: attr(data-text);
+            display: block;
+            font-size: 16px;
+            font-weight: $semi-bold;
+            color: $admin-border-bottom-color;
+        }
+    }
+
+    .form-edit__right {
+        width: 65%;
+
+        & .form__row--inputs {
+            display: flex;
+        }
+    }
+
+    & .form__elem-input {
+        width: 100%;
+        &::placeholder {
+            color: black;
+        }
+    }
+
+    & .form__elem-textarea {
+        width: 100%;
+        resize: none;
+
+        height: 145px;
+
+        line-height: 30px;
+        font-size: 16px;
+        color: black;
+
+        font-weight: $semi-bold;
+
+        padding: 10px 20px;
+        border: 1px solid $admin-border-bottom-color;
+
+        &::placeholder {
+            color: black;
+        }
+
+        margin-bottom: 30px;
+    }
+
+    & .form__row--textarea {
+        & .form__elem:before {
+            margin-bottom: 20px;
+        }
+    }
+
+    & .form__row--btns {
+        text-align: right;
+    }
+}

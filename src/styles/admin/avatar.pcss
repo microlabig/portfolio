@@ -8,3 +8,36 @@
     border-radius: 50%;
     overflow: hidden;    
 }
+
+//------- reviews
+
+.avatar-load__image {
+    cursor: pointer;
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    background-color: rgba($light-color, .23); 
+
+    padding: 34px 48px;
+
+    margin-bottom: 27px;
+
+    &:before {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+
+        background: svg-load('user.svg', fill=$white-color) center center no-repeat / contain; 
+    }
+}
+
+.avatar-load__button { 
+    width: 100%;
+    text-align: center;
+    
+    color: $links-color;
+    font-size: 16px;
+    font-weight: $semi-bold;    
+}

@@ -1,8 +1,37 @@
 .header {
-    background-color:  $admin-header;
+    background-color:  $admin-header-color;
 }
 
 .header__wrapper {
     max-width: 1080px;  
     margin: 0 auto;  
+    color: $white-color;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
+
+.header__logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header__avatar {
+    margin-right: 20px;
+}
+
+.header__name {
+    margin-right: 60px;
+}
+
+.header__typepanel,
+.header__quit {
+    color: rgba($white-color, .3);
+}
+
+.header__quit {
+    text-decoration: underline;
+}
+
