@@ -194,10 +194,10 @@
                     .works__title #{work.title}
                     .works__text #{work.desc}
                     a(href="#").works__link #{work.link}
-                    .works__btns-wrap
-                      .works__btns(data-text="Править")
+                    .btns-wrap
+                      .btns(data-text="Править")
                         button(type="button").button.button--edit                         
-                      .works__btns(data-text="Удалить")
+                      .btns(data-text="Удалить")
                         button(type="button").button.button--discard                         
 
       section.reviews
@@ -271,9 +271,9 @@
             ul.reviews__list
               li.reviews__item.reviews__item--add
                 .btn-container
-                .btn-container__add
-                  .btn-container__add-button +
-                  .btn-container__add-title Добавить работу 
+                  .btn-container__add
+                    .btn-container__add-button +
+                    .btn-container__add-title Добавить отзыв
               each review in reviewList            
                 li.reviews__item
                   .reviews__autor
@@ -283,13 +283,14 @@
                           img(src=`../images/content/reviews/${review.photo}` alt="Аватар").avatar__image
                     .reviews__autor-right
                       .reviews__name #{review.name}
-                      .reviews__title #{review.titul}
-                  
+                      .reviews__titul #{review.titul}                  
                   .reviews__description 
                     .reviews__text #{review.text}
-                    .reviews__btns
-                      button(type="button").button.button--edit Править
-                      button(type="button").button.button--delete Удалить                            
+                    .btns-wrap
+                      .btns(data-text="Править")
+                        button(type="button").button.button--edit                         
+                      .btns(data-text="Удалить")
+                        button(type="button").button.button--discard                              
 
 </template>
 

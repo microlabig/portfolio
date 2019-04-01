@@ -89,3 +89,38 @@
     font-weight: $bold;
     line-height: 30px;
 }
+
+//-------- btns
+
+.btns-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.btns {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &:before {
+        content: attr(data-text);
+        display: block;
+        font-size: 16px;
+        font-weight: $regular;
+        color: $text-color;
+
+        margin-right: 11px;
+    }
+
+    & .button {
+        font-size: 16px;
+        font-weight: $semi-bold;
+        color: rgba($text-color, .5);
+    }
+
+    & .button--edit {
+        background: svg-load('pencil.svg', fill=$links-color) center center no-repeat / contain; 
+    }
+}

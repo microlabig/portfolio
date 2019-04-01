@@ -9,13 +9,19 @@
 }
 
 .works__list {
-    display: flex;     
-    flex-wrap: wrap;   
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-right: -20px;
 }
 
-.works__item { 
+.works__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     background-color: $white-color;
-    box-shadow: 0 0 8px 0px $admin-border-bottom-color;  
+    box-shadow: 0 0 8px 0px $admin-border-bottom-color;
 
     max-width: 340px;
 
@@ -23,24 +29,26 @@
     margin-bottom: 30px;
 
     &:first-child {
-        box-shadow: none; 
+        box-shadow: none;
     }
 
     &:last-child {
-        margin: 0;
+        margin-right: 0;
     }
 
-    &.works__item--add .btn-container {
-        background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end); 
+    &.works__item--add {
+        background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end);
         padding: 165px 95px;
     }
 
-    &.edittable { // для редактирования
+    &.edittable {
+        // для редактирования
         opacity: .3;
     }
 }
 
 .works__image {
+    flex-shrink: 0;
     position: relative;
 
     width: 340px;
@@ -52,7 +60,7 @@
 
 .works__tag-list {
     position: absolute;
-    
+
     /* display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -60,7 +68,7 @@
 
     margin-bottom: 10px;
     margin-right: 10px;
-    
+
     bottom: 10px;
     right: 10px;
 }
@@ -77,8 +85,13 @@
 }
 
 .works__description {
-    padding: 0 30px;
-    padding-bottom: 40px;
+    padding: 0 20px;
+    padding-bottom: 20px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .works__title {
@@ -105,30 +118,4 @@
     font-weight: $semi-bold;
 
     margin-bottom: 40px;
-}
-
-.works__btns-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.works__btns {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-
-    &:before {
-        content: attr(data-text);
-        display: block;
-        font-size: 16px;
-        font-weight: $regular;
-        color: $text-color;
-
-        margin-right: 11px;
-    }
-
-    & .button--edit {
-        background: svg-load('pencil.svg', fill=$links-color) center center no-repeat / contain; 
-    }
 }
