@@ -3,90 +3,146 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-}
 
-.login__container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    & .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
 
-    background-color: rgba($text-color, .7);
-
-    //------- form
-
-    & .login__form {
-        position: relative;
-
-        width: 565px;
-        background-color: $white-color;
-        padding: 60px;
-    }
-
-    & .login__title {
-        font-size: 36px;
-        font-weight: $semi-bold;
-        text-align: center;
-
-        margin-bottom: 40px;
-    }
-
-    .form__row {
-        margin-bottom: 40px;
-
-        &:last-child {
-            margin-bottom: 0;
-            text-align: center;
-        }
-    }
-
-    & .form__elem-input {
         width: 100%;
-    }
 
-    & .form__elem {
+        background-color: rgba($text-color, .7);
 
-        &:before {
-            content: attr(data-text);
-            display: block;
-            font-size: 16px;
+        //------- form
+
+        & .login__form {
+            position: relative;
+
+            max-width: 565px;
+            background-color: $white-color;
+            padding: 60px;
+
+            @include phones-small {
+                width: 100%;
+                padding: 30px;
+            }
+        }
+
+        & .login__title {
+            font-size: 36px;
             font-weight: $semi-bold;
-            color: rgba($light-color, 0.3);
+            text-align: center;
 
-            padding-left: 49px;
+            margin-bottom: 40px;
+
+            @include phones-small {
+                font-size: 30px;
+            }
         }
 
-        & .form__elem-container {
-            display: flex;            
+        .form__row {
+            margin-bottom: 40px;
 
-            border-bottom: 2px solid rgba(black, .7);
+            &:last-child {
+                margin-bottom: 0;
+                text-align: center;
+            }
         }
 
-        @each $icon in (user, key) {
-            .form__elem-container--#{$icon}:before {
-                content: "";
+        & .form__elem-input {
+            width: 100%;
+        }
+
+        & .form__elem {
+
+            &:before {
+                content: attr(data-text);
                 display: block;
-                width: 30px;
-                height: 30px;
-                background: svg-load('#{$icon}.svg', fill=rgba($active-menu-color, 0.3), width=30px, height=30px) center center no-repeat / contain;
-               
-                padding-bottom: 4px;
-                padding-right: 20px;
+                font-size: 16px;
+                font-weight: $semi-bold;
+                color: rgba($light-color, 0.3);
+
+                padding-left: 49px;
+            }
+
+            &:last-child:before {
+                display: none;
+            }
+
+            & .form__elem-container {
+                display: flex;
+
+                border-bottom: 2px solid rgba(black, .7);
+            }
+
+            @each $icon in (user, key) {
+                .form__elem-container--#{$icon}:before {
+                    content: "";
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    background: svg-load('#{$icon}.svg', fill=rgba($active-menu-color, 0.3), width=30px, height=30px) center center no-repeat / contain;
+
+                    padding-bottom: 4px;
+                    padding-right: 20px;
+                }
+            }
+        }
+
+        & .form__elem-input {
+            margin: 0;
+            border-bottom: none;
+
+            &::placeholder {
+                color: black;
+                font-size: 18px;
+                font-weight: $bold;
             }
         }
     }
 
-    & .form__elem-input {
-        margin: 0;   
-        border-bottom: none;
+    // -------- button --------
 
-        &::placeholder {
-            color: black;
-            font-size: 18px;
-            font-weight: $bold;
+    .form__elem--button {
+        padding: 0 45px;
+
+        @include tablets {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .form__elem-button {
+        width: 347px;
+        background-image: linear-gradient(to right, $linear-startcolor, $linear-endcolor);
+
+        color: $white-color;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: $bold;
+
+        padding: 28px 0;
+
+        border-radius: 30px 5px;
+
+        &:hover {
+            background-image: linear-gradient(to right, $linear-startcolor-hover, $linear-endcolor-hover);
+        }
+
+        @include desktop {
+            width: 352px;
+            padding: 33px 0;
+        }
+
+        @include phones-small {
+            padding: 19px 0;
+            width: 260px;
         }
     }
 }
+
+
 
 .login__close {
     position: absolute;
@@ -98,42 +154,4 @@
     width: 20px;
     height: 20px;
     background: svg-load('cross.svg', fill=rgba(black, .7)) center center no-repeat / contain;
-}
-
-
-// -------- button --------
-
-.form__elem--button {
-    @include tablets {
-        display: flex;
-        justify-content: center;
-    }
-}
-
-.form__elem-button {
-    width: 347px;
-    background-image: linear-gradient(to right, $linear-startcolor, $linear-endcolor);
-
-    color: $white-color;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: $bold;
-
-    padding: 28px 0;
-
-    border-radius: 30px 5px;
-
-    &:hover {
-        background-image: linear-gradient(to right, $linear-startcolor-hover, $linear-endcolor-hover);
-    }
-
-    @include desktop {
-        width: 352px;
-        padding: 33px 0;
-    }
-
-    @include phones-small {
-        padding: 19px 0;
-        width: 260px;
-    }
 }

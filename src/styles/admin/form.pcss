@@ -22,6 +22,10 @@
 
     & .form__elem-input {
         min-width: 273px;
+
+        @include tablets {
+            min-width: 218px;
+        }
     }
 }
 
@@ -38,6 +42,10 @@
     &::placeholder {
         color: $admin-border-bottom-color;
     }
+
+    @include tablets {
+        font-size: 16px;
+    }
 }
 
 .form__footer {
@@ -51,6 +59,15 @@
     & .form__elem-input:first-child {
         margin-right: 10px;
         padding-left: 20px;
+
+        @include tablets {
+            width: 60%;
+            padding-left: 5px;
+        }
+
+        @include phones-small {
+            width: 50%;
+        }
     }
 
     & .form__elem-percent {
@@ -58,6 +75,10 @@
         & .form__elem-input {
             margin-right: 0;
             width: 65px;
+
+            @include tablets {
+                width: 37px;
+            }
         }
 
         &:after {
@@ -69,9 +90,17 @@
             font-weight: $regular;
             color: $admin-border-bottom-color;
             border-bottom: 2px solid black;
+
+            @include tablets {
+                padding-right: 0;
+            }
         }
 
         margin-right: 32px;
+
+        @include tablets {
+            margin-right: 15px;
+        }
     }
 
     & .button--add {
@@ -80,6 +109,75 @@
         height: 40px;
     }
 }
+
+
+//----- form-edit
+
+.form-edit {
+    background-color: $white-color;
+    padding: 30px 20px;
+    box-shadow: 0 0 8px 0px $admin-border-bottom-color;
+    margin-bottom: 32px;
+
+    margin-right: 0;
+
+    @include tablets {
+        max-width: 710px;
+    }
+
+    @include phones-small {
+        padding: 30px 0;
+    }
+}
+
+.form-edit__title-box {
+    border-bottom: 1px solid $admin-border-bottom-color;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+
+    @include phones-small {
+        padding: 0 3%;
+        padding-bottom: 30px;
+    }
+}
+
+.form-edit__wrapper {
+    padding: 0 10px;
+    display: flex;
+
+    @include tablets {
+        flex-direction: column;
+        padding: 0 110px;
+    }
+
+    @include phones-small {
+        max-width: 320px;
+        padding: 0 3%;
+    }
+}
+
+.form-edit__side {
+    flex: 1;
+
+    &.form-edit__side--left {
+        display: flex;
+        flex-direction: column;
+
+        margin-right: 29px;
+
+        @include tablets {
+            margin-right: 0;
+            text-align: center;
+            margin-bottom: 59px;
+        }
+
+        @include phones-small {
+            margin-bottom: 45px;
+        }
+    }    
+}
+
+
 
 
 //------- works
@@ -128,6 +226,10 @@
             }
 
             margin-bottom: 30px;
+
+            @include phones-small {
+                font-size: 14px;
+            }
         }
 
         & .form__list--tags {
@@ -169,8 +271,10 @@
                 width: 15px;
                 height: 15px;
             }
+        }
 
-
+        @include phones-small {
+            font-size: 14px;
         }
     }
 
@@ -186,47 +290,70 @@
 
     & .form__row--btns {
         text-align: right;
+
+        @include tablets {
+            text-align: center;
+        }
+    }
+
+    & .form-edit__side-lefts {
+        @include phones-small {
+            margin: 0 auto;
+        }
+    }
+
+    & .form-edit__side-rights {
+        @include phones-small {
+            width: 92%;
+        }
     }
 
 }
 
 
-//----- form-edit
-
-.form-edit {
-    background-color: $white-color;
-    padding: 30px 20px;
-    box-shadow: 0 0 8px 0px $admin-border-bottom-color;
-    margin-bottom: 32px;
-}
-
-.form-edit__title-box {
-    border-bottom: 1px solid $admin-border-bottom-color;
-    padding-bottom: 30px;
-    margin-bottom: 50px;
-}
-
-.form-edit__wrapper {
-    padding: 0 10px;
-    display: flex;
-}
-
-.form-edit__side {
-    flex: 1;
-
-    &.form-edit__side--left {
-        margin-right: 29px;
-    }
-}
 
 
 //--------- reviews
 
-.form-edit--reviews {     
+.form-edit--reviews {
+
+    @include phones-small {
+        padding: 0 3%;
+        max-width: 320px;
+    }
+
+    & .form-edit__wrapper {
+        @include tablets {
+            display: flex;
+            flex-direction: row;
+            padding: 0 5px;
+        }
+        @include phones-small {
+            flex-direction: column;
+        }
+
+        & .form__wrapper {
+            @include phones-small {
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    & .form-edit__title-box {
+    
+        @include phones-small {
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+    }
 
     & .form__elem {
         flex: 1;
         margin-right: 30px;
+
+        @include tablets {
+            margin-right: 0;
+        }
 
         &:last-child {
             margin-right: 0;
@@ -241,22 +368,54 @@
         }
     }
 
+    .form-edit__left {
+        @include tablets {
+            margin-right: 25px;
+        }
+
+        @include phones-small {
+            margin-bottom: 50px;
+            margin-right: 0;
+        }
+    }
+
     .form-edit__right {
         width: 65%;
 
+        @include tablets {
+            width: 100%;
+        }
+
         & .form {
             padding-top: 0;
+
+            @include tablets {
+                padding: 0;
+            }
         }
 
         & .form__row--inputs {
             display: flex;
+
+            @include tablets {
+                flex-direction: column;
+            }
         }
     }
 
     & .form__elem-input {
         width: 100%;
+
         &::placeholder {
             color: black;
+        }
+
+        @include tablets {
+            width: 70%;
+        }
+
+        @include phones-small {
+            width: 100%;
         }
     }
 
@@ -290,5 +449,11 @@
 
     & .form__row--btns {
         text-align: right;
+
+        & .button--cancel {
+            @include phones-small {
+                margin-right: 10px;
+            }
+        }
     }
 }

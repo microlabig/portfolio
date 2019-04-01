@@ -2,42 +2,48 @@
     cursor: pointer;
 
     background-repeat: no-repeat;
-    background-position: center center; 
+    background-position: center center;
 
     &--add {
+        flex-shrink: 0;
+
         font-size: 16px;
         color: $white-color;
         border-radius: 50%;
         width: 20px;
         height: 20px;
-        background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end);               
+        background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end);
     }
 
     &--apply {
-        background: svg-load('tick.svg', fill=$admin-button-add-color) center center no-repeat / contain; 
-        width:17px; 
-        height:17px;
+        background: svg-load('tick.svg', fill=$admin-button-add-color) center center no-repeat / contain;
+        width: 17px;
+        height: 17px;
 
         margin-right: 20px;
+
+        @include tablets {
+            margin-right: 10px;
+        }
     }
 
     &--discard {
-        background: svg-load('remove.svg', fill=$admin-button-discard-color) center center no-repeat / contain; 
-        width:17px; 
-        height:17px;
+        background: svg-load('remove.svg', fill=$admin-button-discard-color) center center no-repeat / contain;
+        width: 17px;
+        height: 17px;
     }
 
     &--edit {
-        background: svg-load('pencil.svg', fill=$admin-border-bottom-color) center center no-repeat / contain; 
-        width:17px; 
-        height:17px;
+        background: svg-load('pencil.svg', fill=$admin-border-bottom-color) center center no-repeat / contain;
+        width: 17px;
+        height: 17px;
     }
 
     &--delete {
-        background: svg-load('trash.svg', fill=$admin-border-bottom-color) center center no-repeat / contain; 
-        width:17px; 
-        height:17px;
-    }    
+        background: svg-load('trash.svg', fill=$admin-border-bottom-color) center center no-repeat / contain;
+        width: 17px;
+        height: 17px;
+    }
 
     &.button--save,
     &.image-load__button {
@@ -49,7 +55,7 @@
 
         border-radius: 30px 30px;
 
-        background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end);  
+        background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end);
     }
 
     &.button--cancel {
@@ -57,6 +63,10 @@
         color: $links-color;
         font-size: 16px;
         font-weight: $semi-bold;
+
+        @include phones-small {
+            margin-right: 20px;
+        }
     }
 
 }
@@ -70,24 +80,43 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    
-    color: $white-color;    
+
+    color: $white-color;
+
+    @include phones-small {
+        flex-direction: row;
+
+    }
 }
 
 .btn-container__add-button {
     font-size: 72px;
     font-weight: $light;
-    border: 2px solid $white-color;  
-    border-radius: 100%; 
+    border: 2px solid $white-color;
+    border-radius: 100%;
 
     padding: 26px 56px;
     margin-bottom: 30px;
+
+    @include phones-small {
+        font-size: 24px;
+        padding: 9px 20px;
+        margin-bottom: 0;
+        margin-right: 22px;
+    }
 }
 
 .btn-container__add-title {
     text-align: center;
     font-weight: $bold;
     line-height: 30px;
+
+    @include phones-small {
+        white-space: nowrap;
+        & span {
+            display: inline;
+        }
+    }
 }
 
 //-------- btns
@@ -97,6 +126,10 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
+    @include phones-small {
+        margin-bottom: 27px;
+    }
 }
 
 .btns {
@@ -121,6 +154,10 @@
     }
 
     & .button--edit {
-        background: svg-load('pencil.svg', fill=$links-color) center center no-repeat / contain; 
+        background: svg-load('pencil.svg', fill=$links-color) center center no-repeat / contain;
+    }
+
+    @include phones-small {
+        font-size: 14px;
     }
 }

@@ -28,4 +28,12 @@ h3 {
 
 .container {
     width: 100%;
+
+    @include tablets { 
+        width: 95%;
+    } 
+
+    @include phones-small {
+        width: 100%;
+    }
 }

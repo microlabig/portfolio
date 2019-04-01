@@ -1,5 +1,9 @@
 .works__title {
     margin-bottom: 60px;
+
+    @include phones-small { 
+        padding: 0 1%;
+    }
 }
 
 //--------- список работ
@@ -39,11 +43,25 @@
     &.works__item--add {
         background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end);
         padding: 165px 95px;
+
+        @include phones-small {
+            padding: 30px 20px;
+            margin-right: 0;
+            width: 100%;
+
+            align-items: flex-start;
+        }
     }
 
     &.edittable {
         // для редактирования
         opacity: .3;
+    }
+
+    @include phones-small { 
+        max-width: 320px;
+        width: 100%;
+        margin-bottom: 10px;        
     }
 }
 
@@ -71,6 +89,10 @@
 
     bottom: 10px;
     right: 10px;
+
+    @include phones-small { 
+        margin-right: 25px;
+    }
 }
 
 .works__tag-item {
@@ -92,6 +114,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @include phones-small { 
+        padding: 0 3%;
+    }
 }
 
 .works__title {

@@ -2,7 +2,7 @@
   .wrapper.wrapper--admin
     
     .login
-      .login__container
+      .container
         form.login__form
           .login__close
             button(type="button").login__close-btn
@@ -10,30 +10,33 @@
             h1.login__title Авторизация
           .form__wrapper
             .form__row           
-              lavel.form__elem(data-text="Логин")
+              label.form__elem(data-text="Логин")
                 .form__elem-container.form__elem-container--user
                   input(type="text" placeholder="Terminator_2000").form__elem-input
             .form__row
-              lavel.form__elem(data-text="Пароль")
+              label.form__elem(data-text="Пароль")
                 .form__elem-container.form__elem-container--key
                   input(type="password" placeholder="••••••••••").form__elem-input
             .form__row
-              lavel.form__elem.form__elem--button
+              label.form__elem.form__elem--button
                 button(type="submit").form__elem-button Отправить
 
     header.header
-      .header__wrapper
-        .header__logo
-          .header__avatar
-            .avatar
-              .avatar__block                
-                img(src='../images/content/user.jpg' alt="Аватар").avatar__image
-          .header__name
-            h1.header__name-title Игорь Безместин
-          .header__typepanel
-            p Панель администрирования
-        .header__quit
-          a.header__quit-link Выйти
+      .container
+        .header__wrapper
+          .header__logo
+            .header__avatar
+              .avatar
+                .avatar__block                
+                  img(src='../images/content/user.jpg' alt="Аватар").avatar__image
+            .header__block
+              .header__name
+                h1.header__name-title Игорь Безместин
+              .header__text-box
+                .header__typepanel
+                  p Панель администрирования
+                .header__quit
+                  a.header__quit-link Выйти
 
     .main-menu
       nav.menu
@@ -46,74 +49,75 @@
     main.maincontent.maincontent--admin               
 
       section.about
-        .about__title
-          .title
-            h2.title Блок «Обо мне»
-          .about__button-add
-            button(type="button").button.button--add +
-            button(type="button").about__button Добавить группу
-        .groups
-          ul.groups__list
-            li.groups__item.groups__item--addgroup 
-                form.form
-                  .form__wrapper
-                    .form__header
-                      lavel.form__elem
-                        .form__elem-container
-                          input(type="text" placeholder="Название новой группы").form__elem-input
-                          .form__elem-btns
-                            button(type="button").button.button--apply
-                            button(type="button").button.button--discard 
-                    .form__footer
-                      lavel.form__elem
-                        .form__elem-container
-                          input(type="text" placeholder="Новый навык").form__elem-input
-                          .form__elem-percent
-                            input(type="number" min="0" max="100" placeholder="100" value="100").form__elem-input
-                          button(type="button").button.button--add +
-            -
-              var skillsList = [
-                  [
-                    {type: "Workflow"},
-                    [{text:"Git", value:"100"}, {text:"Terminal", value:"90"}, {text:"Gulp", value:"80"}, {text:"Webpack", value:"85"}]
-                  ],
-                  [
-                    {type: "Frontend"},
-                    [{text:"HTML5", value:"100"}, {text:"CSS", value:"90"}, {text:"JavaScript", value:"80"}, {text:"Jquery и Vue.js", value:"85"}]
-                  ]
-                ];            
-            each skill in skillsList
-              li.groups__item.groups__item--group
-                form.form
-                  .form__wrapper
-                    .form__header
-                      lavel.form__elem
-                        .form__elem-container
-                          input(type="text" placeholder="Название новой группы" value=`${skill[0].type}`).form__elem-input
-                          .form__elem-btns
-                            button(type="button").button.button--edit 
-                    .form__container
-                      lavel.form-elem
-                        .skill
-                          ul.skill__list                        
-                            li.skill__item
-                              table.skill__table
-                                each row in skill[1]
-                                  tr.skill__table-row
-                                    td.skill__name #{row.text}
-                                    td.skill__value #{row.value}
-                                    td.skill__percent %                                      
-                                    td.skill__button
-                                      button(type="button").button.button--edit
-                                    td.skill__button                                      
-                                      button(type="button").button.button--delete  
-                    .form__footer
-                      lavel.form__elem
-                        .form__elem-container
-                          input(type="text" placeholder="Новый навык").form__elem-input
-                          .form__elem-percent
-                            input(type="number" min="0" max="100" placeholder="100" value="100").form__elem-input
-                          button(type="button").button.button--add +
+        .container
+          .about__title
+            .title
+              h2.title Блок «Обо мне»
+            .about__button-add
+              button(type="button").button.button--add +
+              button(type="button").about__button Добавить группу
+          .groups
+            ul.groups__list
+              li.groups__item.groups__item--addgroup 
+                  form.form
+                    .form__wrapper
+                      .form__header
+                        label.form__elem
+                          .form__elem-container
+                            input(type="text" placeholder="Название новой группы").form__elem-input
+                            .form__elem-btns
+                              button(type="button").button.button--apply
+                              button(type="button").button.button--discard 
+                      .form__footer
+                        label.form__elem
+                          .form__elem-container
+                            input(type="text" placeholder="Новый навык").form__elem-input
+                            .form__elem-percent
+                              input(type="number" min="0" max="100" placeholder="100" value="100").form__elem-input
+                            button(type="button").button.button--add +
+              -
+                var skillsList = [
+                    [
+                      {type: "Workflow"},
+                      [{text:"Git", value:"100"}, {text:"Terminal", value:"90"}, {text:"Gulp", value:"80"}, {text:"Webpack", value:"85"}]
+                    ],
+                    [
+                      {type: "Frontend"},
+                      [{text:"HTML5", value:"100"}, {text:"CSS", value:"90"}, {text:"JavaScript", value:"80"}, {text:"Jquery и Vue.js", value:"85"}]
+                    ]
+                  ];            
+              each skill in skillsList
+                li.groups__item.groups__item--group
+                  form.form
+                    .form__wrapper
+                      .form__header
+                        label.form__elem
+                          .form__elem-container
+                            input(type="text" placeholder="Название новой группы" value=`${skill[0].type}`).form__elem-input
+                            .form__elem-btns
+                              button(type="button").button.button--edit 
+                      .form__container
+                        label.form-elem
+                          .skill
+                            ul.skill__list                        
+                              li.skill__item
+                                table.skill__table
+                                  each row in skill[1]
+                                    tr.skill__table-row
+                                      td.skill__name #{row.text}
+                                      td.skill__value #{row.value}
+                                      td.skill__percent %                                      
+                                      td.skill__button
+                                        button(type="button").button.button--edit
+                                      td.skill__button                                      
+                                        button(type="button").button.button--delete  
+                      .form__footer
+                        label.form__elem
+                          .form__elem-container
+                            input(type="text" placeholder="Новый навык").form__elem-input
+                            .form__elem-percent
+                              input(type="number" min="0" max="100" placeholder="100" value="100").form__elem-input
+                            button(type="button").button.button--add +
       
       section.works
         .container
@@ -124,11 +128,15 @@
             .form-edit__title-box
               h3.form-edit__title Редактирование работы
             .form-edit__wrapper
-              .form-edit__side.works-edit__side--left
+              .form-edit__side.form-edit__side--left
                 .image-load
                   .image-load__title Перетащите или загрузите #[span.span-block] для загрузки изображения
                   button(type="button").button.image-load__button Загрузить
-              .form-edit__side.works-edit__side--right
+                .image-edit
+                  .image-edit__image
+                    img(src='../images/content/work/slider-image1.jpg' alt="Изображение работы").image-edit__icon 
+                  button(type="button").button.image-edit__button Изменить превью
+              .form-edit__side.form-edit__side--right
                 form.form.form--works
                   .form__wrapper
                     .form__row
@@ -246,7 +254,7 @@
                         .form__elem-container
                           input(type="text" placeholder="Основатель LoftSchool").form__elem-input
                     .form__row.form__row--textarea 
-                      lavel(data-text="Отзыв").form__elem
+                      label(data-text="Отзыв").form__elem
                         .form__elem-container.form__elem-container--message                        
                           textarea(type="textarea" placeholder="Этот парень проходил обучение веб-разработке не где-то, а в LoftShool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!").form__elem-textarea                   
                     .form__row.form__row--btns

@@ -1,5 +1,9 @@
 .reviews__title{
     margin-bottom: 62px;
+
+    @include phones-small {      
+        padding: 0 3%;
+    }
 }
 
 .reviews-edit {
@@ -37,6 +41,19 @@
     &.reviews__item--add {
         background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end); 
         padding: 77px 95px;
+
+        @include phones-small {
+            padding: 30px 20px;
+            margin-right: 0;
+            width: 100%;
+
+            align-items: flex-start;
+        }
+    }
+
+    @include phones-small {
+        max-width: 320px;
+        padding: 30px 0;
     }
 }
 
@@ -50,11 +67,18 @@
     margin-bottom: 30px;
 
     border-bottom: 1px solid $admin-border-bottom-color;
+
+    @include phones-small {
+        justify-content: flex-start;        
+    }
 }
 
 .reviews__autor-left {
     & .avatar {
         padding: 0;
+        @include phones-small {
+            margin-right: 20px;       
+        }
     }
 }
 
@@ -68,12 +92,21 @@
 .reviews__name {
     font-size: 18px;
     font-weight: $bold;
+    
+    @include phones-small {
+        margin-bottom: 7px;
+        font-size: 16px;
+    }
 }
 
 .reviews__titul {
     font-size: 16px;
     font-weight: 30px;
     color: rgba($text-color, .4);
+
+    @include phones-small {
+        font-size: 14px;
+    }
 }
 
 .reviews__description {
@@ -82,6 +115,16 @@
     justify-content: space-between;
 
     height: 100%;
+
+    @include phones-small {
+        padding: 0 3%;
+    }
+
+    & .btns-wrap {
+        @include phones-small {
+           margin-bottom: 0;
+        }
+    }
 }
 
 .reviews__text {
@@ -91,5 +134,10 @@
     line-height: 30px;
 
     margin-bottom: 60px;
+
+    @include phones-small {
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
 }
 
