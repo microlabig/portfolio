@@ -13,7 +13,8 @@
   "linear-startcolor-hover": "#bb02ff",
   "linear-endcolor-hover": "#610cff",
   "active-menu-color": "#5500f2",
-  "hover-menu-color":"3a414e",
+  "hover-menu-color":"#3a414e",
+  "error-color": "#cd1515",
 
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",  

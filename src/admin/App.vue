@@ -220,9 +220,10 @@
                         li.works__tag-item
                           .works__tag #{work.skills}
                   .works__description 
-                    .works__title #{work.title}
-                    .works__text #{work.desc}
-                    a(href="#").works__link #{work.link}
+                    .works__description-box
+                      .works__title #{work.title}
+                      .works__text #{work.desc}
+                      a(href="#").works__link #{work.link}
                     .btns-wrap
                       .btns(data-text="Править")
                         button(type="button").button.button--edit                         
@@ -270,28 +271,28 @@
                   "id": 1,
                   "name": "Владимир Сабанцев",
                   "titul": "Преподаватель",
-                  "photo": "review1.jpg",
+                  "photo": "review2.jpg",
                   "text": "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах"
                 },
                 {
                   "id": 2,
                   "name": "Ковальчук Дмитрий",
                   "titul": "Основатель LoftSchool",
-                  "photo": "review2.jpg",
+                  "photo": "review1.jpg",
                   "text": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"
                 },
                 {
                   "id": 3,
                   "name": "Владимир Сабанцев",
                   "titul": "Преподаватель",
-                  "photo": "review1.jpg",
+                  "photo": "review2.jpg",
                   "text": "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах"
                 },
                 {
                   "id": 4,
                   "name": "Ковальчук Дмитрий",
                   "titul": "Основатель LoftSchool",
-                  "photo": "review2.jpg",
+                  "photo": "review1.jpg",
                   "text": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"
                 }
               ];
@@ -336,7 +337,5 @@
 
 @import "../styles/admin/layout/base.pcss";
 @import '../styles/admin/*.pcss';
-
-
 
 </style>

@@ -183,19 +183,25 @@ html(lang="ru")
             .container
               .title
                 h2.title__elem Связаться со мной
-              form.form
+              form.form#form
                 .form__wrapper                  
                   .form__row                   
-                    label(data-text="Введите ваше имя").form__elem  
-                      .form__elem-container.form__elem-container--user                        
-                        input(type="text" placeholder="Ковальчук Дмитрий").form__elem-input
-                    label(data-text="Введите ваш email").form__elem
+                    label(data-text="Введите ваше имя").form__elem.name
+                      .form__elem-container.form__elem-container--user                                                
+                        input(type="text" placeholder="Ковальчук Дмитрий" name="name" required).form__elem-input
+                        .form__tooltip
+                          .form__tooltip-text 
+                    label(data-text="Введите ваш email").form__elem.email
                       .form__elem-container.form__elem-container--envelope                        
-                        input(type="text" placeholder="loftschool@study.com").form__elem-input
+                        input(type="email" placeholder="loftschool@study.com" name="email" required).form__elem-input
+                        .form__tooltip
+                          .form__tooltip-text 
                   .form__row.form__row--textarea 
-                    lavel(data-text="Сообщение к письму").form__elem
+                    lavel(data-text="Сообщение к письму").form__elem.comments
                       .form__elem-container.form__elem-container--message                        
-                        textarea(type="textarea" placeholder="Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса").form__elem-input.form__elem-input--textarea
+                        textarea(type="textarea" name="comments" required placeholder="Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса").form__elem-input.form__elem-input--textarea
+                        .form__tooltip
+                          .form__tooltip-text 
                   .form__row
                     lavel.form__elem.form__elem--button
                       button(type="submit").form__elem-button Отправить     

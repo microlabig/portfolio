@@ -4,9 +4,8 @@ if (process.env.NODE_ENV === "development") {
 }
 
 import "./scripts/parallax";
-import "./scripts/mouseparallax";
 import "./scripts/reviews";
 import "./scripts/skills";
 import "./scripts/works";
 import "./scripts/budda";
-//import "./scripts/skills";
+import "./scripts/ajaxBudda";
