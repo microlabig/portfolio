@@ -15,6 +15,9 @@
   "active-menu-color": "#5500f2",
   "hover-menu-color":"#3a414e",
   "error-color": "#cd1515",
+  "green-color": "#4bb133",
+  "brown-color": "#b18333",
+  "red-color": "#b13333",
 
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",  

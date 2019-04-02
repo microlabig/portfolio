@@ -245,5 +245,14 @@ html(lang="ru")
                             +icon(social, 'social__icons')  
               .footer__greatthink
                 article.footer__text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
-                .footer__thinker Martin Golding
+                .footer__thinker Martin Golding 
+
+      .modal
+        .modal__window
+          .modal__title Письмо отправлено
+          button(type="button").form__elem-button.modal__button Закрыть 
+        .modal__tooltip.green
+          .modal__tooltip-text Сообщение отправлено
+          .modal__tooltip-close
+
     include ./templates/entry.pug

@@ -3,7 +3,7 @@
     
     .login
       .container
-        form.login__form
+        form.login__form#form
           .login__close
             button(type="button").login__close-btn
           .login__title-box
@@ -13,10 +13,14 @@
               label.form__elem(data-text="Логин")
                 .form__elem-container.form__elem-container--user
                   input(type="text" placeholder="Terminator_2000").form__elem-input
+                  .form__tooltip
+                    .form__tooltip-text 
             .form__row
               label.form__elem(data-text="Пароль")
                 .form__elem-container.form__elem-container--key
                   input(type="password" placeholder="••••••••••").form__elem-input
+                  .form__tooltip
+                    .form__tooltip-text 
             .form__row
               label.form__elem.form__elem--button
                 button(type="submit").form__elem-button Отправить
@@ -321,8 +325,28 @@
                         button(type="button").button.button--edit                         
                       .btns(data-text="Удалить")
                         button(type="button").button.button--discard                              
+    .modal
+      .modal__window
+        .modal__title Письмо отправлено
+        button(type="button").form__elem-button.modal__button Закрыть 
+      .modal__tooltip.green
+        .modal__tooltip-text Сообщение отправлено
+        .modal__tooltip-close
 
 </template>
+
+
+
+
+<script>
+  /* import ajaxAdmin from "../scripts/ajaxAdmin.js";  
+  ajaxAdmin(); */
+
+  /* let ajaxAdmin =  require("../scripts/ajaxAdmin.js");
+  ajaxAdmin(); */
+
+</script>
+
 
 
 
@@ -334,8 +358,9 @@
 @import "../styles/layout/base.pcss";
 
 @import "../styles/blocks/menu.pcss";
+@import "../styles/blocks/tooltip.pcss";
+@import "../styles/blocks/modal.pcss";
 
-@import "../styles/admin/layout/base.pcss";
-@import '../styles/admin/*.pcss';
+@import "../styles/admin/**/*.pcss";
 
 </style>

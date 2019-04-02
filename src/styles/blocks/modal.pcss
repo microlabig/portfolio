@@ -1,0 +1,104 @@
+.modal {
+    position: fixed;
+    display: none;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    background-color: rgba($slider-button, .9);
+
+    &.show {
+        display: block;
+    }
+}
+
+.modal__window {
+    position: fixed;
+    display: block;
+    max-width: 80%;
+
+    padding: 60px 100px;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+    background-color: $white-color;
+}
+
+.modal__title {
+    color: $text-color;
+    font-size: 36px;
+    text-align: center;
+    font-weight: $semi-bold;
+
+    margin-bottom: 30px;
+}
+
+.modal__button {
+    margin: 0 auto;
+}
+
+.modal__tooltip {
+    position: fixed;
+
+    display: none;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 80%;
+    padding: 30px;
+
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    
+    &.green {
+        background-color: $green-color;
+    }
+    &.brown {
+        background-color: $brown-color;        
+    }
+    &.red {
+        background-color: $red-color;        
+    }
+    /* @each $col in (green, brown, red) {           
+        $temp-color: yellow;
+        @if ($col == green) {
+            $temp-color: $green-color
+        } 
+        @if ($col == brown) {
+            $temp-color: $brown-color
+        }
+        @if ($col == red) {
+            $temp-color: $red-color
+        }
+        &.#{$col} {
+            background-color: $temp-color;
+        }
+    }  */
+
+    &.show {
+        display: flex;
+    }
+}
+
+.modal__tooltip-text {
+    color: $white-color;
+    font-size: 18px;
+    font-weight: $semi-bold;
+    margin-right: 78px;
+}
+
+.modal__tooltip-close {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background: svg-load('cross.svg', fill=$white-color) center center no-repeat / contain;
+}
