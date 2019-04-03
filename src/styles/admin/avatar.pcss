@@ -11,7 +11,8 @@
 
 //------- reviews
 
-.avatar-load__image {
+.avatar-load__image,
+.avatar-edit__image {
     cursor: pointer;
     border-radius: 100%;
     width: 200px;
@@ -38,11 +39,25 @@
     }
 }
 
-.avatar-load__button { 
+.avatar-load__button,
+.avatar-edit__button { 
     width: 100%;
     text-align: center;
     
     color: $links-color;
     font-size: 16px;
     font-weight: $semi-bold;    
+}
+
+// edit
+
+.avatar-edit__image {
+    padding: 0;
+    &:before{
+        display: none;
+    }
+    & .avatar__block {
+        width: 200px;
+        height: 200px;
+    }
 }

@@ -12,8 +12,6 @@
     let showModal = function (error) {
         let color, text;
 
-        console.log(error);
-
         if (error >= 400) {
             color = 'brown';
             text = 'Сервер перегружен';
@@ -23,6 +21,16 @@
         } else {
             color = 'green';
             text = 'Сообщение отправлено';
+        }
+
+        if (tooltip.classList.contains('red')) {
+            tooltip.classList.remove('red');       
+        }
+        if (tooltip.classList.contains('brown')) {
+            tooltip.classList.remove('brown');
+        }
+        if (tooltip.classList.contains('green')) {
+            tooltip.classList.remove('green');
         }
 
         tooltipText.textContent = text;
@@ -35,17 +43,19 @@
         modal.classList.remove('show');
     };
 
-    // скрываем модалку по клике на кнопке "закрыть"
-    modalButton.addEventListener('click', e=> {
-        e.preventDefault;
-        closeModal();
-    });
-
     // скрываем нижний тултип
     tooltipButton.addEventListener('click', e=> {
         e.preventDefault;
-        tooltip.classList.toggle("show");
+        if (tooltip.classList.contains('show')) tooltip.classList.remove("show");
     });
+
+    // скрываем модалку по клике на кнопке "закрыть"
+    modalButton.addEventListener('click', e=> {
+        e.preventDefault;
+        tooltipButton.click();
+        closeModal();
+    });
+    
 
 
     /*
@@ -109,6 +119,7 @@
     //---------------------------
     button.addEventListener('click', e => {
         e.preventDefault();
+        const target = e.target; // возьмем кнопку
 
         const form = document.querySelector('#form');
 
@@ -123,11 +134,20 @@
         obj.append("comment", comments);            
         obj.append("to", email);
 
-        if (validate(form)) // если все данные валидны
+        if (validate(form)) { // если все данные валидны 
+
+            target.disabled = true; // дисаблим кнопку
+            target.classList.add('disabled');  
+
             SendData(obj).then(function(response) {
                 showModal(response.status,response.text);
-                tooltip.classList.toggle("show");
+                tooltip.classList.add("show"); 
+
+                target.disabled = false; // энаблим кнопку
+                target.classList.remove('disabled'); 
             });
+            
+        }
     });
 
 })();

@@ -108,9 +108,14 @@
                                 table.skill__table
                                   each row in skill[1]
                                     tr.skill__table-row
-                                      td.skill__name #{row.text}
-                                      td.skill__value #{row.value}
-                                      td.skill__percent %                                      
+                                      td.skill__name 
+                                        .skill__name-input-wrapper.no-edit
+                                          label.form__elem
+                                            input(type="text" placeholder="Навык" value=`${row.text}` readonly).form__elem-input
+                                      td.skill__value 
+                                        .skill__name-input-wrapper.no-edit
+                                          label.form__elem.form__elem--number
+                                            input(type="number" min="0" max="100" placeholder="100" value=`${row.value}` readonly).form__elem-input                                                                           
                                       td.skill__button
                                         button(type="button").button.button--edit
                                       td.skill__button                                      
@@ -246,8 +251,12 @@
               .form-edit__left
                 .avatar-load
                   .avatar-load__image
-                    //- img(src=`${work.photo}` alt="Аватар").avatar-load__icon 
                   button(type="button").button.avatar-load__button Добавить фото
+                .avatar-edit
+                  .avatar-edit__image
+                    .avatar__block
+                      img(src=`../images/content/reviews/review2.jpg` alt="Аватар").avatar__image
+                  button(type="button").button.avatar-edit__button Изменить фото
               .form-edit__right
                 form.form
                   .form__wrapper
