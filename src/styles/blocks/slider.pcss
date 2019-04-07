@@ -29,6 +29,7 @@
 }
 
 .slider__preview-block {
+    overflow: hidden;
     position: relative;    
 
     &:before {
@@ -89,7 +90,7 @@
 
     @include desktop { 
         height: 84%;
-        overflow: hidden;
+        //overflow: hidden;
         top: 16%;
     }   
 
@@ -100,11 +101,11 @@
 
 .slider__item {
     cursor: pointer; 
-
+    position: relative;
     &.active {
     //&:focus {
-        border: 3px solid $slider-active-color;
-        //outline: 3px solid $slider-active-color;
+        //border: 3px solid $slider-active-color;
+        outline: 3px solid $slider-active-color;
         z-index: 10;
     }
 }
@@ -114,11 +115,10 @@
     object-fit: cover;
 }
 
-.slider__image{
-    position: relative;
+.slider__image{    
     width: 178px;
     height: 100px;
-    overflow: hidden;  
+    //overflow: hidden;  
     
     &:before {
         content: "";

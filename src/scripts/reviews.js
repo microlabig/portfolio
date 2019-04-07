@@ -14,8 +14,9 @@ new Vue({
                 //initialIndex: 1,
                 prevNextButtons: false,
                 pageDots: false,
-                //wrapAround: true
-                contain: true,
+                //groupCells: 1,
+                groupCells: window.screen.width > 948 ? 2 : 1,
+                //contain: document.querySelector('html').clientWidth > 320 ? true : false,
 
                 // any options from Flickity can be used
             }
