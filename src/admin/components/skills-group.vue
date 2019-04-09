@@ -3,11 +3,17 @@
         .form__wrapper
             .form__header
                 label.form__elem
-                    .form__elem-container
-                        input(type="text" placeholder="Название новой группы" :value="category.category" readonly).form__elem-input
+                    .form__elem-container(v-if="editmode === false")
+                        .form__elem-read {{category.category}}             
                         .form__elem-btns
-                            button(type="button").button.button--edit 
-                            button(type="button" @click="removeExistedCategory").button.button--delete                             
+                            button(type="button" @click="editmode=true").button.button--edit 
+                            button(type="button" @click="removeExistedCategory").button.button--delete                                                         
+                    .form__elem-container(v-else)
+                        input(type="text" placeholder="Название новой группы" v-model="category.category").form__elem-input                        
+                        .form__elem-btns
+                            button(type="button" @click="save").button.button--apply 
+                            button(type="button" @click="editmode=false").button.button--discard
+                                                        
             .form__container
                 label.form-elem
                     .skill
@@ -45,11 +51,12 @@ export default {
                 category: this.category.id, 
                 title: "",
                 percent: ""
-            }
+            },
+            editmode: false
         }
     },
     methods: {
-        ...mapActions('categories',['removeCategory']),
+        ...mapActions('categories',['removeCategory', 'editNameCategory']),
         ...mapActions('skills',['addSkill']),
         async addNewSkill() {
             try {
@@ -70,6 +77,15 @@ export default {
             } catch (error) {
                 // TODO: обработать ошибку
                 alert('Произошла ошибка при удалении категории');
+            }
+        },
+        async save() {
+            try {
+                await this.editNameCategory(this.category);
+                this.editmode = false;
+            } catch (error) {
+                // TODO: обработать ошибку
+                alert('Произошла ошибка при изменении имени категории');
             }
         }
     }

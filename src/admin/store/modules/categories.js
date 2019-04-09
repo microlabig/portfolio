@@ -13,6 +13,9 @@ export default {
         },
         REMOVE_CATEGORY: (state, categoryId) => {
             state.categories = state.categories.filter(category => category.id !== categoryId)
+        },
+        EDIT_NAME_CATEGORY: (state, editedCategory) => {
+            state.categories = state.categories.map(category => category.id !== editedCategory.id ? editedCategory : category)
         }
     },
     actions: {
@@ -46,6 +49,20 @@ export default {
             try {
               const response = await this.$axios.delete(`/categories/${categoryId}`);
               commit('REMOVE_CATEGORY', categoryId); // categoryId (а не response.data) т.к. нам не нужен обрабатывать ответ от сервера
+              return response;
+            } catch (error) {
+                throw new Error(error.response.data.error || error.response.data.message);
+            }
+        },
+
+        // метод изменения имени категории на сервее и в store
+        async editNameCategory({commit}, category) {
+            try {
+              const response = await this.$axios.post(`/categories/${category.id}`, {
+                title: category.category
+              });
+              
+              commit('REMOVE_CATEGORY', category); // categoryId (а не response.data) т.к. нам не нужен обрабатывать ответ от сервера
               return response;
             } catch (error) {
                 throw new Error(error.response.data.error || error.response.data.message);
