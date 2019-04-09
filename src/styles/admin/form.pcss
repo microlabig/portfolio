@@ -29,6 +29,7 @@
     }
 }
 
+.form__elem-read,
 .form__elem-input {
     border: none;
     padding: 14px 0;
@@ -45,6 +46,15 @@
 
     @include tablets {
         font-size: 16px;
+    }
+}
+.form__elem-read {
+    border-bottom-color: transparent;
+}
+
+.form__elem-btns {
+    & .button--edit {
+        margin-right: 5px;
     }
 }
 

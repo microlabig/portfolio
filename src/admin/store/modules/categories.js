@@ -7,18 +7,49 @@ export default {
     state: {
         categories: []
     },
-
+    mutations: { // для изменеия в state
+        SET_CATEGORIES: (state, categories) => {
+            state.categories = categories;
+        },
+        REMOVE_CATEGORY: (state, categoryId) => {
+            state.categories = state.categories.filter(category => category.id !== categoryId)
+        }
+    },
     actions: {
         // метод добавления тайтла группы
-        async addNewSkillGroup(store, groupTitle) { 
+        async addNewSkillGroup({commit}, groupTitle) { 
+            // {commit} - метод из store (деструктуризация)
             try {
                 const response = await this.$axios.post('/categories', {
                     title: groupTitle
-                });
+                });                
                 return response;
             } catch (error) {
                 throw new Error(error.response.data.error || error.response.data.message);
             }     
+        },
+
+        // метод получения категорий
+        async fetchCategories({commit}) { 
+            // {commit} - метод из store (деструктуризация)
+            try {
+                const response = await this.$axios.get('/categories');
+                commit('SET_CATEGORIES', response.data.reverse()); // вызовим мутацию и получим ответ в response.data
+                return response;
+            } catch (error) {
+                throw new Error(error.response.data.error || error.response.data.message);
+            }     
+        },
+
+        // метод удаления категории с сервера и из store
+        async removeCategory({commit}, categoryId) {
+            try {
+              const response = await this.$axios.delete(`/categories/${categoryId}`);
+              commit('REMOVE_CATEGORY', categoryId); // categoryId (а не response.data) т.к. нам не нужен обрабатывать ответ от сервера
+              return response;
+            } catch (error) {
+                throw new Error(error.response.data.error || error.response.data.message);
+            }
         }
     }
 

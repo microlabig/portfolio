@@ -4,7 +4,11 @@
             .form__header
                 label.form__elem
                     .form__elem-container
-                        input(type="text" v-model="skillGroupTitle" placeholder="Название новой группы").form__elem-input
+                        input(
+                            v-model="skillGroupTitle" 
+                            type="text"                             
+                            placeholder="Название новой группы"
+                        ).form__elem-input
                         .form__elem-btns
                             button(@click="addSkillGroup" type="button").button.button--apply
                             button(type="button").button.button--discard 
@@ -22,6 +26,9 @@
 import { mapActions } from 'vuex';
 
 export default {
+    props: {
+        skill: Object
+    },
     data() {
         return {
             skillGroupTitle: ""
