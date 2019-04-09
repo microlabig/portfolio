@@ -54,6 +54,11 @@ export default {
         async addNewSkill() {
             try {
                 await this.addSkill(this.skill);
+                this.skill = { // обнулим поля input.title и input.percent после добавления нового скила
+                    ...this.skill,
+                    title:"",
+                    percent:""
+                }
             } catch (error) {
                 // TODO: обработать ошибку
                 alert('Произошла ошибка при загрузке скилов');
