@@ -31,12 +31,16 @@
         border-bottom-color: transparent;
     } */
 
-    & .form__elem--number:after {
-        content: "%";
-        display: inline-block;
-        font-weight: inherit;
-        font-size: inherit;
-        color: inherit;
+    & .form__elem--number {        
+        &:after {
+            content: "%";
+            display: inline-block;
+            font-weight: inherit;
+            font-size: inherit;
+            color: inherit;
+
+            display: flex;        
+        }
     }
 
     & .form__elem-input {

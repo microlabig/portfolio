@@ -2,6 +2,11 @@
     height: 100%;
     background-color: $white-color;
     padding: 30px 20px;
+
+    & .form__elem--number {
+        display: flex;
+        align-items: center;
+    }
 }
 
 .form__wrapper {
@@ -49,12 +54,18 @@
     }
 }
 .form__elem-read {
+    margin-bottom: 0;
     border-bottom-color: transparent;
+
+    &.form__elem-read--percent {
+        padding: 0;
+        margin: 0;
+    }
 }
 
 .form__elem-btns {
     & .button--edit {
-        margin-right: 5px;
+        margin-right: 15px;
     }
 }
 
@@ -199,7 +210,7 @@
         margin-bottom: 40px;
     }
 
-    .form__elem {
+    & .form__elem {
         &:before {
             content: attr(data-text);
             display: block;

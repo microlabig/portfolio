@@ -13,6 +13,9 @@ export default {
         },        
         REMOVE_SKILL: (state, deletedSkillId) => {
             state.skills = state.skills.filter(skill => skill.id !== deletedSkillId)
+        },
+        EDIT_SKILL: (state, editedSkill) => {
+            state.skills = state.skills.map(skill => skill.id === editedSkill.id ? editedSkill : skill)
         }
     },
     actions: {
@@ -41,6 +44,16 @@ export default {
             try {
               const response = await this.$axios.delete(`/skills/${skillId}`);
               commit('REMOVE_SKILL', skillId); // skillID (а не response.data) т.к. нам не нужен обрабатывать ответ от сервера
+              return response;
+            } catch (error) {
+                throw new Error(error.response.data.error || error.response.data.message);
+            }
+        },
+        // метод изменения скила на сервее и в store
+        async editSkill({commit}, skill) {
+            try {
+              const response = await this.$axios.post(`/skills/${skill.id}`, skill);
+              commit('EDIT_SKILL', response.data.skill); 
               return response;
             } catch (error) {
                 throw new Error(error.response.data.error || error.response.data.message);
