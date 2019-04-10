@@ -2,7 +2,6 @@
     section.about    
       .container
         .about__title
-          pre {{categories}}
           .title
             h2.title Блок «Обо мне»
           div(

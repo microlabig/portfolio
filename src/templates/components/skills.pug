@@ -1,7 +1,6 @@
 
 script(type="text/x-template")#skills-list
-    .widget__skills
-        //- pre {{skills}}
+    .widget__skills        
         ul.skills__list
             li.skills__item(v-for="skill in skills" :key="skill.skillGroup")
                 skills-row(

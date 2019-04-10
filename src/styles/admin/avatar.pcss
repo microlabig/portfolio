@@ -6,21 +6,20 @@
     width: 47px;
     height: 47px;
     border-radius: 50%;
-    overflow: hidden;    
+    overflow: hidden;
 }
 
 //------- reviews
 
 .avatar-load__image,
 .avatar-edit__image {
+    position: relative;
     cursor: pointer;
     border-radius: 100%;
     width: 200px;
     height: 200px;
     overflow: hidden;
-    background-color: rgba($light-color, .23); 
-
-    padding: 34px 48px;
+    background-color: rgba($light-color, .23);
 
     margin-bottom: 27px;
 
@@ -29,8 +28,13 @@
         display: inline-block;
         width: 100%;
         height: 100%;
+        position: absolute;
 
-        background: svg-load('filled-user.svg', fill=$white-color) center center no-repeat / contain; 
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%) scale(0.55);
+
+        background: svg-load('filled-user.svg', fill=$white-color) center center no-repeat / contain;
     }
 
     @include phones-small {
@@ -40,22 +44,48 @@
 }
 
 .avatar-load__button,
-.avatar-edit__button { 
+.avatar-edit__button {
     width: 100%;
     text-align: center;
-    
+
     color: $links-color;
     font-size: 16px;
-    font-weight: $semi-bold;    
+    font-weight: $semi-bold;
+}
+
+.avatar__block--reviews {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+
+    & .avatar__image {
+        width: 100%;
+        height: 100%;
+        &.filled {
+            background: center center no-repeat / cover;
+        }
+    }
+}
+
+
+.avatar-change__file {
+    position: absolute;
+    visibility: hidden;
+    overflow: hidden;
 }
 
 // edit
 
 .avatar-edit__image {
     padding: 0;
-    &:before{
+
+    &:before {
         display: none;
     }
+
     & .avatar__block {
         width: 200px;
         height: 200px;
