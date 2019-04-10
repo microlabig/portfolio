@@ -15,7 +15,7 @@
                 .avatar-edit
                   .avatar-edit__image
                     .avatar__block
-                      img(src=`../images/content/reviews/review2.jpg` alt="Аватар").avatar__image
+                      img(src=`../../../images/content/reviews/review2.jpg` alt="Аватар").avatar__image
                   button(type="button").button.avatar-edit__button Изменить фото
               .form-edit__right
                 form.form
@@ -37,62 +37,24 @@
                           button(type="button").button.button--cancel Отмена
                           button(type="submit").button.button--save Сохранить         
 
-          -
-            var reviewList =
-              [
-                {
-                  "id": 1,
-                  "name": "Владимир Сабанцев",
-                  "titul": "Преподаватель",
-                  "photo": "review2.jpg",
-                  "text": "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах"
-                },
-                {
-                  "id": 2,
-                  "name": "Ковальчук Дмитрий",
-                  "titul": "Основатель LoftSchool",
-                  "photo": "review1.jpg",
-                  "text": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"
-                },
-                {
-                  "id": 3,
-                  "name": "Владимир Сабанцев",
-                  "titul": "Преподаватель",
-                  "photo": "review2.jpg",
-                  "text": "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах"
-                },
-                {
-                  "id": 4,
-                  "name": "Ковальчук Дмитрий",
-                  "titul": "Основатель LoftSchool",
-                  "photo": "review1.jpg",
-                  "text": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"
-                }
-              ];
+          
               
           .reviews__listwrapper
             ul.reviews__list
-              li.reviews__item.reviews__item--add
-                .btn-container
-                  .btn-container__add
-                    .btn-container__add-button +
-                    .btn-container__add-title Добавить отзыв
-              each review in reviewList            
-                li.reviews__item
-                  .reviews__autor
-                    .reviews__autor-left
-                      .avatar
-                        .avatar__block
-                          img(src=`../images/content/reviews/${review.photo}` alt="Аватар").avatar__image
-                    .reviews__autor-right
-                      .reviews__name #{review.name}
-                      .reviews__titul #{review.titul}                  
-                  .reviews__description 
-                    .reviews__text #{review.text}
-                    .btns-wrap
-                      .btns(data-text="Править")
-                        button(type="button").button.button--edit                         
-                      .btns(data-text="Удалить")
-                        button(type="button").button.button--discard                             
+              reviews-add(
+
+              )
+              reviews-group(
+
+              )                            
     
 </template>
+
+<script>
+export default {
+  components: {
+    reviewsAdd: () => import('components/reviews-add.vue'),
+    reviewsGroup: () => import('components/reviews-group.vue')
+  }
+}
+</script>

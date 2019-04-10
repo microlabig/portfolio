@@ -1,7 +1,8 @@
 <template lang="pug">
-    section.about
+    section.about    
       .container
         .about__title
+          pre {{categories}}
           .title
             h2.title Блок «Обо мне»
           div(
@@ -14,7 +15,7 @@
           ul.groups__list
             li.groups__item.groups__item--addgroup(v-if="showAddingForm")
               skillsAdd(                
-              )
+              )              
             li.groups__item.groups__item--group(
               v-for="category in categories"
               :key="category.id"

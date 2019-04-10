@@ -1,7 +1,8 @@
 import login from "components/pages/login.vue";
 import about from "components/pages/about.vue";
+import reviews from "components/pages/reviews.vue";
 //import work from "components/pages/work.vue";
-//import reviews from "components/pages/reviews.vue";
+
 
 export default [
   {
@@ -9,6 +10,13 @@ export default [
     component: about,
     meta: {
       title: "Блок «Обо мне»"
+    }
+  },
+  {
+    path: "/reviews",
+    component: reviews,
+    meta: {
+      title: "Блок «Отзывы»"
     }
   },
   {
@@ -27,11 +35,5 @@ export default [
     meta: {
       title: "Блок «Работы»"
     }
-  },
-  {
-    path: "/reviews",
-    component: reviews,
-    meta: {
-      title: "Блок «Отзывы»"
-    }
+  }  
   }, */
