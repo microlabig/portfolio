@@ -24,25 +24,30 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {
     props: {
         skill: Object
     },
+
     data() {
         return {
             skillGroupTitle: ""
         }
     },
+
     methods: {
         ...mapActions('categories',['addNewSkillGroup']),
+        ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
+
         async addSkillGroup() {
             try {
                 await this.addNewSkillGroup(this.skillGroupTitle);
                 this.skillGroupTitle = "";
+                good(this, "Группа успешно загружена");
             } catch (error) {
-                //TODO: обработать ошибку в тултипе 
-                alert(error.message);
+                bad(this, error);
             }
             
         }

@@ -128,7 +128,7 @@ new Vue ({
             this.currentIndex = currentIDthumbs-1;  
         }
     },
-    created() { // на стадии сохдания (не DOM-дерево)
+    created() { // на стадии создания (не DOM-дерево)
         const data = require('../data/works.json');
         this.works = this.makeArrWithRequiredImages(data);
     }

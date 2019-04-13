@@ -32,55 +32,58 @@
 
 
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex';
+import { mapActions, mapGetters, mapState } from "vuex";
+import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {
   components: {
-    worksEdit: () => import('components/works-edit.vue'),
-    worksAdd: () => import('components/works-add.vue'),
-    worksGroup: () => import('components/works-group.vue'),
-    worksAddButton: () => import('components/works-addButton.vue')
+    worksEdit: () => import("components/works-edit.vue"),
+    worksAdd: () => import("components/works-add.vue"),
+    worksGroup: () => import("components/works-group.vue"),
+    worksAddButton: () => import("components/works-addButton.vue")
   },
-  data() {    
-    return {      
+  data() {
+    return {
       showAddingForm: false,
       showEditingForm: false,
       workEditedById: {}
-    }
+    };
   },
   computed: {
-    ...mapGetters('works',['getWorks']),
-    ...mapState('works', { // добавим дополнительное свойство из данных в store 'categories'
-        works: state => state.works
-      })
+    ...mapGetters("works", ["getWorks"]),
+    ...mapState("works", {
+      // добавим дополнительное свойство из данных в store 'categories'
+      works: state => state.works
+    })
   },
-  async created() { 
-    // получим список отзывов из сервера  
+  async created() {
+    // получим список отзывов из сервера
     try {
-      await this.fetchWorks();   
+      await this.fetchWorks();
+      good(this, "Данные успешно загружены");
     } catch (error) {
-      // TODO: обработать ошибку
-      alert('Произошла ошибка при загрузке категорий');
+      bad(this, error);
     }
   },
   methods: {
-    ...mapActions('works',['fetchWorks']),
+    ...mapActions("works", ["fetchWorks"]),
+    ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
 
     addNewWorkGroupForm() {
       this.showAddingForm = true;
-      this.showEditingForm = false;      
+      this.showEditingForm = false;
     },
     cancelAddNewGroupForm() {
-      this.showAddingForm = false;   
+      this.showAddingForm = false;
     },
-    editExistedWorkGroupForm(work_ID) {      
+    editExistedWorkGroupForm(work_ID) {
       this.showAddingForm = false;
       this.showEditingForm = true;
       this.works.forEach(item => {
-          if (item.id === work_ID) {
-            this.workEditedById = item;
-          }
-        });
+        if (item.id === work_ID) {
+          this.workEditedById = item;
+        }
+      });
     },
     cancelEditExistedGroupForm() {
       this.showEditingForm = false;
@@ -93,5 +96,5 @@ export default {
       this.showEditingForm = false;
     }
   }
-}
+};
 </script>

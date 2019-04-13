@@ -26,6 +26,7 @@
 <script>
     import axios from 'axios';
     import { mapActions } from 'vuex';
+    import { good, bad } from "@/helpers/tooltipDispath";
 
     export default {
         data() {
@@ -38,15 +39,19 @@
         },
         methods: {
             ...mapActions('reviews',['removeReview']),
+            ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
+
             editReviewGroup() {
                 this.$emit('editReviewGroup',this.review.id);
             },
+
             async removeExistedReview(reviewId) {
                 try {
                     await this.removeReview(reviewId);
+                    good(this, "Данные успешно удалены");
+                    this.$emit('removeReview');
                 } catch (error) {
-                    // TODO: обработать ошибку
-                    alert('Произошла ошибка при удалении ревью');
+                    bad(this, error);
                 }
             }
         }

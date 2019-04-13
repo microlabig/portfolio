@@ -36,6 +36,7 @@
 
 <script>
 import {mapActions} from 'vuex';
+import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {
     components: {
@@ -58,6 +59,8 @@ export default {
     methods: {
         ...mapActions('categories',['removeCategory', 'editNameCategory']),
         ...mapActions('skills',['addSkill']),
+        ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
+
         async addNewSkill() {
             try {
                 await this.addSkill(this.skill);
@@ -66,26 +69,28 @@ export default {
                     title:"",
                     percent:""
                 }
+                good(this, "Навык успешно добавлен");
             } catch (error) {
-                // TODO: обработать ошибку
-                alert('Произошла ошибка при загрузке скилов');
+                bad(this, error);
             }
         },
+
         async removeExistedCategory() {
             try {
                 await this.removeCategory(this.category.id);
+                good(this, "Группа успешно удалена");
             } catch (error) {
-                // TODO: обработать ошибку
-                alert('Произошла ошибка при удалении категории');
+                bad(this, error);
             }
         },
+
         async save() {
             try {
                 await this.editNameCategory(this.category);
                 this.editmode = false;
+                good(this, "Группа успешно загружена");
             } catch (error) {
-                // TODO: обработать ошибку
-                alert('Произошла ошибка при изменении имени категории');
+                bad(this, error);
             }
         }
     }

@@ -51,6 +51,7 @@
 <script>
 import axios from "axios";
 import { mapActions } from "vuex";
+import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {
   props: {
@@ -76,6 +77,7 @@ export default {
 
   methods: {
     ...mapActions("reviews", ["editReview"]),
+    ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
 
     cancelEditGroup() {
       this.$emit("cancelEditGroup");
@@ -84,10 +86,10 @@ export default {
     async editExistedReview() {
       try {
         await this.editReview(this.reviewCopy);
+        good(this, "Данные успешно отредактированы");
         this.$emit("editExistedReview");
       } catch (error) {
-        // TODO: обработать ошибку
-        alert("Произошла ошибка при изменении отзыва");
+        bad(this, error);
       }
     },
 
@@ -104,12 +106,12 @@ export default {
         // отрендерим файл
         const reader = new FileReader(); // создадим экземпляр чтения файла
         try {
-          if (file.type !== "image/png" && file.type !== "image/jpeg") { // проверим тип файла
-            throw new Error(
-              "Для загрузки используйте файлы изображений (PNG, JPG)"
-            );
+          if (file.type !== "image/png" && file.type !== "image/jpeg") {
+            // проверим тип файла
+            throw new Error("Для загрузки используйте файлы изображений (PNG, JPG)");
           }
-          if (file.size / 1024 / 1024 > 1.5) { // если файл больше 1.5 Мб
+          if (file.size / 1024 / 1024 > 1.5) {
+            // если файл больше 1.5 Мб
             throw new Error("Загружаемый файл больше 1.5 Мб");
           }
           reader.readAsDataURL(file); // прочитаем файл
@@ -117,8 +119,7 @@ export default {
             this.renderedPhotoUrl = reader.result; // все что отрендерили - положить в renderedPhotoUrl
           };
         } catch (error) {
-          // TODO: обработать ошибку
-          alert(error);
+          bad(this, error);
         }
       }
     }

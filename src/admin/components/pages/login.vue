@@ -5,7 +5,10 @@
         @submit.prevent="login"
       ).login__form#form
         .login__close
-          button(type="button").login__close-btn
+          button(
+            @click="close"
+            type="button"
+          ).login__close-btn
         .login__title-box
           h1.login__title Авторизация
         .form__wrapper
@@ -36,6 +39,9 @@
 
 <script>
 import $axios from "@/requests";
+import { mapActions } from "vuex";
+import { good, bad } from "@/helpers/tooltipDispath";
+
 export default {
   data() {
     return {
@@ -46,6 +52,8 @@ export default {
     }
   },
   methods: {
+    ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
+    
     // метод логина
     async login() {
       try {
@@ -60,11 +68,16 @@ export default {
         $axios.defaults.headers['Authorization'] = `Bearer ${token}`;
         // далее, в случае успешной авторизации редиректним в админку
         this.$router.replace('/');
+        good(this, "Успешный вход");
       } catch (error) {
-        // TODO: обработать ошибку 
-      }
+        bad(this, error);
+      }      
+    },
+
+    close() {
       
     }
+
   }
 }
 </script>

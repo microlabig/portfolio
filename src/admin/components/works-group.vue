@@ -29,6 +29,7 @@
 <script>
 import axios from "axios";
 import { mapActions } from "vuex";
+import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {
   props: {
@@ -44,6 +45,7 @@ export default {
   },
   methods: {
     ...mapActions("works", ["removeWork"]),
+    ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
 
     editWorkGroup() {
       this.$emit("editWorkGroup",this.work.id);
@@ -52,9 +54,9 @@ export default {
     async removeExistedWork(workId) {
       try {
         await this.removeWork(workId);
+        good(this, "Данные успешно удалены");
       } catch (error) {
-        // TODO: обработать ошибку
-        alert("Произошла ошибка при удалении ревью");
+        bad(this, error);
       }
     }
   }

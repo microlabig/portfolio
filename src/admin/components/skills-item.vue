@@ -36,34 +36,40 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {    
     props: {
         skill: Object
     },
+    
     data() {
         return {
             editmode: false,
             editedskill: {...this.skill} // для редактирования (работаем с копией)
         }
     },
+
     methods: {
         ...mapActions('skills',['removeSkill','editSkill']),
+        ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
+
         async removeExistedSkill() {
             try {
                 await this.removeSkill(this.skill.id);
+                good(this, "Данные успешно удалены");
             } catch (error) {
-                //TODO: обработать ошибку    
-                alert('Произошла ошибка при удалении скила\n'+error.message);
+                bad(this, error);
             }
         },
+
         async save() {
             try {
                 await this.editSkill(this.editedskill);
                 this.editmode = false;
+                good(this, "Данные успешно отредактированы");
             } catch (error) {
-                //TODO: обработать ошибку    
-                alert('Произошла ошибка при редактировании скила\n'+error.message);
+                bad(this, error);
             }
         }
     }

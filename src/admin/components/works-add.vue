@@ -68,6 +68,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {
   data() {
@@ -90,6 +91,7 @@ export default {
   },
   methods: {
     ...mapActions("works", ["addWork"]),
+    ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
 
     cancelAddNewGroup() {
       this.$emit("cancelAddNewGroup");
@@ -103,9 +105,9 @@ export default {
       try {
         await this.addWork(this.work);
         this.$emit("addNewWork");
+        good(this, "Работа успешно загружена");
       } catch (error) {
-        // TODO: обработать ошибку
-        alert("Произошла ошибка при загрузке отзыва");
+        bad(this, error);
       }
     },
 
@@ -140,8 +142,7 @@ export default {
             this.renderedPhotoUrl = reader.result; // все что отрендерили - положить в renderedPhotoUrl
           };
         } catch (error) {
-          // TODO: обработать ошибку
-          alert(error);
+          bad(this, error);
         }
       }
     }

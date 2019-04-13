@@ -25,12 +25,14 @@
                 :key="review.id"
                 :review="review"
                 @editReviewGroup="editExistedReviewGroupForm"
+                @removeExistedReview="removeReview"
               )                            
     
 </template>
 
 <script>
 import { mapActions, mapGetters, mapState } from 'vuex';
+import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {
   components: {
@@ -55,14 +57,15 @@ export default {
   async created() { 
     // получим список отзывов из сервера  
     try {
-      await this.fetchReviews();   
+      await this.fetchReviews(); 
+      good(this, "Данные успешно загружены");  
     } catch (error) {
-      // TODO: обработать ошибку
-      alert('Произошла ошибка при загрузке категорий');
+      bad(this, error);
     }
   },
   methods: {
     ...mapActions('reviews',['fetchReviews']),
+    ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
 
     addNewReviewGroupForm() {
       this.showAddingForm = true;
@@ -85,7 +88,13 @@ export default {
     },
     editExistedReview() {
       this.showEditingForm = false;
+    },
+
+    removeReview() {
+      this.showEditingForm = false;
+      console.log(10);
     }
+
   }
 }
 </script>

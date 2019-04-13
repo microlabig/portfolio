@@ -27,48 +27,52 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
+import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {
-    components: {
-        skillsAdd: () => import('components/skills-add.vue'),
-        skillsGroup: () => import('components/skills-group.vue')        
-    },
-    data() {
-      return {
-        showAddingForm: false
-      }
-    },    
-    computed: {
-      ...mapState('categories', { // добавим дополнительное свойство из данных в store 'categories'
-        categories: state => state.categories
-      }),
-      ...mapState('skills', { // добавим дополнительное свойство из данных в store 'categories'
-        skills: state => state.skills
-      })
-    },
-    methods: {
-      ...mapActions('categories',['fetchCategories']),
-      ...mapActions('skills',['fetchSkills']),
-      
-      // метод сортировки принятых скилов в зависимости от id категории
-      filterSkillsByCategoryId(categoryId) {
-        return this.skills.filter(skill => skill.category === categoryId)
-      }
-    },
-    async created() {
-      try {
-        await this.fetchCategories();   
-      } catch (error) {
-        // TODO: обработать ошибку
-        alert('Произошла ошибка при загрузке категорий');
-      }
+  components: {
+    skillsAdd: () => import("components/skills-add.vue"),
+    skillsGroup: () => import("components/skills-group.vue")
+  },
+  data() {
+    return {
+      showAddingForm: false
+    };
+  },
+  computed: {
+    ...mapState("categories", {
+      // добавим дополнительное свойство из данных в store 'categories'
+      categories: state => state.categories
+    }),
+    ...mapState("skills", {
+      // добавим дополнительное свойство из данных в store 'categories'
+      skills: state => state.skills
+    })
+  },
+  methods: {
+    ...mapActions("categories", ["fetchCategories"]),
+    ...mapActions("skills", ["fetchSkills"]),
+    ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
+    
+    // метод сортировки принятых скилов в зависимости от id категории
+    filterSkillsByCategoryId(categoryId) {
+      return this.skills.filter(skill => skill.category === categoryId);
+    }
+  },
+  async created() {
+    try {
+      await this.fetchCategories();
+      good(this, "Данные успешно загружены");
+    } catch (error) {
+      bad(this, error);
+    }
 
-      try {
-        await this.fetchSkills();   
-      } catch (error) {
-        // TODO: обработать ошибку
-        alert('Произошла ошибка при загрузке скилов');
-      }
-    }  
-}
+    try {
+      await this.fetchSkills();
+      good(this, "Данные успешно загружены");
+    } catch (error) {      
+      bad(this, error);
+    }
+  }
+};
 </script>

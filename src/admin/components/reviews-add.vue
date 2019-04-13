@@ -45,6 +45,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {
   data() {
@@ -60,9 +61,12 @@ export default {
   },
   methods: {
     ...mapActions("reviews", ["addReview"]),
+    ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
+
     cancelAddNewGroup() {
       this.$emit("cancelAddNewGroup");
     },
+
     // кодирование изображения в base64, его рендер
     appendFileAndRenderPhoto(e) {
       // возьмем данные из файла
@@ -87,18 +91,18 @@ export default {
             this.renderedPhotoUrl = reader.result; // все что отрендерили - положить в renderedPhotoUrl
           };
         } catch (error) {
-          // TODO: обработать ошибку
-          alert(error);
+          bad(this, error);
         }
       }
     },
+
     async addNewReview() {
       try {
         await this.addReview(this.review);
-        this.$emit("addNewReview");
+        good(this, "Отзыв успешно загружен");
+        this.$emit("addNewReview");                
       } catch (error) {
-        // TODO: обработать ошибку
-        alert("Произошла ошибка при загрузке отзыва");
+        bad(this, error);
       }
     }
   }
