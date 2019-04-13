@@ -49,6 +49,10 @@ export default {
         name: "bezmestin112018",
         password: "29031988"
       }
+      /* user: {
+        name: "",
+        password: ""
+      }  */
     }
   },
   methods: {
@@ -75,7 +79,7 @@ export default {
     },
 
     close() {
-      
+      location.href = (localStorage.getItem('homePage')); // для редиректа на главную
     }
 
   }

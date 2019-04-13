@@ -1,3 +1,5 @@
+import { packReviewToFormData } from '@/helpers/formDataPack';
+
 export default {
     namespaced: true,
     state: {
@@ -21,15 +23,7 @@ export default {
         // метод добавления нового ревью
         async addReview({commit}, review) { 
             try {
-                // создадим объект FormData
-                const formData = new FormData();
-                // упакуем review
-                formData.append('text', review.text);
-                formData.append('occ', review.occ);
-                formData.append('author', review.author);
-                formData.append('photo', review.photo);
-
-                const response = await this.$axios.post('/reviews', formData);
+                const response = await this.$axios.post('/reviews', packReviewToFormData(review));
                 commit('SET_REVIEW', response.data); 
                                
                 return response;
@@ -64,15 +58,7 @@ export default {
         // метод изменения отзыва
         async editReview({commit}, editedReview) {
             try {
-                // создадим объект FormData
-                const formData = new FormData();
-                // упакуем review
-                formData.append('text', editedReview.text);
-                formData.append('occ', editedReview.occ);
-                formData.append('author', editedReview.author);
-                formData.append('photo', editedReview.photo);
-
-                const response = await this.$axios.post(`/reviews/${editedReview.id}`, formData);
+                const response = await this.$axios.post(`/reviews/${editedReview.id}`, packReviewToFormData(editedReview));
                 commit('EDIT_REVIEW', response.data.review); 
                 
                 return response;

@@ -3,6 +3,8 @@ if (process.env.NODE_ENV === "development") {
   require("file-loader!./index.pug");
 }
 
+localStorage.setItem('homePage', location.href); // для запоминания домашнего URL
+
 import "./scripts/parallax";
 import "./scripts/reviews";
 import "./scripts/skills";

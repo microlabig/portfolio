@@ -1,3 +1,5 @@
+import {packWorkToFormData} from '@/helpers/formDataPack';
+
 export default {
     namespaced: true,
     state: {
@@ -21,16 +23,7 @@ export default {
         // метод добавления нового ревью
         async addWork({commit}, work) { 
             try {
-                // создадим объект FormData
-                const formData = new FormData();
-                // упакуем work
-                formData.append('title', work.title);
-                formData.append('techs', work.techs);
-                formData.append('link', work.link);
-                formData.append('photo', work.photo);
-                formData.append('description', work.description);
-
-                const response = await this.$axios.post('/works', formData);
+                const response = await this.$axios.post('/works', packWorkToFormData(work));
                 commit('SET_WORK', response.data); 
                                
                 return response;
@@ -64,17 +57,8 @@ export default {
 
         // метод изменения отзыва
         async editWork({commit}, editedWork) {
-            try {
-                // создадим объект FormData
-                const formData = new FormData();
-                // упакуем work
-                formData.append('title', editedWork.title);
-                formData.append('techs', editedWork.techs);
-                formData.append('link', editedWork.link);
-                formData.append('photo', editedWork.photo);
-                formData.append('description', editedWork.description);
-
-                const response = await this.$axios.post(`/works/${editedWork.id}`, formData);
+            try {   
+                const response = await this.$axios.post(`/works/${editedWork.id}`, packWorkToFormData(editedWork));
                 commit('EDIT_WORK', response.data.work); 
 
                 return response;

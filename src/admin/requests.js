@@ -31,6 +31,18 @@ axios.interceptors.response.use(
                 return axios(originalRequest); // вызовем функцию axios с параметрами неудачного запроса на сервер еще раз
             })
         }
+
+        if (error.response.status === 422) { // необработанный объект от сервера
+            // отправим запрос на обновление токена
+            throw new Error('Не заполнены поля');
+        }
+
+        if (error.response.status === 403) { // необработанный объект от сервера
+            // отправим запрос на обновление токена
+            throw new Error('Неверное имя пользователя или пароль');
+        }
+        //console.log(error.response.status);
     });
+
 
 export default axios;
