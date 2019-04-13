@@ -7,6 +7,15 @@ export default {
     mutations: {
         SET_USER: (state, user) => {
             state.user = user
+        },
+        CLEAR_USER: (state) => {
+            state.user = {}
+        }
+    },
+    actions: {
+        logout({commit}) {
+            localStorage.removeItem('token');
+            commit('CLEAR_USER');
         }
     },
     getters: { 

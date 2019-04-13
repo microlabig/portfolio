@@ -14,6 +14,22 @@
                             .header__typepanel
                                 p Панель администрирования
                             .header__quit
-                                a.header__quit-link Выйти
+                                button(
+                                    @click.prevent="logoutUser"
+                                    type="button"
+                                ).header__quit-link Выйти
 </template>
 
+<script>
+import {mapActions} from 'vuex';
+
+export default {
+    methods: {
+        ...mapActions('user',['logout']),
+        logoutUser() {
+            this.logout();
+            this.$router.replace('/login');
+        }
+    }
+}
+</script>
