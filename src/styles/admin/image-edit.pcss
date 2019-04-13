@@ -1,0 +1,31 @@
+.image-edit {
+    position: relative;
+    cursor: pointer;
+    max-width: 495px;
+    
+    @include phones-small { 
+        max-width: 280px;
+    }
+
+    outline: 2px dashed transparent;
+    transition: outline 1s;
+    &.is-dragged {
+        outline-color: red;       
+    }
+}
+
+.image-edit__image {
+    height: 275px;
+    margin-bottom: 25px;
+}
+
+
+.image-edit__button {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+
+    font-size: 16px;
+    font-weight: $semi-bold;
+    color: $links-color;
+}

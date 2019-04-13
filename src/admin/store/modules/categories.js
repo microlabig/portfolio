@@ -15,7 +15,7 @@ export default {
             state.categories = state.categories.filter(category => category.id !== categoryId)
         },
         EDIT_NAME_CATEGORY: (state, editedCategory) => {
-            state.categories = state.categories.map(category => category.id !== editedCategory.id ? editedCategory : category)
+            state.categories = state.categories.map(category => category.id !== editedCategory.id ? category : editedCategory)
         }
     },
     actions: {
@@ -62,7 +62,7 @@ export default {
                 title: category.category
               });
               
-              commit('REMOVE_CATEGORY', category); // categoryId (а не response.data) т.к. нам не нужен обрабатывать ответ от сервера
+              commit('EDIT_NAME_CATEGORY', category); // categoryId (а не response.data) т.к. нам не нужен обрабатывать ответ от сервера
               return response;
             } catch (error) {
                 throw new Error(error.response.data.error || error.response.data.message);

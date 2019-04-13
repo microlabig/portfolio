@@ -7,12 +7,14 @@
           reviews-add(
             v-if="showAddingForm === true"            
             @cancelAddNewGroup="cancelAddNewGroupForm"
+            @addNewReview="addNewReview"
           )   
           reviews-edit(
-            v-if="showEditingForm === true"
+            v-if="showEditingForm === true"            
             @cancelEditGroup="cancelEditExistedGroupForm"
-          )                          
-              
+            :reviewEditedById="reviewEditedById"
+            @editExistedReview="editExistedReview"
+          )               
           .reviews__listwrapper            
             ul.reviews__list
               reviews-add-button(
@@ -28,7 +30,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
   components: {
@@ -38,14 +40,17 @@ export default {
     reviewsGroup: () => import('components/reviews-group.vue')
   },
   data() {
-    return {
-      reviews: [],
+    return {      
       showAddingForm: false,
-      showEditingForm: false
+      showEditingForm: false,
+      reviewEditedById: {}
     }
   },
   computed: {
-    ...mapGetters('reviews',['getReviews'])
+    ...mapGetters('reviews',['getReviews']),
+    ...mapState('reviews', { // добавим дополнительное свойство из данных в store 'categories'
+        reviews: state => state.reviews
+      })
   },
   async created() { 
     // получим список отзывов из сервера  
@@ -66,13 +71,21 @@ export default {
     cancelAddNewGroupForm() {
       this.showAddingForm = false;
     },
-    editExistedReviewGroupForm() {
+    editExistedReviewGroupForm(review_ID) {      
       this.showAddingForm = false;
       this.showEditingForm = true;
+      this.reviews.forEach(review => (review.id === review_ID ? this.reviewEditedById = review : undefined));
     },
     cancelEditExistedGroupForm() {
       this.showEditingForm = false;
-    }    
+    },
+
+    addNewReview() {
+      this.showAddingForm = false;
+    },
+    editExistedReview() {
+      this.showEditingForm = false;
+    }
   }
 }
 </script>

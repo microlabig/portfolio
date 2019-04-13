@@ -12,8 +12,10 @@ export default {
         },
         REMOVE_REVIEW: (state, reviewID) => {
             state.reviews = state.reviews.filter(review => review.id !== reviewID)
+        },
+        EDIT_REVIEW: (state, editedReview) => {
+            state.reviews = state.reviews.map(review => review.id === editedReview.id ? editedReview : review);
         }
-
     },
     actions: {
         // метод добавления нового ревью
@@ -28,7 +30,8 @@ export default {
                 formData.append('photo', review.photo);
 
                 const response = await this.$axios.post('/reviews', formData);
-                commit('SET_REVIEW', response.data);                
+                commit('SET_REVIEW', response.data); 
+                               
                 return response;
             } catch (error) {
                 throw new Error(error.response.data.error || error.response.data.message);
@@ -53,6 +56,26 @@ export default {
               const response = await this.$axios.delete(`/reviews/${reviewId}`);
               commit('REMOVE_REVIEW', reviewId); // categoryId (а не response.data) т.к. нам не нужен обрабатывать ответ от сервера
               return response;
+            } catch (error) {
+                throw new Error(error.response.data.error || error.response.data.message);
+            }
+        },
+
+        // метод изменения отзыва
+        async editReview({commit}, editedReview) {
+            try {
+                // создадим объект FormData
+                const formData = new FormData();
+                // упакуем review
+                formData.append('text', editedReview.text);
+                formData.append('occ', editedReview.occ);
+                formData.append('author', editedReview.author);
+                formData.append('photo', editedReview.photo);
+
+                const response = await this.$axios.post(`/reviews/${editedReview.id}`, formData);
+                commit('EDIT_REVIEW', response.data.review); 
+                
+                return response;
             } catch (error) {
                 throw new Error(error.response.data.error || error.response.data.message);
             }

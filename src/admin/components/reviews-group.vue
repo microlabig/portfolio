@@ -1,6 +1,5 @@
 <template lang="pug">
     li.reviews__item
-        pre {{review}}
         .reviews__autor        
             .reviews__autor-left
                 .avatar
@@ -13,7 +12,7 @@
             .reviews__text {{review.text}}            
             .btns-wrap
                 .btns(
-                    @click="editReviewGroup(review.id)"
+                    @click="editReviewGroup"
                     data-text="Править"
                 )
                     button(type="button").button.button--edit                         
@@ -40,7 +39,7 @@
         methods: {
             ...mapActions('reviews',['removeReview']),
             editReviewGroup() {
-                this.$emit('editReviewGroup');
+                this.$emit('editReviewGroup',this.review.id);
             },
             async removeExistedReview(reviewId) {
                 try {

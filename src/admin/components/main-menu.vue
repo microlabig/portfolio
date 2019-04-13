@@ -15,9 +15,9 @@
     data() {
       return {
         tabs: [
-          { title: "Обо мне", href: "/" },
-          { title: "Отзывы", href: "/reviews" },
-          { title: "Работы", href: "/works" }
+          { title: "Обо мне", href: "/" },          
+          { title: "Работы", href: "/works" },
+          { title: "Отзывы", href: "/reviews" }
         ]
       };
     }

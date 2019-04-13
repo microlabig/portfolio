@@ -40,6 +40,7 @@
 @import "../styles/mixins.pcss";
 @import "../styles/layout/base.pcss";
 
+@import "../styles/blocks/animations.pcss";
 @import "../styles/blocks/menu.pcss";
 @import "../styles/blocks/tooltip.pcss";
 @import "../styles/blocks/modal.pcss";

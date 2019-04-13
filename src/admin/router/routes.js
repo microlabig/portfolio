@@ -1,7 +1,7 @@
 import login from "components/pages/login.vue";
 import about from "components/pages/about.vue";
 import reviews from "components/pages/reviews.vue";
-//import work from "components/pages/work.vue";
+import works from "components/pages/works.vue";
 
 
 export default [
@@ -24,6 +24,13 @@ export default [
     component: login,
     meta: {
       public: true
+    }
+  },
+  {
+    path: "/works",
+    component: works,
+    meta: {
+      title: "Блок «Работы»"
     }
   }
 ];

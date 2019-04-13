@@ -1,4 +1,6 @@
 .image-load {
+    position: relative;
+    cursor: pointer;
     max-width: 495px;
     height: 275px;
     background-color: rgba($light-color, .23);
@@ -13,6 +15,19 @@
         max-width: 280px;
         max-height: 160px;
     }
+
+    transition: background-color 1s, outline 1s;
+    &.is-dragged {
+        outline-color: red;
+        background-color: rgba($light-color, 0.6);        
+    }
+}
+
+.image-load__file {
+    position: absolute;
+    visibility: hidden;
+    overflow: hidden;
+    display: none;
 }
 
 .image-load__title {
@@ -27,27 +42,19 @@
     }
 }
 
+.image-loaded {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
-.image-edit {
-    max-width: 495px;
-    
-    @include phones-small { 
-        max-width: 280px;
+.image-icon {
+    width: 100%;
+    height: 100%;
+    &.filled {
+        background: center center no-repeat / cover;
     }
 }
 
-.image-edit__image {
-    margin-bottom: 25px;
-}
-
-
-
-.image-edit__button {
-    text-align: center;
-    display: inline-block;
-    width: 100%;
-
-    font-size: 16px;
-    font-weight: $semi-bold;
-    color: $links-color;
-}
