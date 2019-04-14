@@ -11,3 +11,4 @@ import "./scripts/skills";
 import "./scripts/works";
 import "./scripts/budda";
 import "./scripts/ajaxBudda";
+import "./scripts/scroll"; 

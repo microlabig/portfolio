@@ -1,0 +1,56 @@
+script(type="text/x-template")#navigation
+    .menu
+        ul.menu__list
+            li(
+                v-for="item in menuList"
+                :key="item.href"
+            ).menu__item
+                a(:href="item.href" title="item.text").menu__link {{item.text}}  
+
+script(type="text/x-template")#navigation--footer
+    .menu
+        ul.menu__list
+            li(
+                v-for="item in menuList"
+                :key="item.href"
+            ).menu__item
+                a(:href="item.href" title="item.text").menu__link {{item.text}} 
+
+script(type="text/x-template")#navigation--mobile
+    .menu
+        .menu__mobile(
+            v-if="showMenu"
+        )
+            .menu__wrapper
+                .menu__left
+                    .menu__logo
+                        h2.menu__title ИБ
+                
+                .menu__right(
+                    v-if="showMenu"
+                )                
+                    //:class="{showed: showMenu}"
+                    button(type="button").menu__close(
+                        @click="showMenu = false"
+                    )
+                    transition-group(
+                        v-if="showMenu"
+                        tag="ul" 
+                        name="slide"
+                    ).menu__list
+                        li(
+                            v-for="item in menuList"
+                            :key="item.href"
+                        ).menu__item
+                            a(
+                                :href="item.href" 
+                                title="item.text"
+                                @click="showMenu = false"
+                            ).menu__link {{item.text}} 
+                    include ./socials
+                    //- button(
+                    //-     @click="showH1 = !showH1"
+                    //-     type="button"
+                    //- ) Show
+                    //- transition(name="fade") 
+                    //-     h1(v-if="showH1") s

@@ -21,38 +21,22 @@ html(lang="ru")
                 +image(`content/parallax/mountain/${numpic}.png`, 'parallax__image', 'Изображение')
             //- .parallax__content
 
-          section.fullscreen-section.hero
+          section#section_1.fullscreen-section.hero
             .container.hero-container
               header.header
                 .header__logo
                   .logo
                     h2.logo__title ИБ
                 .header__menu
-                  nav.menu
-                    ul.menu__list
-                      - var items = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
-                      each item in items
-                        li.menu__item
-                          a(href="#" title=`${item}`).menu__link #{item}                      
+                  nav#navigation_menu                  
+                      
                 .header__social
-                  .social
-                    ul.social__list
-                      - var socials = ['insta', 'vk', 'github'];
-                      each social in socials
-                        li.social__item
-                          - var soclink = ''                          
-                          case social
-                            when 'insta'
-                              - soclink='//instagram.com'
-                            when 'vk'
-                              - soclink='//vk.com'
-                            when 'github'
-                              - soclink='//github.com'
-                          a(href=`${soclink}` target="blank").social__link
-                            +icon(social, 'social__icons') 
-                .mobile-nav
+                  include ./templates/components/socials
+                                
+                #mobile-nav.mobile-nav
                   - for (var i=0; i<3; i++)                
                     .mobile-nav__line
+                  
               .hero__block
                 .hero__profession
                   .hero__profession-elem Личный сайт #[span.span-block] веб-разработчика
@@ -62,7 +46,7 @@ html(lang="ru")
                 .scroll__block            
                   button(type="button").scroll__image             
 
-          section.about
+          section#section_2.about
             .container.about-container
               .avatar
                 .avatar__block
@@ -99,7 +83,7 @@ html(lang="ru")
               )
 
         .wrappersections.wrappersections--two
-          section.useful
+          section#section_3.useful
             .container
               .useful__title
                 .title
@@ -119,7 +103,7 @@ html(lang="ru")
                           stop(offset="100%" stop-color=`${end}`)
                   #skills-component                  
 
-          section.work
+          section#section_4.work
             .container
               .work__title
                 .title
@@ -146,7 +130,7 @@ html(lang="ru")
                 points="0,0 0,100 1000,0"
               )
                     
-          section.review
+          section#section_5.review
             .container
               .review#review
                 .review__titlebox
@@ -179,7 +163,7 @@ html(lang="ru")
                                 .review__name #{review[1]}
                                 .review__profession #{review[2]} 
             
-          section.feedback
+          section#section_6.feedback
             .container
               .title
                 h2.title__elem Связаться со мной
@@ -217,32 +201,16 @@ html(lang="ru")
                   h1.hero__name-elem Игорь Безместин
                 .hero__profession
                   .hero__profession-elem Личный сайт #[span.span-block]веб-разработчика 
+
           .footer__right    
             .footer__navigation
-              nav.menu.menu--col-white
-                ul.menu__list
-                  each item in items
-                    li.menu__item
-                      a(href="#" title=`${item}`).menu__link #{item}
+              nav#navigation_menu--footer              
             .footer__thinks
               .footer__mythink
                 article.footer__text Этот сайт я сделал в рамках обучения в #[span.span-block]Школе онлайн образования Loftschool            
                 .footer__social
-                  .social
-                    ul.social__list
-                      - var socials = ['insta', 'vk', 'github'];
-                      each social in socials
-                        li.social__item
-                          - var soclink = ''                          
-                          case social
-                            when 'insta'
-                              - soclink='//instagram.com'
-                            when 'vk'
-                              - soclink='//vk.com'
-                            when 'github'
-                              - soclink='//github.com'
-                          a(href=`${soclink}` target="blank").social__link
-                            +icon(social, 'social__icons')  
+                  include ./templates/components/socials
+
               .footer__greatthink
                 article.footer__text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                 .footer__thinker Martin Golding 
@@ -254,5 +222,7 @@ html(lang="ru")
         .modal__tooltip.green
           .modal__tooltip-text Сообщение отправлено
           .modal__tooltip-close
+      
+      nav#navigation_menu--mobile
 
     include ./templates/entry.pug
