@@ -134,43 +134,44 @@
     }
 
     
-        & .form__tooltip { 
-            display: initial;
-            position: absolute;
-            
-            padding: 10px 22px;
-            background-color: $error-color;
+    & .form__tooltip { 
+        display: initial;
+        position: absolute;
+        
+        padding: 10px 22px;
+        background-color: $error-color;
 
-            top: 100%;
-            left: 0;
+        top: 100%;
+        left: 0;
 
-            opacity: 0;
-            transition: opacity .3s;
-            &.is-error {
-                opacity: 1;
-            }
+        opacity: 0;
+        transition: opacity .3s;
+        
+        &.is-error {
+            opacity: 1;
+        }
 
-            .form__tooltip-text {
-                position: relative;
-                white-space: nowrap;
-                color:$white-color;
-                font-size: 14px;
-                font-weight: $regular;
-            
-                &:before {
-                    content:"";
-                    display: inline-block;
-                    position: absolute;
-                    width: 20px;
-                    height: 20px;
-                    background-color: $error-color;
-            
-                    top: -50%;
-                    left: 10%;
-                    transform: translateY(-50%) rotate(45deg) ;
-                }
+        .form__tooltip-text {
+            position: relative;
+            white-space: nowrap;
+            color:$white-color;
+            font-size: 14px;
+            font-weight: $regular;
+        
+            &:before {
+                content:"";
+                display: inline-block;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background-color: $error-color;
+        
+                top: -50%;
+                left: 10%;
+                transform: translateY(-50%) rotate(45deg) ;
             }
         }
+    }
         
     
 }
@@ -240,6 +241,57 @@
             margin-bottom: 45px;
         }
     }    
+
+    & .form__elem-container {
+        position: relative;
+    }
+
+    & .form__tooltip { 
+        display: initial;
+        position: absolute;
+        
+        padding: 10px 11px;
+        background-color: $error-color;
+
+        top: 77%;
+        left: 15%;
+
+        opacity: 0;
+        transition: opacity .3s;
+        
+        &.form__tooltip--textarea {
+            top: 88%;
+        }
+        &.form__tooltip--photo {
+            top: 105%;
+            left: 0;
+        }
+        
+        &.is-error {
+            opacity: 1;
+        }
+
+        .form__tooltip-text {
+            position: relative;
+            white-space: nowrap;
+            color:$white-color;
+            font-size: 14px;
+            font-weight: $regular;
+        
+            &:before {
+                content:"";
+                display: inline-block;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background-color: $error-color;
+        
+                top: -47%;
+                left: 10%;
+                transform: translateY(-50%) rotate(45deg);
+            }
+        }
+    }
 }
 
 
@@ -433,6 +485,57 @@
             font-weight: $semi-bold;
             color: $admin-border-bottom-color;
         }
+    }
+
+    & .form__elem-container {
+        position: relative;
+    }
+    & .form__tooltip { 
+        display: initial;
+        position: absolute;
+        
+        padding: 10px 11px;
+        background-color: $error-color;
+
+        top: 96%;
+        left: 15%;
+
+        opacity: 0;
+        transition: opacity .3s;
+        
+        &.form__tooltip--textarea {
+            top: 88%;
+        }
+        &.form__tooltip--photo {
+            top: 57%;
+            left: 2%;
+        }
+        
+        &.is-error {
+            opacity: 1;
+        }
+
+        .form__tooltip-text {
+            position: relative;
+            white-space: nowrap;
+            color:$white-color;
+            font-size: 14px;
+            font-weight: $regular;
+        
+            &:before {
+                content:"";
+                display: inline-block;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background-color: $error-color;
+        
+                top: -47%;
+                left: 10%;
+                transform: translateY(-50%) rotate(45deg);
+            }
+        }
+        
     }
 
     .form-edit__left {

@@ -14,6 +14,10 @@
                         @change="appendFileAndRenderPhoto"
                         type='file'
                     ).image-load__file
+                    .form__tooltip.form__tooltip--photo(
+                      :class="{'is-error': validation.hasError('work.photo')}"
+                    )
+                      .form__tooltip-text {{validation.firstError('work.photo')}}
                     .image-load__title Перетащите или загрузите #[span.span-block] для загрузки изображения
                     .image-loaded
                         .image-icon(
@@ -28,18 +32,34 @@
                             label(data-text="Название").form__elem
                                 .form__elem-container
                                     input(type="text" v-model="work.title").form__elem-input
+                                    .form__tooltip(
+                                      :class="{'is-error': validation.hasError('work.title')}"
+                                    )
+                                      .form__tooltip-text {{validation.firstError('work.title')}}
                         .form__row
                             label(data-text="Ссылка").form__elem
                                 .form__elem-container
                                     input(type="text" v-model="work.link").form__elem-input
+                                    .form__tooltip(
+                                      :class="{'is-error': validation.hasError('work.link')}"
+                                    )
+                                      .form__tooltip-text {{validation.firstError('work.link')}}
                         .form__row.form__row--textarea
                             label(data-text="Описание").form__elem
                                 .form__elem-container
                                     textarea(type="textarea" v-model="work.description").form__elem-textarea
+                                    .form__tooltip.form__tooltip--textarea(
+                                      :class="{'is-error': validation.hasError('work.description')}"
+                                    )
+                                      .form__tooltip-text {{validation.firstError('work.description')}}
                         .form__row.form__row--tags
                             label(data-text="Добавление тега").form__elem
                                 .form__elem-container
                                     input(type="text" v-model="work.techs").form__elem-input
+                                    .form__tooltip(
+                                      :class="{'is-error': validation.hasError('work.techs')}"
+                                    )
+                                      .form__tooltip-text {{validation.firstError('work.techs')}}
                                     ul(
                                         v-if="tags.length>0"
                                     ).form__list.form__list--tags                                    
@@ -68,9 +88,30 @@
 
 <script>
 import { mapActions } from "vuex";
+import { Validator } from "simple-vue-validator";
 import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {
+  mixins: [require("simple-vue-validator").mixin],
+
+  validators: {
+    'work.title'(value) {
+      return Validator.value(value).required("Поле не должно быть пустым");
+    },
+    'work.techs'(value) {
+      return Validator.value(value).required("Поле не должно быть пустым");
+    },
+    'work.link'(value) {
+      return Validator.value(value).required("Поле не должно быть пустым");
+    },
+    'work.photo'(value) {
+      return Validator.value(value).required("Изображение не должно быть пустым");
+    },
+    'work.description'(value) {
+      return Validator.value(value).required("Поле не должно быть пустым");
+    }
+  },
+
   data() {
     return {
       work: {
@@ -102,6 +143,8 @@ export default {
     },
 
     async addNewWork() {
+      if ((await this.$validate()) === false) return;
+
       try {
         await this.addWork(this.work);
         this.$emit("addNewWork");

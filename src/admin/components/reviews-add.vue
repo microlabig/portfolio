@@ -9,13 +9,18 @@
                         input(
                             @change="appendFileAndRenderPhoto"
                             type='file'
-                        ).avatar-change__file
+                        ).avatar-change__file                        
                         .avatar__block--reviews
                             .avatar__image(
                                 :class="{'filled' : this.renderedPhotoUrl.length}",
                                 :style="{'backgroundImage' : `url(${this.renderedPhotoUrl})`}"
-                            )
-                    .button.avatar-load__button Добавить фото                
+                            )                    
+                    .form__tooltip.form__tooltip--photo(
+                      :class="{'is-error': validation.hasError('review.photo')}"
+                    )
+                      .form__tooltip-text {{validation.firstError('review.photo')}}
+                    .button.avatar-load__button Добавить фото 
+                                   
             .form-edit__right
                 form.form
                     .form__wrapper
@@ -23,13 +28,25 @@
                             label(data-text="Имя автора").form__elem
                                 .form__elem-container
                                     input(type="text" v-model="review.author").form__elem-input
+                                    .form__tooltip(
+                                      :class="{'is-error': validation.hasError('review.author')}"
+                                    )
+                                      .form__tooltip-text {{validation.firstError('review.author')}}
                             label(data-text="Титул автора").form__elem
                                 .form__elem-container
                                     input(type="text" v-model="review.occ").form__elem-input
+                                    .form__tooltip(
+                                      :class="{'is-error': validation.hasError('review.occ')}"
+                                    )
+                                      .form__tooltip-text {{validation.firstError('review.occ')}}
                         .form__row.form__row--textarea 
                             label(data-text="Отзыв").form__elem
                                 .form__elem-container.form__elem-container--message                        
-                                    textarea(type="textarea" v-model="review.text").form__elem-textarea                   
+                                    textarea(type="textarea" v-model="review.text").form__elem-textarea
+                                    .form__tooltip.form__tooltip--textarea(
+                                      :class="{'is-error': validation.hasError('review.text')}"
+                                    )
+                                      .form__tooltip-text {{validation.firstError('review.text')}}                   
                         .form__row.form__row--btns
                             label(data-text="").form__elem
                                 .form__elem-container
@@ -45,9 +62,28 @@
 
 <script>
 import { mapActions } from "vuex";
+import { Validator } from "simple-vue-validator";
 import { good, bad } from "@/helpers/tooltipDispath";
 
 export default {
+
+  mixins: [require("simple-vue-validator").mixin],
+
+  validators: {
+    'review.author'(value) {
+      return Validator.value(value).required("Поле не должно быть пустым");
+    },
+    'review.occ'(value) {
+      return Validator.value(value).required("Поле не должно быть пустым");
+    },
+    'review.photo'(value) {
+      return Validator.value(value).required("Изображение не должно быть пустым");
+    },
+    'review.text'(value) {
+      return Validator.value(value).required("Поле не должно быть пустым");
+    }
+  },
+
   data() {
     return {
       review: {
@@ -59,6 +95,7 @@ export default {
       renderedPhotoUrl: ""
     };
   },
+
   methods: {
     ...mapActions("reviews", ["addReview"]),
     ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
@@ -97,6 +134,8 @@ export default {
     },
 
     async addNewReview() {
+      if ((await this.$validate()) === false) return;
+
       try {
         await this.addReview(this.review);
         good(this, "Отзыв успешно загружен");

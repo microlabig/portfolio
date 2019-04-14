@@ -29,34 +29,50 @@
                 form.form.form--works
                     .form__wrapper
                         .form__row
-                            label(data-text="Название").form__elem
-                                .form__elem-container
-                                    input(type="text" v-model="workCopy.title").form__elem-input
+                          label(data-text="Название").form__elem
+                            .form__elem-container
+                              input(type="text" v-model="workCopy.title").form__elem-input
+                              .form__tooltip(
+                                :class="{'is-error': validation.hasError('workCopy.title')}"
+                              )
+                                .form__tooltip-text {{validation.firstError('workCopy.title')}}
                         .form__row
-                            label(data-text="Ссылка").form__elem
-                                .form__elem-container
-                                    input(type="text" v-model="workCopy.link").form__elem-input
+                          label(data-text="Ссылка").form__elem
+                            .form__elem-container
+                              input(type="text" v-model="workCopy.link").form__elem-input
+                              .form__tooltip(
+                                :class="{'is-error': validation.hasError('workCopy.link')}"
+                              )
+                                .form__tooltip-text {{validation.firstError('workCopy.link')}}
                         .form__row.form__row--textarea
-                            label(data-text="Описание").form__elem
-                                .form__elem-container
-                                    textarea(type="textarea" v-model="workCopy.description").form__elem-textarea
+                          label(data-text="Описание").form__elem
+                            .form__elem-container
+                              textarea(type="textarea" v-model="workCopy.description").form__elem-textarea
+                              .form__tooltip.form__tooltip--textarea(
+                                :class="{'is-error': validation.hasError('workCopy.description')}"
+                              )
+                                .form__tooltip-text {{validation.firstError('workCopy.description')}}
                         .form__row.form__row--tags
-                            label(data-text="Добавление тега").form__elem
-                                .form__elem-container
-                                    input(type="text" v-model="workCopy.techs").form__elem-input
-                                    ul(
-                                        v-if="tags.length>0"
-                                    ).form__list.form__list--tags                                    
-                                        li(
-                                            v-for="tag in tags"
-                                            v-if="tag"
-                                        ).form__item
-                                            button(type="button").button.button--tag {{tag}}
-                                            .button-tagdelete
-                                                button(
-                                                    @click="tagDelete(tag)"
-                                                    type="button"
-                                                ).button.button--discard
+                          label(data-text="Добавление тега").form__elem
+                            .form__elem-container
+                              input(type="text" v-model="workCopy.techs").form__elem-input
+                              .form__tooltip(
+                                :class="{'is-error': validation.hasError('workCopy.techs')}"
+                              )
+                                .form__tooltip-text {{validation.firstError('workCopy.techs')}}
+                              ul(
+                                v-if="tags.length>0"
+                              ).form__list.form__list--tags                                    
+                                li(
+                                    v-for="tag in tags"
+                                    v-if="tag"
+                                ).form__item
+                                  button(type="button").button.button--tag {{tag}}
+                                  .button-tagdelete
+                                    button(
+                                        @click="tagDelete(tag)"
+                                        type="button"
+                                    ).button.button--discard
                         .form__row.form__row--btns
                             label(data-text="").form__elem
                             .form__elem-container.form__elem-container--btns
@@ -74,8 +90,27 @@
 import axios from "axios";
 import { mapActions, mapState } from "vuex";
 import { good, bad } from "@/helpers/tooltipDispath";
+import { Validator } from "simple-vue-validator";
 
 export default {
+  mixins: [require("simple-vue-validator").mixin],
+
+  validators: {
+    'workCopy.title'(value) {
+      return Validator.value(value).required("Поле не должно быть пустым");
+    },
+    'workCopy.link'(value) {
+      return Validator.value(value).required("Поле не должно быть пустым");
+    },
+    'workCopy.description'(value) {
+      return Validator.value(value).required("Поле не должно быть пустым");
+    },
+    'workCopy.techs'(value) {
+      return Validator.value(value).required("Поле не должно быть пустым");
+    }
+
+  },
+
   props: {
     workEditedById: Object
   },
@@ -143,6 +178,8 @@ export default {
     },
 
     async editExistedWork() {
+      if ((await this.$validate()) === false) return;
+
       try {
         await this.editWork(this.workCopy);
 
