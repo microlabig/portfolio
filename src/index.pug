@@ -132,36 +132,7 @@ html(lang="ru")
                     
           section#section_5.review
             .container
-              .review#review
-                .review__titlebox
-                  .title
-                    h2.title-elem Что обо мне говорят
-                  .review__navigation
-                    .navigation
-                      button(type="button" @click="previous()").navigation__button.navigation__button--up
-                        +icon('arrow-down', 'navigation__button-icon')                    
-                      button(type="button" @click="next()").navigation__button.navigation__button--down
-                        +icon('arrow-down', 'navigation__button-icon')                
-                .review__block
-                  .review__content                  
-                    flickity(ref="flickity" :options="flickityOptions").review__list
-                      -
-                        var reviews = [
-                          ['Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!', 'Ковальчук Дмитрий', 'Основатель Loftschool'],
-                          ['Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах', 'Владимир Сабанцев', 'Преподаватель'],
-                          ['Этот код выдержит любые испытания', 'Владимир Сабанцев', 'Преподаватель']
-                        ], i = 1;
-                      each review in reviews
-                        .review__item.carousel-cell
-                          .review__description
-                            .review__text #{review[0]}
-                            .review__autor
-                              .avatar.avatar--review
-                                .avatar__block
-                                  +image(`content/reviews/review${i++}.jpg`, 'avatar__image','Аватар')
-                              .review__about
-                                .review__name #{review[1]}
-                                .review__profession #{review[2]} 
+              .review#review              
             
           section#section_6.feedback
             .container

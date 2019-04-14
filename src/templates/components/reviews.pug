@@ -1,0 +1,27 @@
+script(type="text/x-template")#reviews__template
+    .review__widget
+        .review__titlebox
+            .title
+                h2.title-elem Что обо мне говорят
+            .review__navigation
+                .navigation
+                    button(type="button" @click="previous()").navigation__button.navigation__button--up
+                        +icon('arrow-down', 'navigation__button-icon')                    
+                    button(type="button" @click="next()").navigation__button.navigation__button--down
+                        +icon('arrow-down', 'navigation__button-icon')                
+        .review__block
+            .review__content                
+                flickity(ref="flickity" :options="flickityOptions" v-if="Object.keys(reviews).length > 0").review__list                                       
+                    .review__item(
+                        v-for="review in reviews"
+                        :key="review.id"
+                    ).carousel-cell
+                        .review__description
+                            .review__text {{review.text}}
+                            .review__autor
+                                .avatar.avatar--review
+                                    .avatar__block
+                                        img(:src="`https://webdev-api.loftschool.com/${review.photo}`").avatar__image
+                                .review__about
+                                    .review__name {{review.author}}
+                                    .review__profession {{review.occ}}
