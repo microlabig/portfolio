@@ -1,23 +1,23 @@
 import Vue from 'vue';
+import axios from 'axios';
 
 // компонент skill
-const skill = {
+const skillItem = {
     template: "#skill",
     props: {    // регистрируем принимаемые св-ва skillName и skillPercent из компонента skillsRow
-        skillName: String,
-        skillPercent: Number
+        skill: Object
     },
     methods: {
         drawColoredCircle() {
             const circle = this.$refs['color-circle']; //получим атрибут ref
             const dashArray = parseInt(getComputedStyle(circle).getPropertyValue('stroke-dasharray'));
-            
-            const percent = dashArray / 100 * (100 - this.skillPercent);
+
+            const percent = dashArray / 100 * (100 - this.skill.percent);
             circle.style.strokeDashoffset = percent;
         }
     },
     mounted() { // стадия монтирования в DOM-дерево
-        this.drawColoredCircle();        
+        this.drawColoredCircle();
     }
 }
 
@@ -25,14 +25,22 @@ const skill = {
 const skillsRow = {
     template: "#skills-row",
     components: { // положим компонент skill
-        skill
+        skillItem
     },
-    props: {    // регистрируем принимаемое св-во skill из основного Vue-экземпляра
-        skill: Object
+
+    props: {    // регистрируем принимаемое св-во skill из основного Vue-экземпляра        
+        skillList: Object,
+        group: Object
+    },
+
+    computed: {
+        getNameSkill() {
+            return {}
+        }
     }
 }
 
-new Vue ({
+new Vue({
     el: "#skills-component",    //найдем в DOM-nodes элемент с ID="skills-component"
     template: "#skills-list",   //используем шаблон skills-list
     components: {   //в основной Vue-экземпляр положим skillsRow
@@ -40,11 +48,21 @@ new Vue ({
     },
     data() {    // данные
         return {
-            skills: {}
+            skillGroup: {},
+            skillList: {}
         }
     },
-    created() { // стадия создания
-        const data = require("../data/skills.json");
-        this.skills = data;
+
+    async created() { // стадия создания
+       
+        const categories = await axios.get('https://webdev-api.loftschool.com/categories/120')
+            .then(response => {
+                this.skillGroup = { ...response.data };
+            });
+        const skills = await axios.get('https://webdev-api.loftschool.com/skills/120')
+            .then(response => {
+                this.skillList = { ...response.data };
+            });
+         
     }
 })

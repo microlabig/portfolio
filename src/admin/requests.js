@@ -41,7 +41,7 @@ axios.interceptors.response.use(
             // отправим запрос на обновление токена
             throw new Error('Неверное имя пользователя или пароль');
         }
-        //console.log(error.response.status);
+        
     });
 
 

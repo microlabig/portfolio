@@ -66,3 +66,12 @@ mobileMenuBtn.addEventListener('click', e => {
 
     menuMobileVue.$data.showMenu = true;
 }); 
+
+const section1 = document.querySelector('#section_1');
+const section2 = document.querySelector('#section_2');
+const section3 = document.querySelector('#section_3');
+const section4 = document.querySelector('#section_4');
+const section5 = document.querySelector('#section_5');
+const section6 = document.querySelector('#section_6');
+
+//console.log(section4.clientTop);

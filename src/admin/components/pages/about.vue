@@ -62,13 +62,6 @@ export default {
     // метод сортировки принятых скилов в зависимости от id категории
     filterSkillsByCategoryId(categoryId) {
       return this.skills.filter(skill => skill.category === categoryId);
-    },
-
-    addNewSkillGroup() {
-      this.showAddingForm = false;
-    },
-    cancelAddingNewSkillGroup() {
-      console.log(1);
     }
   },
 

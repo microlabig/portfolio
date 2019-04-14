@@ -92,7 +92,6 @@ export default {
 
     removeReview() {
       this.showEditingForm = false;
-      console.log(10);
     }
 
   }
