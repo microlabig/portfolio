@@ -22,7 +22,7 @@ export default {
         // метод добавления тайтла группы
         async addNewSkillGroup({commit}, groupTitle) { 
             // {commit} - метод из store (деструктуризация)
-            try {
+            try {                
                 const response = await this.$axios.post('/categories', {
                     title: groupTitle
                 });                

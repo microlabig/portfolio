@@ -75,8 +75,9 @@
 
     & .form__elem-container {
         display: flex;
-        align-items: center;
-    }
+        align-items: center;   
+        position: relative;     
+    }    
 
     & .form__elem-input:first-child {
         margin-right: 10px;
@@ -89,7 +90,8 @@
 
         @include phones-small {
             width: 50%;
-        }
+        }     
+        
     }
 
     & .form__elem-percent {
@@ -130,6 +132,47 @@
         width: 40px;
         height: 40px;
     }
+
+    
+        & .form__tooltip { 
+            display: initial;
+            position: absolute;
+            
+            padding: 10px 22px;
+            background-color: $error-color;
+
+            top: 100%;
+            left: 0;
+
+            opacity: 0;
+            transition: opacity .3s;
+            &.is-error {
+                opacity: 1;
+            }
+
+            .form__tooltip-text {
+                position: relative;
+                white-space: nowrap;
+                color:$white-color;
+                font-size: 14px;
+                font-weight: $regular;
+            
+                &:before {
+                    content:"";
+                    display: inline-block;
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    background-color: $error-color;
+            
+                    top: -50%;
+                    left: 10%;
+                    transform: translateY(-50%) rotate(45deg) ;
+                }
+            }
+        }
+        
+    
 }
 
 

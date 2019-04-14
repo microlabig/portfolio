@@ -3,7 +3,7 @@
       .container
         .about__title
           .title
-            h2.title Блок «Обо мне»
+            h2.title Блок «Обо мне»            
           div(
             v-if="showAddingForm === false"
             @click="showAddingForm = true"
@@ -13,7 +13,9 @@
         .groups
           ul.groups__list
             li.groups__item.groups__item--addgroup(v-if="showAddingForm")
-              skillsAdd(                
+              skillsAdd(
+                @addSkillGroup="showAddingForm = false"
+                @cancelAddingSkillGroup="showAddingForm = false"           
               )              
             li.groups__item.groups__item--group(
               v-for="category in categories"
@@ -34,11 +36,13 @@ export default {
     skillsAdd: () => import("components/skills-add.vue"),
     skillsGroup: () => import("components/skills-group.vue")
   },
+
   data() {
     return {
       showAddingForm: false
     };
   },
+
   computed: {
     ...mapState("categories", {
       // добавим дополнительное свойство из данных в store 'categories'
@@ -49,16 +53,25 @@ export default {
       skills: state => state.skills
     })
   },
+
   methods: {
     ...mapActions("categories", ["fetchCategories"]),
     ...mapActions("skills", ["fetchSkills"]),
     ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
-    
+
     // метод сортировки принятых скилов в зависимости от id категории
     filterSkillsByCategoryId(categoryId) {
       return this.skills.filter(skill => skill.category === categoryId);
+    },
+
+    addNewSkillGroup() {
+      this.showAddingForm = false;
+    },
+    cancelAddingNewSkillGroup() {
+      console.log(1);
     }
   },
+
   async created() {
     try {
       await this.fetchCategories();
@@ -70,7 +83,7 @@ export default {
     try {
       await this.fetchSkills();
       good(this, "Данные успешно загружены");
-    } catch (error) {      
+    } catch (error) {
       bad(this, error);
     }
   }
