@@ -1,12 +1,13 @@
 
 script(type="text/x-template")#skills-list
-    .widget__skills     
-        ul.skills__list
-            li.skills__item(v-for="group in skillGroup" :key="group.id")
-                skills-row(
-                    :group="group"
-                    :skillList="skillList"
-                )
+    .widget__skills
+        div(v-if="Object.keys(skillGroup).length > 0")     
+            ul.skills__list
+                li.skills__item(v-for="group in skillGroup" :key="group.id")
+                    skills-row(
+                        :group="group"
+                        :skillList="skillList"
+                    )
 
 script(type="text/x-template")#skills-row
     .skills__row

@@ -40,7 +40,7 @@ export default {
       return axios.defaults.baseURL+this.work.photo
     },
     tags() {
-      return this.work.techs.split(' ');
+      return this.work.techs.split(',');
     }
   },
   methods: {

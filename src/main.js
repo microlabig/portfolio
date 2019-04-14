@@ -8,7 +8,8 @@ localStorage.setItem('homePage', location.href); // для запоминани�
 import "./scripts/parallax";
 import "./scripts/reviews";
 import "./scripts/skills";
-import "./scripts/works";
+//import "./scripts/works";
+import "./scripts/worksServer";
 import "./scripts/budda";
 import "./scripts/ajaxBudda";
 import "./scripts/scroll"; 

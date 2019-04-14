@@ -53,7 +53,7 @@
                               )
                                 .form__tooltip-text {{validation.firstError('workCopy.description')}}
                         .form__row.form__row--tags
-                          label(data-text="Добавление тега").form__elem
+                          label(data-text="Добавление тега (разделение запятая \",\")").form__elem
                             .form__elem-container
                               input(type="text" v-model="workCopy.techs").form__elem-input
                               .form__tooltip(
@@ -129,7 +129,7 @@ export default {
     },
 
     tags() {
-      return this.workCopy.techs.split(" ");
+      return this.workCopy.techs.split(",");
     }
   },
 
@@ -193,7 +193,7 @@ export default {
 
     tagDelete(tag) {
       this.tags.splice(this.tags.indexOf(tag), 1);
-      this.workCopy.techs = this.tags.join(" ");
+      this.workCopy.techs = this.tags.join(",");
     },
 
     dropCb(e) {
