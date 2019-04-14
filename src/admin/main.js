@@ -3,6 +3,9 @@ import App from './App.vue';
 import router from './router';
 import store from './store'; 
 import requests from './requests';
+import simpleVueValidator from 'simple-vue-validator';
+
+Vue.use(simpleVueValidator);
 
 store.$axios = requests; // для того, чтобы использовать в store 
 // store - обычный объект => добавим в него еще одно поле 
