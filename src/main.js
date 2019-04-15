@@ -5,6 +5,8 @@ if (process.env.NODE_ENV === "development") {
 
 localStorage.setItem('homePage', location.href); // для запоминания домашнего URL
 
+import "./helpers/consts";
+import "./scripts/scroll"; 
 import "./scripts/parallax";
 import "./scripts/reviews";
 import "./scripts/skills";
@@ -12,4 +14,4 @@ import "./scripts/skills";
 import "./scripts/worksServer";
 import "./scripts/budda";
 import "./scripts/ajaxBudda";
-import "./scripts/scroll"; 
+import "./scripts/scrollmenu"; 

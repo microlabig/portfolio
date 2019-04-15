@@ -29,10 +29,11 @@
 }
 
 .slider__preview-block {
-    overflow: hidden;
+    //overflow: hidden;
     position: relative;    
 
     &:before {
+        z-index: -1;
         content: attr(data-slide);
         position: absolute;
         display: inline-block;

@@ -21,7 +21,7 @@ script(type="text/x-template")#reviews__template
                             .review__autor
                                 .avatar.avatar--review
                                     .avatar__block
-                                        img(:src="`https://webdev-api.loftschool.com/${review.photo}`").avatar__image
+                                        img(:src="`${baseURL}${review.photo}`").avatar__image
                                 .review__about
                                     .review__name {{review.author}}
                                     .review__profession {{review.occ}}

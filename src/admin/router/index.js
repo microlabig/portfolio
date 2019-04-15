@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import routes from '@/router/routes';
 import axios from 'axios';
 import store from '@/store';
+import {CONSTS} from '../../helpers/consts'
 
 Vue.use(VueRouter); // укажим Vue использовать методы Vuerouter
 
@@ -11,7 +12,7 @@ const router = new VueRouter({ routes });
 //-----
 // защитим админку путем проверки авторизации пользователя
 //-----
-const baseURL = "https://webdev-api.loftschool.com/";
+const baseURL = CONSTS.BASEURL;
 const guard = axios.create({ baseURL }); // создадим новый экземпляр axios и положим в него baseURL
 
 router.beforeEach(async (to, from, next) => {

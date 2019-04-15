@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import {CONSTS} from '../helpers/consts';
 
 // ----------
 //  теги tags
@@ -18,6 +19,11 @@ const thumbs = {
     props: { // для "связи" данных из data() экземпляра в шаблон
         works: Array,
         currentWork: Object
+    },
+    data() {
+        return {
+            baseURL: CONSTS.BASEURL
+        }        
     }
 };
 
@@ -41,6 +47,11 @@ const display = {
         works: Array, // массив works 
         currentWork: Object,
         currentIndex: Number
+    },
+    data() {
+        return {
+            baseURL: CONSTS.BASEURL
+        }
     },
     computed: {
         // перевернем список работ по вертикали (т.к. не по макету)
@@ -82,7 +93,7 @@ new Vue ({
     data() {    // для данных
         return {
             works: [],   // для чтения JSON-файла works.json
-            currentIndex: 0 // индекс текущей работы
+            currentIndex: 0 // индекс текущей работы            
         }
     },
     computed: { // для работы только с данными из data()

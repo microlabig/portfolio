@@ -5,7 +5,11 @@ script(type="text/x-template")#navigation
                 v-for="item in menuList"
                 :key="item.href"
             ).menu__item
-                a(:href="item.href" title="item.text").menu__link {{item.text}}  
+                a(
+                    href="#" 
+                    :title="item.text"
+                    @click.prevent="scrollToSection(item.href)"
+                ).menu__link {{item.text}}  
 
 script(type="text/x-template")#navigation--footer
     .menu
@@ -14,38 +18,43 @@ script(type="text/x-template")#navigation--footer
                 v-for="item in menuList"
                 :key="item.href"
             ).menu__item
-                a(:href="item.href" title="item.text").menu__link {{item.text}} 
+                a(
+                    href="#" 
+                    :title="item.text"
+                    @click.prevent="scrollToSection(item.href)"
+                ).menu__link {{item.text}}
 
 script(type="text/x-template")#navigation--mobile
-    .menu
+    .menu#menuMobile
         .menu__mobile(
             v-if="showMenu"
         )
             .menu__wrapper
                 .menu__left
                     .menu__logo
-                        h2.menu__title ИБ
-                
-                .menu__right(
-                    v-if="showMenu"
-                )                
-                    //:class="{showed: showMenu}"
+                        h2.menu__title ИБ                
+                .menu__right                
                     button(type="button").menu__close(
                         @click="showMenu = false"
                     )
                     transition-group(
-                        v-if="showMenu"
-                        tag="ul" 
+                        tag="ul"
                         name="slide"
                     ).menu__list
-                        li(
+                        list-item(
                             v-for="item in menuList"
                             :key="item.href"
-                        ).menu__item
-                            a(
-                                :href="item.href" 
-                                title="item.text"
-                                @click="showMenu = false"
-                            ).menu__link {{item.text}} 
+                            :item="item"
+                            :showMenu="showMenu"
+                            @scroll="scrollToSection"
+                        ).menu__item                            
                     include ./socials
-                    
+
+script(type="text/x-template")#list-item
+    //-div.slideInUpRight
+    div
+        a(
+            href="#" 
+            :title="item.text"
+            @click.prevent="$emit('scroll', item.href)"            
+        ).menu__link {{item.text}} 

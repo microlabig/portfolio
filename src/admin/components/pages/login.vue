@@ -69,14 +69,14 @@ export default {
 
   data() {
     return {
-      user: {
+      /* user: {
         name: "bezmestin112018",
         password: "29031988"
-      },
-      /* user: {
+      }, */
+      user: {
         name: "",
         password: ""
-      }, */
+      },
       disabledProp: false
     }
   },

@@ -1,4 +1,5 @@
 import { packReviewToFormData } from '@/helpers/formDataPack';
+import {CONSTS} from '../../../helpers/consts';
 
 export default {
     namespaced: true,
@@ -36,7 +37,7 @@ export default {
         async fetchReviews({commit}) { 
             // {commit} - метод из store (деструктуризация)
             try {
-                const response = await this.$axios.get('/reviews/120');
+                const response = await this.$axios.get(`/reviews/${CONSTS.MY_USER_ID}`);
                 commit('SET_ALL_REVIEWS', response.data.reverse()); // вызовим мутацию и получим ответ в response.data
                 return response;
             } catch (error) {

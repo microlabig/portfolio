@@ -1,3 +1,5 @@
+import {CONSTS} from '../../../helpers/consts';
+
 export default {
     namespaced: true, // для импорта по модулям store
     state: {
@@ -32,7 +34,7 @@ export default {
         // метод запроса скилов с сервера и передача их в store
         async fetchSkills({commit}, skill) {
             try {
-              const response = await this.$axios.get('/skills/120', skill); // 120 - мой id  на сервере
+              const response = await this.$axios.get(`/skills/${CONSTS.MY_USER_ID}`, skill); // 120 - мой id  на сервере
               commit('SET_SKILLS', response.data);
               return response;
             } catch (error) {

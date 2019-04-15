@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
+import {CONSTS} from '../helpers/consts';
 
 // ----------
 //  теги tags
@@ -19,6 +20,11 @@ const thumbs = {
     props: { // для "связи" данных из data() экземпляра в шаблон
         works: Array,
         currentWork: Object
+    },
+    data() {
+        return {
+            baseURL: CONSTS.BASEURL
+        }
     }
 };
 
@@ -48,6 +54,11 @@ const display = {
         reversedWorks() {
             const works = [...this.works]; // скопируем массив, т.к. он передается по ссылке
             return works.reverse();
+        }
+    },
+    data() {
+        return {
+            baseURL: CONSTS.BASEURL
         }
     }
 };
@@ -138,7 +149,7 @@ new Vue ({
         }
     },
     async created() { // на стадии создания (не DOM-дерево)
-        const worksGroup = await axios.get('https://webdev-api.loftschool.com/works/120')
+        const worksGroup = await axios.get(CONSTS.BASEURL+'works/'+CONSTS.MY_USER_ID)
             .then(response => {
                 this.works = [...response.data];
             });

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
+import {CONSTS} from '../helpers/consts';
 
 // компонент skill
 const skillItem = {
@@ -55,11 +56,11 @@ new Vue({
 
     async created() { // стадия создания
        
-        const categories = await axios.get('https://webdev-api.loftschool.com/categories/120')
+        const categories = await axios.get(CONSTS.BASEURL+'categories/'+CONSTS.MY_USER_ID)
             .then(response => {
                 this.skillGroup = { ...response.data };
             });
-        const skills = await axios.get('https://webdev-api.loftschool.com/skills/120')
+        const skills = await axios.get(CONSTS.BASEURL+'skills/'+CONSTS.MY_USER_ID)
             .then(response => {
                 this.skillList = { ...response.data };
             });

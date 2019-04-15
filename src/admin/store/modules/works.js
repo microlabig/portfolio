@@ -1,4 +1,5 @@
 import {packWorkToFormData} from '@/helpers/formDataPack';
+import {CONSTS} from '../../../helpers/consts';
 
 export default {
     namespaced: true,
@@ -36,7 +37,7 @@ export default {
         async fetchWorks({commit}) { 
             // {commit} - метод из store (деструктуризация)
             try {
-                const response = await this.$axios.get('/works/120');
+                const response = await this.$axios.get(`/works/${CONSTS.MY_USER_ID}`);
                 commit('SET_ALL_WORKS', response.data.reverse()); // вызовим мутацию и получим ответ в response.data
                 return response;
             } catch (error) {

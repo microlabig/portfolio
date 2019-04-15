@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Flickity from 'vue-flickity';
 import axios from 'axios';
+import {CONSTS} from '../helpers/consts';
 
 new Vue({
     el:"#review",
@@ -20,12 +21,13 @@ new Vue({
                 groupCells: window.screen.width > 948 ? 2 : 1,
                 //contain: document.querySelector('html').clientWidth > 320 ? true : false,
             },
-            reviews: {}
+            reviews: {},
+            baseURL: CONSTS.BASEURL
         }
     },
 
     async created() { // стадия создания       
-        const items = await axios.get('https://webdev-api.loftschool.com/reviews/120')
+        const items = await axios.get(CONSTS.BASEURL+'reviews/'+CONSTS.MY_USER_ID)
             .then(response => {
                 this.reviews = { ...response.data };
             });          

@@ -1,77 +1,128 @@
-import Vue from 'vue';
+/* -------------------------------
 
-const mobileMenuBtn = document.querySelector('#mobile-nav');
+    Скролл к определенной секции и ее анимация
+    http://webupblog.ru/animatsiya-pri-prokrutke-stranitsy-na-javascript-i-css/
 
-new Vue ({
-    el: "#navigation_menu",    
-    template: "#navigation",   
-    
-    data() {    // данные
-        return {
-            menuList: [
-                { text:'Главная', href: '#section_1' },
-                { text:'Обо мне', href: '#section_2' },
-                { text:'Навыки', href: '#section_3' },
-                { text:'Работы', href: '#section_4' },
-                { text:'Отзывы', href: '#section_5' },
-                { text:'Связаться', href: '#section_6' }
-            ]           
-        }
+   ------------------------------- */
+
+// Определение частично видимых элементов
+/* 
+В качестве аргумента функции нам необходимо передать элемент. Если элемент частично видимый, 
+функция вернет true. Иначе, функция вернет false.
+*/
+function isPartiallyVisible(el) {
+    let elementBoundary = el.getBoundingClientRect();
+
+    let top = elementBoundary.top;
+    let bottom = elementBoundary.bottom;
+    let height = elementBoundary.height;
+
+    return ((top + height >= 0) && (height + window.innerHeight >= bottom));
+}
+
+// Определение полностью видимых элементов
+/* 
+Данная функция работает аналогично к isPartiallyVisible функции, которая была описана ранее. 
+Если элемент определился, как полностью видимый, то функция isFullyVisible вернет значение true, 
+если же данный элемент оказался частично видимым для пользователя, то наша функция вернет значение false.
+*/
+function isFullyVisible(el) {
+    let elementBoundary = el.getBoundingClientRect();
+
+    let top = elementBoundary.top;
+    let bottom = elementBoundary.bottom;
+
+    return ((top >= 0) && (bottom <= window.innerHeight));
+}
+
+// создадим список элементов, для которых будем запускать их анимацию
+const sectionText = 'section';
+const sectionLength = 6;
+const sectionId = [];
+const sections = [];
+
+// собрал ID всех секций
+for (let i = 1; i <= sectionLength; i++) {
+    sectionId.push(sectionText + '_' + i);
+}
+// собрал все секции по их id в один массив
+sectionId.forEach(id => {
+    const s = document.getElementById(id);
+    sections.push(s);
+});
+
+
+let isScrolling = false;
+
+// вызовем throttleScroll - 
+window.addEventListener("scroll", throttleScroll, false);
+
+function throttleScroll(e) {
+    if (isScrolling == false) {
+        /*
+        window.requestAnimationFrame указывает браузеру на то, что вы хотите произвести анимацию, 
+        и просит его запланировать перерисовку на следующем кадре анимации. 
+        В качестве параметра метод получает функцию, которая будет вызвана перед перерисовкой.
+        
+        Вы должны вызывать этот метод всякий раз, когда готовы обновить анимацию на экране, 
+        чтобы запросить планирование анимации. В большинстве браузеров в фоновых вкладках или 
+        скрытых <iframe>, вызовы requestAnimationFrame() приостанавливаются, для того чтобы 
+        повысить производительность и время работы батареи.
+        Callback метод будет вызван с единственным аргументом, содержащим время, на которое 
+        запланирована анимация.
+        */
+        window.requestAnimationFrame(function () { // привязать данные параметры к частоте обновления кадров страницы
+            scrolling(e);
+            isScrolling = false;
+        });
     }
-   
-});
+    isScrolling = true;
+}
 
-new Vue ({
-    el: "#navigation_menu--footer",    
-    template: "#navigation--footer",   
-    
-    data() {    // данные
-        return {
-            menuList: [
-                { text:'Главная', href: '#section_1' },
-                { text:'Обо мне', href: '#section_2' },
-                { text:'Навыки', href: '#section_3' },
-                { text:'Работы', href: '#section_4' },
-                { text:'Отзывы', href: '#section_5' },
-                { text:'Связаться', href: '#section_6' }
-            ]           
+// если документ загружен то также выховим функцию scrolling
+document.addEventListener("DOMContentLoaded", scrolling, false);
+
+function scrolling(e) {
+    sections.forEach(s => {
+        if (isFullyVisible(s)) {
+            s.classList.add('slideInLeft');
         }
+    });    
+}
+
+/* document.addEventListener("DOMContentLoaded", scrolling, false);
+sections.forEach(s => {
+        if (isFullyVisible(s)) {
+            console.log(s);
+        }
+    });
+function scrolling(e) {
+
+    if (isPartiallyVisible(firstBox)) {
+      firstBox.classList.add("active");
+
+      document.body.classList.add("colorOne");
+      document.body.classList.remove("colorTwo");
+    } else {
+      document.body.classList.remove("colorOne");
+      document.body.classList.remove("colorTwo");
     }
-   
-});
 
+    if (isFullyVisible(secondBox)) {
+      secondBox.classList.add("active");
 
-const menuMobileVue = new Vue ({
-    el: "#navigation_menu--mobile",    
-    template: "#navigation--mobile",   
-    
-    data() {    // данные
-        return {
-            menuList: [
-                { text:'Главная', href: '#section_1' },
-                { text:'Обо мне', href: '#section_2' },
-                { text:'Навыки', href: '#section_3' },
-                { text:'Работы', href: '#section_4' },
-                { text:'Отзывы', href: '#section_5' },
-                { text:'Связаться', href: '#section_6' }
-            ],
-            showMenu: false,
-            showH1: true   
-        }
-    }   
-});
+      document.body.classList.add("colorTwo");
+      document.body.classList.remove("colorOne");
+    }
 
-mobileMenuBtn.addEventListener('click', e => {
-    e.preventDefault();
+    for (var i = 0; i < listItems.length; i++) {
+      var listItem = listItems[i];
 
-    menuMobileVue.$data.showMenu = true;
-}); 
-
-const section1 = document.querySelector('#section_1');
-const section2 = document.querySelector('#section_2');
-const section3 = document.querySelector('#section_3');
-const section4 = document.querySelector('#section_4');
-const section5 = document.querySelector('#section_5');
-const section6 = document.querySelector('#section_6');
-
-//console.log(section4.clientTop);
+      if (isPartiallyVisible(listItem)) {
+        listItem.classList.add("active");
+      } else {
+        listItem.classList.remove("active");
+      }
+    }
+  }
+ */

@@ -1,10 +1,11 @@
 import axios from 'axios';
+import {CONSTS} from "../helpers/consts";
 
 // возьмем токен из localstorage браузера
 const token = localStorage.getItem('token');
 
 // базовый URL
-axios.defaults.baseURL = "https://webdev-api.loftschool.com/";
+axios.defaults.baseURL = CONSTS.BASEURL;
 // заголовок запроса
 axios.defaults.headers['Authorization'] = `Bearer ${token}`;
 

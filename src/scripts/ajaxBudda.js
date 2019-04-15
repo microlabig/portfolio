@@ -1,3 +1,5 @@
+import {CONSTS} from '../helpers/consts';
+
 ;(function () {
     /* 
         Модалка
@@ -66,10 +68,7 @@
         const ajax = new Promise(function (resolve) {
             // отправляем запрос на сервер
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://webdev-api.loftschool.com/sendmail/");
-            //xhr.open("POST", "https://webdev-api.loftschool.com/");
-            //xhr.open("POST", "//jwt.io");
-            //xhr.open("POST", "//jsonplaceholder.typicode.com/posts/");            
+            xhr.open("POST", CONSTS.BASEURL);           
             xhr.responseType = "json";
             xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest"); //добавлям заголовок, чтобы не было ошибки 302       
 

@@ -24,7 +24,7 @@ script(type="text/x-template")#slider-display
     .slider__preview        
         .slider__preview-block(:data-slide="currentIndex + 1")
             .slider__preview-image
-                img(:src="`https://webdev-api.loftschool.com/${currentWork.photo}`" alt="Крупный план").slider__preview-icon
+                img(:src="`${baseURL}${currentWork.photo}`" alt="Крупный план").slider__preview-icon
             //- прокидываем внутрь массив works из data() основного компонента в thumbs
             thumbs(
                 :works="reversedWorks",
@@ -49,7 +49,7 @@ script(type="text/x-template")#slider-thumbs
                 @click.prevent="$emit('clickthumbs',work.id)"            
             )                
                 .slider__image                    
-                    img(:src="`https://webdev-api.loftschool.com/${work.photo}`" alt="Превью").slider__image-icon
+                    img(:src="`${baseURL}${work.photo}`" alt="Превью").slider__image-icon
 
 //-  ---------------------------------
 //-  кнопки навигации btns
