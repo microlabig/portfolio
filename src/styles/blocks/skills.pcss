@@ -119,6 +119,10 @@
 .skills__row {
     margin-right: -50px;
     margin-left: -110px;
+
+    @include tablets {  
+        margin:0;
+    }
 }
 
 
@@ -149,8 +153,8 @@
     }
 
     @include phones-small {         
-        flex-wrap: wrap;
-        width: 102%;
+        //flex-wrap: wrap;
+        //width: 102%;
     }
 }
 
@@ -169,10 +173,13 @@
         margin-right: 20px;
     }
 
-
     @include phones-small {         
         margin-right: 2%;
         margin-bottom: 2%;
+
+        &:last-child {
+            margin-bottom: 0; 
+        }
     }
 }
 

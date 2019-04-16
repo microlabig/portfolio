@@ -38,9 +38,9 @@ html(lang="ru")
                     .mobile-nav__line
                   
               .hero__block
-                .hero__profession
+                .hero__profession.animated__s1-1
                   .hero__profession-elem Личный сайт #[span.span-block] веб-разработчика
-                .hero__name
+                .hero__name.animated__s1-2
                   h1.hero__name-elem Игорь Безместин  
               .hero__scroll
                 .scroll__block            
@@ -49,9 +49,9 @@ html(lang="ru")
           section#section_2.about
             .container.about-container
               .avatar
-                .avatar__block
+                .avatar__block.animated__s2-1
                   +image(`content/user.jpg`, 'avatar__image', 'Аватар')                             
-                .avatar__info
+                .avatar__info.animated__s2-2
                   table.avatar__info-table
                     -
                       var informations = [
@@ -136,28 +136,28 @@ html(lang="ru")
             
           section#section_6.feedback
             .container
-              .title
+              .title.animated__s6-1
                 h2.title__elem Связаться со мной
               form.form#form
                 .form__wrapper                  
-                  .form__row                   
-                    label(data-text="Введите ваше имя").form__elem.name
+                  .form__row
+                    label(data-text="Введите ваше имя").form__elem.name.animated__s6-2
                       .form__elem-container.form__elem-container--user                                                
                         input(type="text" placeholder="Ковальчук Дмитрий" name="name" required).form__elem-input
                         .form__tooltip
                           .form__tooltip-text 
-                    label(data-text="Введите ваш email").form__elem.email
+                    label(data-text="Введите ваш email").form__elem.email.animated__s6-3
                       .form__elem-container.form__elem-container--envelope                        
                         input(type="email" placeholder="loftschool@study.com" name="email" required).form__elem-input
                         .form__tooltip
                           .form__tooltip-text 
-                  .form__row.form__row--textarea 
+                  .form__row.form__row--textarea
                     lavel(data-text="Сообщение к письму").form__elem.comments
                       .form__elem-container.form__elem-container--message                        
                         textarea(type="textarea" name="comments" required placeholder="Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса").form__elem-input.form__elem-input--textarea
                         .form__tooltip
                           .form__tooltip-text 
-                  .form__row
+                  .form__row.animated__s6-4
                     lavel.form__elem.form__elem--button
                       button(type="submit").form__elem-button Отправить     
 

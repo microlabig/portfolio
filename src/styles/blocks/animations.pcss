@@ -105,43 +105,131 @@
 }
 
 
+/*
+    Анимации для секций
+*/
 
+$delayAnimation: .8s;
+
+.opacityZero {
+    opacity: 0;
+}
+
+.opacityOne {
+    opacity: 1;
+}
 
 @keyframes slideInUpRight {
     from {
         transform: translate3d(100%, -50%, 0);
-        visibility: visible;
         opacity: 0;
     }
 
     to {
         transform: translate3d(0, 0, 0);
-        visibility: visible;
         opacity: 1;
     }    
 }
 .slideInUpRight {
-    animation: slideInUpRight .7s;
+    animation: slideInUpRight $delayAnimation;
 }
 
-/*
-    Анимации для секций
-*/
+@keyframes slideInUp {
+    from {
+        transform: translate3d(0, -100%, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }    
+}
+.slideInUp {
+    animation: slideInUp $delayAnimation;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0, 100%, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }    
+}
+.slideInDown {
+    animation: slideInDown $delayAnimation;
+}
 
 @keyframes slideInLeft {
     from {
-        transform: translateXY(-100%, 0);
-        visibility: visible;
+        transform: translate3d(-100%, 0, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }    
+}
+.slideInLeft {
+    animation: slideInLeft $delayAnimation;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translate3d(100%, 0, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }    
+}
+.slideInRight {
+    animation: slideInRight $delayAnimation;
+}
+
+
+@keyframes fadeInDown {
+    from {
+        transform: translateXY(100%, 0);
         opacity: 0;
     }
 
     to {
         transform: translateXY(0, 0);
-        visibility: visible;
         opacity: 1;
     }    
 }
-.slideInLeft {
-    animation: bounceIn 2s;
+.fadeInDown {
+    animation: fadeInDown $delayAnimation;
 }
 
+@keyframes slideInRight3d {
+    from {
+        transform: translate3d(100%, 0, -100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3D(0, 0, 0);
+        opacity: 1;
+    }    
+}
+.slideInRight3D {
+    animation: slideInRight3D $delayAnimation;
+}
+
+
+.zoomInDown {
+    animation: zoomInDown $delayAnimation;
+}
+
+.zoomInUp {
+    animation: zoomInUp $delayAnimation;
+}
