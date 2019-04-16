@@ -1,37 +1,18 @@
 import { animatedElements } from './scroll-objects';
 
-/* const promise = new Promise(resolve => {
-  setTimeout(e => {
-    window.addEventListener('load', e => { resolve() });
-  }, 100);
-})
-  .then(() => { scroll() });
-
-const scroll = () => { */
-/* 
-  while (document.readyState !== "complete") {}
-console.log(); */
-/* var is_loaded = false;
-window.addEventListener('load', e => { is_loaded = true });
- */
+/*
+    Для включения анимации отредактируйте файлы:
+    1) ./scripts/scroll.js (добавление секций в switch case, sectionLength (общее число секций)
+    2) ./style/blocks/opacityZero.pcss (для включения элемента в opacity 0)
+    3) ./scripts/scrollObjects.js (список анимируемых объектов)
+*/
 
 
- /*  // навесим opacity 0 на все элементы
-  //while (document.readyState !== "complete") {}
-  animatedElements.forEach(array => {
-    array.forEach(element => {
-      setTimeout(e => {        
-        let el = document.querySelector(element);
-        el.classList.add('opacityZero');        
-      }, 1000);
-    });
-  }); */
-
-  const DELAY_ANIMATION = 300;
+  const DELAY_ANIMATION = 300; // задержка анимации
 
   // создадим список элементов, для которых будем запускать их анимацию
   const sectionText = 'section';
-  const sectionLength = 6;
+  const sectionLength = 6; // общее число секций
   const sectionId = [];
   const sections = [];
 
@@ -172,6 +153,12 @@ window.addEventListener('load', e => { is_loaded = true });
           // section_1 hero            
           case 0:
             startAnimation(currentElements, 'slideInLeft', [
+              {
+                animation: 'slideInLeft'
+              },
+              {
+                animation: 'slideInRight'
+              },          
               {
                 animation: 'slideInUp'
               },

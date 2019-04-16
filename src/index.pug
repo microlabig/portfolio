@@ -6,12 +6,13 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Portfolio | Главная
+    title Portfolio | Главная    
   body
     .wrapper
+           
       main.maincontent          
 
-        .wrappersections.wrappersections--home
+        .wrappersections.wrappersections--home.animation
           section.parallax            
             .parallax__layer.parallax__layer--bg
               +image('content/parallax/mountain/bg.jpg', 'parallax__image-bg', 'Изображение')
@@ -24,13 +25,13 @@ html(lang="ru")
           section#section_1.fullscreen-section.hero
             .container.hero-container
               header.header
-                .header__logo
+                .header__logo.animated__s1-1
                   .logo
                     h2.logo__title ИБ
                 .header__menu
                   nav#navigation_menu                  
                       
-                .header__social
+                .header__social.animated__s1-2
                   include ./templates/components/socials
                                 
                 #mobile-nav.mobile-nav
@@ -38,9 +39,9 @@ html(lang="ru")
                     .mobile-nav__line
                   
               .hero__block
-                .hero__profession.animated__s1-1
+                .hero__profession.animated__s1-3
                   .hero__profession-elem Личный сайт #[span.span-block] веб-разработчика
-                .hero__name.animated__s1-2
+                .hero__name.animated__s1-4
                   h1.hero__name-elem Игорь Безместин  
               .hero__scroll
                 .scroll__block            

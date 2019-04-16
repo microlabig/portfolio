@@ -1,7 +1,15 @@
+/*
+    Для включения анимации отредактируйте файлы:
+    1) ./scripts/scroll.js (добавление секций в switch case, sectionLength (общее число секций)
+    2) ./style/blocks/opacityZero.pcss (для включения элемента в opacity 0)
+    3) ./scripts/scrollObjects.js (список анимируемых объектов)
+*/
+
 export const animatedElements = [
     // section_1 hero
     [
-        '.animated__s1-1', '.animated__s1-2'
+        '.animated__s1-1', '.animated__s1-2',
+        '.animated__s1-3', '.animated__s1-4'
     ],
     // section_2 about
     [

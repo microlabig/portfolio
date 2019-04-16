@@ -21,6 +21,11 @@ const thumbs = {
         works: Array,
         currentWork: Object
     },
+    computed: {
+        splicedWorks() {
+            return window.screen.width < 1200 ? [...this.works].splice(0,3) : this.works;         
+        }
+    },
     data() {
         return {
             baseURL: CONSTS.BASEURL
@@ -94,7 +99,8 @@ new Vue ({
     data() {    // для данных
         return {
             works: [],   // для чтения JSON-файла works.json
-            currentIndex: 0 // индекс текущей работы
+            currentIndex: window.screen.width < 1200 ? 1 : 0, // индекс текущей работы
+            idArray: []
         }
     },
     computed: { // для работы только с данными из data()
@@ -128,30 +134,115 @@ new Vue ({
         handleSlide(direction) {
             switch (direction) {
                 case 'next':
+                    /* const lastItem = this.works[this.works.length-1];
+                    this.works.unshift(lastItem);
+                    this.works.pop(); */
+                    
                     this.currentIndex++;
                     break;
                 case 'prev':
+                    /* this.works.push(this.works[0]);
+                    this.works.shift();
+                     */
                     this.currentIndex--;
                     break;
             }
         },
         //обработка нажатий на миниатюры
         handleClickThumbs(currentIDthumbs) {
-            let arr = [], min = 0, i=0;
-            for (let work in this.works) {                
-                arr.push(this.works[work].id);
+            /*           
+            //console.log(currentIDthumbs);
+            let curr = 0;
+            let counter = 0;
+            this.works.forEach( work => {
+                if (work.id === currentIDthumbs) {
+                    curr = counter;
+                    return
+                }
+                counter++;
+            });
+
+            if (this.currentIndex === curr) {
+                return                
             }
-            min = arr[0];
-            for (i=1; i< arr.length-1; i++) {
-                if (arr[i] < min) min = arr[i];
-            }            
-            this.currentIndex = currentIDthumbs-min;  
+
+            //if (counter === curr) return;
+            console.log(counter,curr);
+            
+
+            let a = [];
+            this.works.forEach( work => {
+                a.push(work.id);
+            });
+            //console.log('works '+a);
+            
+
+            let Arr1 = [...this.works].splice(0,curr-1);
+            
+            let b = [];
+            Arr1.forEach( work => {
+                b.push(work.id);
+            });
+            console.log('Arr1 '+b);
+                        
+            let Arr2 = [...this.works].splice(curr-1,this.works.length-1);
+
+            let c = [];
+            Arr2.forEach( work => {
+                c.push(work.id);
+            });
+            console.log('Arr2 '+c);
+
+
+            let d = [];
+            let Arr = [];            
+            Arr2.forEach( work => {
+                Arr.push(work);
+            });
+            Arr1.forEach( work => {
+                Arr.push(work);
+            });
+
+            Arr.forEach( work => {
+                d.push(work.id);
+            });
+            console.log('Arr '+d);
+
+
+            this.works = [...Arr]; */
+
+
+            let id = 0;
+
+            this.idArray.forEach( element => {
+                if (element.id === currentIDthumbs) {
+                    id = element.index;
+                    return;
+                }
+            });
+
+            this.currentIndex = id;
+            
         }
     },
     async created() { // на стадии создания (не DOM-дерево)
         const worksGroup = await axios.get(CONSTS.BASEURL+'works/'+CONSTS.MY_USER_ID)
             .then(response => {
                 this.works = [...response.data];
+            });
+            
+            // составим вспомогательный массив соответствующий work.id 
+            // для кликов на thumbs
+            let c = 0;
+            const obj = {
+                index: 0,
+                id: 0                
+            }
+            this.works.forEach(work => {               
+                obj.index = c;
+                c++;
+                obj.id = work.id;
+                this.idArray.push({...obj});
             });
     }
 });
