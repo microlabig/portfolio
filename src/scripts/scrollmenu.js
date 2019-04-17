@@ -161,3 +161,16 @@ mobileMenuBtn.addEventListener('click', e => {
     e.preventDefault();
     menuMobileVue.$data.showMenu = true;
 });
+
+
+//--------------
+//кнопка скролл
+//--------------
+
+const scrollButton = document.querySelector('.scroll__block');
+
+const sectionAbout = document.querySelector('#section_2');
+
+scrollButton.addEventListener('click', e => {
+    sectionAbout.scrollIntoView({ behavior: "smooth" });
+});

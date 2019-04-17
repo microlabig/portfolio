@@ -33,7 +33,7 @@
                 }
                         
             for (let i=0; i<layers.length; i++) {
-                if (i===1 || i===2 || i===5 || i===6) { // 1 - горы, 2 - будда, 5 - облако под формой, 6 - облако слева от будды
+                if (i===2 || i===5 || i===6) { // 1 - горы, 2 - будда, 5 - облако под формой, 6 - облако слева от будды
                     currPos.x = e.clientX;
                     currPos.y = e.clientY;
                     divider = layers[i].dataset.speed;

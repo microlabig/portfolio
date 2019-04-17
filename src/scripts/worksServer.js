@@ -126,7 +126,6 @@ new Vue ({
             return data.map( item=>{ // метод map возвращает новый массив из перебранных и переработанных callback-функцией элементов массива data
                 const requiredPic = require(`../images/content/work/${item.photo}`);
                 item.photo = requiredPic;
-
                 return item;
             })
         }, */
@@ -151,8 +150,7 @@ new Vue ({
         //обработка нажатий на миниатюры
         handleClickThumbs(currentIDthumbs) {
             /*           
-            //console.log(currentIDthumbs);
-            let curr = 0;
+             let curr = 0;
             let counter = 0;
             this.works.forEach( work => {
                 if (work.id === currentIDthumbs) {
@@ -160,56 +158,13 @@ new Vue ({
                     return
                 }
                 counter++;
-            });
+            });            
 
-            if (this.currentIndex === curr) {
-                return                
-            }
-
-            //if (counter === curr) return;
-            console.log(counter,curr);
             
-
-            let a = [];
-            this.works.forEach( work => {
-                a.push(work.id);
-            });
-            //console.log('works '+a);
-            
-
-            let Arr1 = [...this.works].splice(0,curr-1);
-            
-            let b = [];
-            Arr1.forEach( work => {
-                b.push(work.id);
-            });
-            console.log('Arr1 '+b);
-                        
-            let Arr2 = [...this.works].splice(curr-1,this.works.length-1);
-
-            let c = [];
-            Arr2.forEach( work => {
-                c.push(work.id);
-            });
-            console.log('Arr2 '+c);
-
-
-            let d = [];
-            let Arr = [];            
-            Arr2.forEach( work => {
-                Arr.push(work);
-            });
-            Arr1.forEach( work => {
-                Arr.push(work);
-            });
-
-            Arr.forEach( work => {
-                d.push(work.id);
-            });
-            console.log('Arr '+d);
-
-
-            this.works = [...Arr]; */
+            for (let i=0; i < curr; i++) {
+                let zeroElement = this.works.shift(); 
+                this.works.push(zeroElement);
+            } */
 
 
             let id = 0;
@@ -246,6 +201,3 @@ new Vue ({
             });
     }
 });
-
-
-
