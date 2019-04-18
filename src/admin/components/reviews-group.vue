@@ -3,7 +3,7 @@
         .reviews__autor        
             .reviews__autor-left
                 .avatar
-                    .avatar__block
+                    .avatar__block.avatar__block--reviews
                         img(:src="`${baseURL}${review.photo}`" alt="Аватар").avatar__image
             .reviews__autor-right
                 .reviews__name {{review.author}}

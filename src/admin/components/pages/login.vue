@@ -20,7 +20,7 @@
                 input(
                   v-model="user.name"
                   type="text" 
-                  placeholder="Terminator_2000" 
+                  placeholder="Ваше имя" 
                 ).form__elem-input
                 .form__tooltip(
                   :class="{show: validation.hasError('user.name')}"
@@ -34,7 +34,7 @@
                 input(
                   v-model="user.password"
                   type="password" 
-                  placeholder="••••••••••"
+                  placeholder="Пароль"
                 ).form__elem-input
                 .form__tooltip(
                   :class="{show: validation.hasError('user.password')}"
@@ -69,14 +69,14 @@ export default {
 
   data() {
     return {
-      /* user: {
+      user: {
         name: "bezmestin112018",
         password: "29031988"
-      }, */
-      user: {
+      },
+      /* user: {
         name: "",
         password: ""
-      },
+      }, */
       disabledProp: false
     }
   },

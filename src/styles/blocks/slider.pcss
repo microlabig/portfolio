@@ -12,13 +12,14 @@
     position: relative; 
     flex-shrink: 0;   
     z-index: 1;   
-
+    width: 70%;
     margin-right: 11%;
 
     @include desktop { 
         margin-right: 10%;
     }
     @include tablets { 
+        width: 100%;
         margin-right: 8.7%;
         margin-bottom: 8%;
     }
@@ -64,21 +65,21 @@
 .slider__preview-image {
     overflow: hidden;
     width: 100%;
-    max-width: 975px;
+    //max-width: 975px;
     max-height: 549px;
 
     @include desktop { 
-        max-width: 625px;
+        //max-width: 625px;
         max-height: 355px;
     }
 
     @include tablets { 
-        max-width: 631px;
+        //max-width: 631px;
         max-height: 357px;
     }
 
     @include phones-small { 
-        max-width: 328px;
+        //max-width: 328px;
         max-height: 184px;
     }
 }
@@ -155,6 +156,11 @@
 //------- number --------
 .slider__content{
     position: relative;
+    width: 30%;
+
+    @include tablets {
+        width: 100%;
+    }
 
     @include phones-small {
         width: 80%;

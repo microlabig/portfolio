@@ -20,6 +20,7 @@
   "red-color": "#b13333",
 
   "bp-desktop-hd": "1800px",
+  "bp-desktop1280": "1280px",
   "bp-desktop": "1200px",  
   "bp-tablets": "768px",
   "bp-tablets-small": "655px",

@@ -25,7 +25,7 @@ export default {
                 // условие:
                 // 1 - есть ли поля в объекте user
                 // 2 - является ли вообще типом Object
-                Object.keys(userObj) === 0 && userObj.constructor === Object;
+                Object.keys(userObj).length === 0 && userObj.constructor === Object;
             return userObjIsEmpty === false; // если "залогинен пользователь"
         }
     }
