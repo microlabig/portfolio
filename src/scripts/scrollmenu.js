@@ -164,6 +164,7 @@ mobileMenuBtn.addEventListener('click', e => {
 });
 
 
+
 //--------------
 //кнопка скролл
 //--------------
@@ -175,5 +176,37 @@ const sectionAbout = document.querySelector('#section_2');
 scrollButton.addEventListener('click', e => {
     sectionAbout.scrollIntoView({ behavior: "smooth" });
 });
+
+
+
+//--------------
+// header на Главной и прогресс прокрутки страницы
+//--------------
+const scrollBegin = 100;
+const header = document.querySelector('.header');
+const scrollProgressUnder = header.querySelector('.header__scroll-progress--under');
+// определим максимальную высоту страницы путем "подбора"
+const maxBodyHeight = Math.round(document.body.scrollHeight-(4.5*document.body.scrollHeight/100));
+let widthBorder = 100;
+
+scrollProgressUnder.style.width = `${widthBorder}%`;
+
+if (window.pageYOffset > scrollBegin) header.classList.add('scrolled');
+
+window.addEventListener("scroll", e => {
+  if (window.pageYOffset > scrollBegin) {
+      header.classList.add('scrolled');
+      scrollProgressUnder.classList.add('scrolled');
+  }
+  else {
+      header.classList.remove('scrolled');
+      scrollProgressUnder.classList.remove('scrolled');
+  }
+  
+  widthBorder = 100 - Math.round(window.pageYOffset*100/maxBodyHeight),maxBodyHeight,window.pageYOffset;
+  scrollProgressUnder.style.width = `${widthBorder}%`;
+
+}, false);
+
 
 

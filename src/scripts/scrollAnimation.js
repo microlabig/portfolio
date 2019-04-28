@@ -1,17 +1,5 @@
 import { animatedElements } from './scroll-objects';
 
-//--------------
-// header на Главной
-//--------------
-const header = document.querySelector('.header');
-if (window.pageYOffset > 100) header.classList.add('scrolled');
-
-window.addEventListener("scroll", e => {
-  if (window.pageYOffset > 100) header.classList.add('scrolled');
-  else header.classList.remove('scrolled');
-}, false);
-
-
 /*
     Для включения анимации отредактируйте файлы:
     1) ./scripts/scroll.js (добавление секций в switch case, sectionLength (общее число секций)
@@ -142,11 +130,6 @@ function startAnimation(items, animationClass, options) {
   })();
 }
 
-// прогресс прокрутки страницы
-const scrollProgress = header.querySelector('.header__scroll-progress');
-let widthBorder = 17;
-scrollProgress.style.width = `${widthBorder}%`;
-
 function scrolling(e) {
   let currentSection = 0;
   let currentArr = [];
@@ -154,17 +137,6 @@ function scrolling(e) {
 
   sections.forEach((section,index) => {
      let currSectionFully = 1;
-
-   // if (currentSectionFully !== currSectionFully) {
-      /* if (isFullyVisible(section)) {
-        const menuLink = menuList.children[currentSectionFully].querySelector('.menu__link');
-        console.log(index);
-        //menuList.children[currentSectionFully].childNodes.classList.add('active'); 
-        // currSectionFully = currentSectionFully;
-        
-    // currentSectionFully++;
-      }    */   
-    //} 
 
     if (isPartiallyVisible(section)) {
 
@@ -263,10 +235,6 @@ function scrolling(e) {
       }
       currentArr.length = 0;
       currentElements.length = 0;   
-
-      widthBorder = (currentSection+1) * 17;
-      scrollProgress.style.width = `${widthBorder}%`;
-
     }
     currentSection++;
 
