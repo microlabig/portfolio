@@ -158,7 +158,7 @@
     }
 }
 
-.skills__tech-item {
+/* .skills__tech-item {
     margin-right: 29px;
 
     &:last-child {
@@ -181,17 +181,24 @@
             margin-bottom: 0; 
         }
     }
-}
+} */
 
-.skills__tech-item-box{
+.skills__tech-item{
     position: relative;
     max-width: 170px;
     max-height:170px;
+    min-width: 135px;
+
+    padding: .625rem .9375rem;
 
     @include desktop {
         max-width: 170px;
         max-height:170px;
     }
+    /* @include desktop1110 {
+        max-width: 160px;
+        max-height:160px;
+    } */
 
     @include tablets {
         max-width: 132px;

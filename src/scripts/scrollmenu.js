@@ -73,7 +73,8 @@ new Vue({
         scrollToSection(href) {
             this.showMenu = false;
             const section = document.getElementById(href);
-            smoothScrollTo(section.getBoundingClientRect().y);
+            section.scrollIntoView({ behavior: "smooth" });
+            //smoothScrollTo(section.getBoundingClientRect().y);            
         }
     }
 
@@ -174,3 +175,5 @@ const sectionAbout = document.querySelector('#section_2');
 scrollButton.addEventListener('click', e => {
     sectionAbout.scrollIntoView({ behavior: "smooth" });
 });
+
+

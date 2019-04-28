@@ -31,13 +31,16 @@
     height: 100%;
     will-change: transform;
     &:nth-child(2) {
+        //горы
         .parallax__image {
-            right: 0;
-            top: 460px;
+            top: 25%;
             width: 100%;
+            height: 75%;
+            max-width: none;
+
             @include desktop {
                 top: 610px;
-            }
+            }             
         }
     }
     &:nth-child(3) {
@@ -78,6 +81,7 @@
         }
     }
     &:nth-child(6) {
+        //передние горы
         .parallax__image {
             right: 0;
             bottom: 0;
@@ -87,8 +91,10 @@
         }
     }
     &:nth-child(7) {
+        
         .parallax__image {
-            bottom: -200px;
+            height: 75%;
+            bottom: -350px;
             left: 0;
             @include desktop {
                 bottom: -500px;

@@ -1,29 +1,69 @@
 .header {    
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 100;
+
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     
-    padding-top: 64px;  
-    
+    /* padding-top: 64px; 
+
     @include tablets {
         padding-top: 50px; 
     }
 
     @include phones-small {
         padding-top: 53px; 
+    } */
+
+    transition: .4s;
+
+    &.scrolled {
+        background-color: rgba($white-color,.85);
+        box-shadow: -2px 6px 1rem rgba(0,0,0,.2);
+    }    
+
+    @include tablets {
+        justify-content: space-between;
     }
 }
 
-.header__logo {
-    padding: 0 2%;
+.header__scroll {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
 
-    @include tablets {
+.header__scroll-progress {
+    position: absolute;
+    display: inline-block;
+
+    //width: 100%;
+    height: 10px;
+    background-color: red;
+
+    transition: width .4s;
+}
+
+.header__logo {
+    //padding: 0 2%;
+    padding: 0 22px;
+
+    /* @include tablets {
        padding: 0 0.2%;
-    }
+    } */
 }
 
 .header__menu {
     & .menu__list {
+        @include desktop1110 {
+            .menu__link {
+                padding: 40px 8px;
+            }
+        }
         @include tablets {
             display: none;
         }

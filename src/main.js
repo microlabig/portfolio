@@ -13,6 +13,6 @@ import "./scripts/skills";
 import "./scripts/worksServer";
 import "./scripts/budda";
 import "./scripts/ajaxBudda";
-import "./scripts/scrollmenu"; 
+import "./scripts/scrollMenu"; 
 
-import "./scripts/scroll";
+import "./scripts/scrollAnimation";
