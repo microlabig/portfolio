@@ -185,8 +185,8 @@ scrollButton.addEventListener('click', e => {
 const scrollBegin = 100;
 const header = document.querySelector('.header');
 const scrollProgressUnder = header.querySelector('.header__scroll-progress--under');
-// определим максимальную высоту страницы путем "подбора"
-const maxBodyHeight = Math.round(document.body.scrollHeight-(4.5*document.body.scrollHeight/100));
+const wrapper = document.querySelector('.wrapper');
+
 let widthBorder = 100;
 
 scrollProgressUnder.style.width = `${widthBorder}%`;
@@ -202,10 +202,13 @@ window.addEventListener("scroll", e => {
       header.classList.remove('scrolled');
       scrollProgressUnder.classList.remove('scrolled');
   }
-  
-  widthBorder = 100 - Math.round(window.pageYOffset*100/maxBodyHeight),maxBodyHeight,window.pageYOffset;
-  scrollProgressUnder.style.width = `${widthBorder}%`;
 
+  const maxBodyHeight = Math.round(wrapper.scrollHeight-document.documentElement.clientHeight);  
+  
+  widthBorder = 100 - Math.round(window.pageYOffset*100/maxBodyHeight);//maxBodyHeight/window.pageYOffset;
+ 
+  scrollProgressUnder.style.width = `${widthBorder}%`;
+  
 }, false);
 
 
