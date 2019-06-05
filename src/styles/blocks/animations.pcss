@@ -33,11 +33,11 @@
 }
 
 
-/* // mobile-menu 
+// mobile-menu 
 
-.fade-enter-active,
+/* .fade-enter-active,
 .fade-leave-active {
-    transition: 1s;
+    transition: .5s;
 }
 
 .fade-enter {
@@ -56,30 +56,28 @@
 .fade-leave-to {
     opacity: 0;
 } */
-
+/*
 .slide-enter-active,
 .slide-leave-active {
     transition: 1s;
 }
 .slide-leave {
-    transform: translate(0px);
-    opacity: 1;
+    transform: translateX(0);
 }
 .slide-leave-to {
-    opacity: 0;
-    transform: translate(100px);
-    background-color: black;
+    transform: translateX(100px);
 } 
 .slide-enter {
-    opacity: 0;
-    transform: translateX(-100%);
-    background-color: #fff;
+    transform: translateX(-100px);
 }
 .slide-enter-to {
-    opacity: 1;
-    transform: translateX(0%);
-}
+    transform: translateX(0);
+}*/
 
+.slide-move {
+    transition: transform 0.5s;
+}
+/* 
 .slide2-enter-active,
 .slide2-leave-active {
     transition: 1s;
@@ -96,6 +94,9 @@
 .slide2-enter-to {
     opacity: 1;
 }
+.slide2-move {
+    transform: 1s;
+} */
 
 
 @keyframes fromRight {
@@ -129,6 +130,13 @@
         opacity: 1;
     }    
 }
+
+/*
+    Анимация слайдера работ
+*/
+
+
+
 
 
 /*

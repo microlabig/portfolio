@@ -1,5 +1,6 @@
 .form__elem {
-    transition: 1s;
+    //transition: 1s;
+
     &.is-error {
         & .form__elem-container {
             position: relative;
@@ -18,7 +19,13 @@
             padding: 20px 22px;
             background-color: $error-color;
             top: 100%;
-            left: 48px;            
+            left: 48px;
+            
+            &.email {
+                & .form__tooltip-text {
+                    white-space: normal;
+                }
+            }
         }
         
         .form__tooltip-text {
@@ -36,7 +43,7 @@
                 height: 20px;
                 background-color: $error-color;
         
-                top: -100%;
+                bottom: 100%;
                 left: 10%;
                 transform: translateY(-50%) rotate(45deg) ;
             }

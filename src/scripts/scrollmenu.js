@@ -205,7 +205,7 @@ window.addEventListener("scroll", e => {
 
   const maxBodyHeight = Math.round(wrapper.scrollHeight-document.documentElement.clientHeight);  
   
-  widthBorder = 100 - Math.round(window.pageYOffset*100/maxBodyHeight);//maxBodyHeight/window.pageYOffset;
+  widthBorder = 100 - Math.round(window.pageYOffset*100/maxBodyHeight);
  
   scrollProgressUnder.style.width = `${widthBorder}%`;
   

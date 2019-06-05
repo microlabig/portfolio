@@ -89,8 +89,9 @@ export default {
       this.showEditingForm = false;
     },
 
-    addNewWork() {
+    async addNewWork() {
       this.showAddingForm = false;
+      await this.fetchWorks();
     },
     editExistedWork(work) {
       this.showEditingForm = false;
