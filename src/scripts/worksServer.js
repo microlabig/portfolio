@@ -108,7 +108,8 @@ new Vue ({
         return {
             works: [],   // для чтения JSON-файла works.json
             currentIndex: 0, // индекс текущей работы
-            indexOffset: 3
+            indexOffset: 3,
+            arr: [1,2,3,4,5,6,7,8,9,0]
         }
     },
 
@@ -135,8 +136,7 @@ new Vue ({
         },
 
         //обработка нажатий кнопок 
-        handleSlide(direction) {       
-            
+        handleSlide(direction) {      
             switch (direction) {
                 case 'next':
                     const lastItem = this.works[this.works.length-1];
@@ -151,7 +151,15 @@ new Vue ({
         },
 
         //обработка нажатий на миниатюры
-        handleClickThumbs(arrayIndex) {          
+        handleClickThumbs(arrayIndex) {   
+
+            for (let i = 0; i < this.indexOffset - arrayIndex - 1; i++) {                
+                setTimeout(() => {
+                    this.works.push(this.works[0]);
+                    this.works.shift(); 
+                }, 25);
+            }
+            /*
             let arr = [];
             for (let i = 0; i < this.indexOffset; i++) { // соберем массив arr из this.indexOffset элементов
                 const index = this.works.length - arrayIndex + i - 1;
@@ -163,6 +171,7 @@ new Vue ({
                     arr.push(this.works.shift());
             }
             this.works = [...this.works, ...arr]; // соберем получившийся массив
+            */
         }
     },
 

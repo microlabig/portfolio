@@ -117,10 +117,12 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: "src/index.pug",
+        favicon: "src/images/favicon.png",
         chunks: ["main"]
       }),
       new HtmlWebpackPlugin({
         template: "src/admin/index.pug",
+        favicon: "src/images/favicon.png",
         filename: "admin/index.html",
         chunks: ["admin"]
       }),

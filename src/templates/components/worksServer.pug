@@ -3,8 +3,7 @@
 //-  ---------------------------------
 script(type="text/x-template")#slider-container
     .works__widget
-        .slider(v-if="Object.keys(works).length > 0")   
-                     
+        .slider(v-if="Object.keys(works).length > 0")                   
             //- прокидываем внутрь массив works из data() основного компонента в display        
             display(            
                 :works="works"
@@ -23,8 +22,18 @@ script(type="text/x-template")#slider-container
 script(type="text/x-template")#slider-display
     .slider__preview        
         .slider__preview-block(:data-slide="currentWork.sliderIndex")
-            .slider__preview-image
-                img(:src="`${baseURL}${currentWork.photo}`" alt="Крупный план").slider__preview-icon
+            //- :src="`${baseURL}${currentWork.photo}`"
+            ul.slider__preview-list
+                li(
+                    v-for="work in works" 
+                    :key="work.sliderIndex"
+                    :class="{active: work.sliderIndex === currentWork.sliderIndex}"
+                ).slider__preview-item
+                    .slider__preview-image
+                        img(
+                            :src="`${baseURL}${work.photo}`" 
+                            alt="Крупный план"
+                        ).slider__preview-icon
             //- прокидываем внутрь массив works из data() основного компонента в thumbs
             thumbs(
                 :works="reversedWorks"
@@ -53,7 +62,7 @@ script(type="text/x-template")#slider-thumbs
                 :class="{active: currentWork.id === work.id}"
                 @click.prevent="$emit('clickthumbs', index)"            
             )
-                .slider__image                    
+                .slider__image                     
                     img(:src="`${baseURL}${work.photo}`" alt="Превью").slider__image-icon
 
 //-  ---------------------------------

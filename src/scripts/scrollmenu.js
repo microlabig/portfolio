@@ -164,6 +164,22 @@ mobileMenuBtn.addEventListener('click', e => {
 });
 
 
+//--------------
+// логотип
+//--------------
+
+const headerLogo = document.querySelector('.header__logo');
+const hero = document.querySelector('.hero');
+
+setTimeout(() => {
+    hero.scrollIntoView({ behavior: "smooth" });    
+}, 1000);
+
+headerLogo.addEventListener('click', e => {
+    hero.scrollIntoView({ behavior: "smooth" });
+});
+
+
 
 //--------------
 //кнопка скролл
@@ -171,10 +187,8 @@ mobileMenuBtn.addEventListener('click', e => {
 
 const scrollButton = document.querySelector('.scroll__block');
 
-const sectionAbout = document.querySelector('#section_2');
-
 scrollButton.addEventListener('click', e => {
-    sectionAbout.scrollIntoView({ behavior: "smooth" });
+    scrollButton.scrollIntoView({ behavior: "smooth" });
 });
 
 
@@ -182,6 +196,7 @@ scrollButton.addEventListener('click', e => {
 //--------------
 // header на Главной и прогресс прокрутки страницы
 //--------------
+
 const scrollBegin = 100;
 const header = document.querySelector('.header');
 const scrollProgressUnder = header.querySelector('.header__scroll-progress--under');
