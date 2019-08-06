@@ -74,7 +74,8 @@ new Vue({
             this.showMenu = false;
             const section = document.getElementById(href);
             section.scrollIntoView({ behavior: "smooth" });
-            //smoothScrollTo(section.getBoundingClientRect().y);            
+
+            //smoothScrollTo(section.getBoundingClientRect().y); 
         }
     }
 
@@ -193,9 +194,9 @@ scrollButton.addEventListener('click', e => {
 
 
 
-//--------------
+//------------------------------------------------
 // header на Главной и прогресс прокрутки страницы
-//--------------
+//------------------------------------------------
 
 const scrollBegin = 100;
 const header = document.querySelector('.header');
@@ -216,7 +217,7 @@ window.addEventListener("scroll", e => {
   else {
       header.classList.remove('scrolled');
       scrollProgressUnder.classList.remove('scrolled');
-  }
+  }  
 
   const maxBodyHeight = Math.round(wrapper.scrollHeight-document.documentElement.clientHeight);  
   

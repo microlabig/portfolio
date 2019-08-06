@@ -34,9 +34,10 @@ script(type="text/x-template")#navigation--mobile
                     .menu__logo
                         h2.menu__title ИБ                
                 .menu__right                
-                    button(type="button").menu__close(
+                    button(
+                        type="button"
                         @click="showMenu = false"
-                    )
+                    ).menu__close
                     transition-group(
                         tag="ul"
                         name="slide"

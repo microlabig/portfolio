@@ -70,8 +70,8 @@ export default {
   data() {
     return {
       user: {
-        name: "bezmestin112018",
-        password: "29031988"
+        name: "",
+        password: ""
       },
       /* user: {
         name: "",
