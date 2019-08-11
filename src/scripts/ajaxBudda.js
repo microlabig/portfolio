@@ -22,7 +22,8 @@ import {CONSTS} from '../helpers/consts';
             text = 'Сообщение не отправлено';
         } else {
             color = 'green';
-            text = 'Сообщение отправлено';
+            //text = 'Сообщение отправлено';
+            text = 'Отправка сообщений приостановлена на неопределенное время';
         }
 
         if (tooltip.classList.contains('red')) {
@@ -68,7 +69,7 @@ import {CONSTS} from '../helpers/consts';
         const ajax = new Promise(function (resolve) {
             // отправляем запрос на сервер
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", CONSTS.BASEURL);           
+            xhr.open("POST", CONSTS.BASEURLFEEDBACK);           
             xhr.responseType = "json";
             xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest"); //добавлям заголовок, чтобы не было ошибки 302       
 
@@ -129,7 +130,7 @@ import {CONSTS} from '../helpers/consts';
 
         let obj = new FormData(document.forms.formrequest);
         obj.append("name", name);
-            obj.append("phone", "888888"); // временно для сервера loftshool
+            obj.append("phone", "88007553535"); // временно для сервера loftshool
         obj.append("comment", comments);            
         obj.append("to", email);
 

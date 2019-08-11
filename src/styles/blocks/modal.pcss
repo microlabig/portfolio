@@ -18,7 +18,9 @@
 
 .modal__window {
     position: fixed;
-    display: block;
+    //display: block;
+    display: flex;
+    flex-direction: column;
     max-width: 80%;
 
     padding: 60px 100px;
@@ -28,6 +30,13 @@
     transform: translate(-50%,-50%);
 
     background-color: $white-color;
+
+    @include desktop { 
+        padding: 4vh 5vw;
+    }
+
+    @include phones-small { 
+    }
 }
 
 .modal__title {
@@ -37,10 +46,18 @@
     font-weight: $semi-bold;
 
     margin-bottom: 30px;
+
+    @include tablets { 
+        font-size: 4.5vw;
+    }
 }
 
 .modal__button {
     margin: 0 auto;
+
+    @include tablets { 
+        width: 40vw;
+    }
 }
 
 .modal__tooltip {
@@ -79,6 +96,11 @@
     font-size: 18px;
     font-weight: $semi-bold;
     margin-right: 78px;
+
+    @include tablets { 
+        font-size: 2vw;
+        margin-right: 3vw;
+    }
 }
 
 .modal__tooltip-close {
