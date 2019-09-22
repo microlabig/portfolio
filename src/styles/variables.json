@@ -25,6 +25,7 @@
   "bp-desktop": "1200px",  
   "bp-tablets": "768px",
   "bp-tablets-small": "655px",
+  "bp-phones-big": "540px",
   "bp-phones": "480px",
   "bp-phones-small": "320px",
 

@@ -183,4 +183,10 @@ h3 {
 
 .span-block {
   display: block;
+  @include phones-big {
+    display: inline;
+  }
+  @include phones {
+    display: block;
+  }
 }

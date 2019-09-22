@@ -73,6 +73,10 @@
         @include tablets { 
             margin-bottom: 7px;
         } 
+        
+        @include phones-big { 
+            padding-left: 0;
+        } 
 
         @include phones-small { 
             font-size: 14px;
@@ -106,10 +110,12 @@
 .form__elem-container {
     display: flex;
     border-bottom: 2px solid $text-color;
+
     @include phones-small {
         border-width: 1px;
     }
 }
+
 @each $icon in (user, envelope, message) {           
     .form__elem-container--#{$icon}:before {   
         content:"";
@@ -127,6 +133,9 @@
         @include tablets { 
             overflow: hidden;
             visibility: hidden;
+        } 
+        @include phones-big { 
+            display: none;
         } 
     }         
 } 

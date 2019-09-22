@@ -29,6 +29,10 @@
         padding: 8% 0;
     }   
 
+    @include phones-big { 
+        padding: 8% 0;
+        flex-direction: column; 
+    }
     @include phones-small { 
         padding: 21% 0;
         flex-direction: column;
@@ -44,6 +48,10 @@
     }   
     @include desktop { 
         width: 25%;
+    } 
+    @include phones-big {  
+        width: 100%;
+        margin-bottom: 5%;;
     } 
     @include phones-small {  
         width: 100%;
@@ -62,7 +70,7 @@
         width: 65%;
     }   
 
-    @include phones-small { 
+    @include phones-big { 
         width: 100%;
     }   
 } 
@@ -73,6 +81,10 @@
 
         @include desktop { 
             margin-bottom: 6%; 
+        }
+
+        @include phones-big { 
+            margin-bottom: 3%; 
         }
 
         @include phones-small { 
@@ -158,6 +170,10 @@
         margin-bottom: 8%;
     } 
 
+    @include phones-big {  
+        margin-bottom: 3%;
+    } 
+
     @include phones-small {  
         margin-bottom: 3%;
     } 
@@ -169,6 +185,12 @@
     @include tablets { 
         flex-direction: column;
     }   
+    @include phones-big { 
+        flex-direction: row;
+    }
+    @include phones { 
+        flex-direction: column;
+    }
 }
 
 .footer__mythink {
@@ -181,6 +203,17 @@
     }   
 
     @include tablets {
+        flex: 0;
+        margin-right: 0;
+        margin-bottom: 10%;
+    }
+
+    @include phones-big {
+        flex: 1;
+        margin: 0;
+    }
+
+    @include phones {
         flex: 0;
         margin-right: 0;
         margin-bottom: 10%;
@@ -226,6 +259,9 @@
 
     .social__list {
         padding-top: 0;
+        @include phones-big {
+            padding: 0;
+        }
     } 
 
     .social__item {
