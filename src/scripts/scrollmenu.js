@@ -219,9 +219,9 @@ window.addEventListener("scroll", e => {
       scrollProgressUnder.classList.remove('scrolled');
   }  
 
-  const maxBodyHeight = Math.round(wrapper.scrollHeight-document.documentElement.clientHeight);  
+  const maxBodyHeight = Math.round(wrapper.scrollHeight - document.documentElement.clientHeight);  
   
-  widthBorder = 100 - Math.round(window.pageYOffset*100/maxBodyHeight);
+  widthBorder = 100 - Math.round(window.pageYOffset * 100 / maxBodyHeight);
  
   scrollProgressUnder.style.width = `${widthBorder}%`;
   

@@ -26,13 +26,11 @@ new Vue({
         }
     },
 
-    created() { // стадия создания       
-        /* const items = await axios.get(CONSTS.BASEURL+'reviews/'+CONSTS.MY_USER_ID)
+    async created() { // стадия создания       
+        const items = await axios.get(CONSTS.BASEURL+'reviews/'+CONSTS.MY_USER_ID)
             .then(response => {
                 this.reviews = { ...response.data };
-            }); */
-        const data = require('../data/reviews.json');
-        this.reviews = this.makeArrWithRequiredImages(data);
+            });          
     },
 
     methods: {
@@ -42,15 +40,6 @@ new Vue({
 
         previous() {
             this.$refs.flickity.previous();
-        },
-
-        // обработка путей к картинкам
-        makeArrWithRequiredImages(data) {
-            return data.map( item=>{ // метод map возвращает новый массив из перебранных и переработанных callback-функцией элементов массива data
-                const requiredPic = require(`../images/content/reviews/${item.photo}`); // преобразует имена изображений в имена с хеш-суммами (на продакшн)
-                item.photo = requiredPic;
-                return item;
-            })
         }
     }
 });

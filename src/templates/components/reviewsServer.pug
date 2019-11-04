@@ -10,6 +10,7 @@ script(type="text/x-template")#reviews__template
                     button(type="button" @click="next()").navigation__button.navigation__button--down
                         +icon('arrow-down', 'navigation__button-icon')                
         .review__block
+            pre {{reviews}}
             .review__content                
                 flickity(ref="flickity" :options="flickityOptions" v-if="Object.keys(reviews).length > 0").review__list                                       
                     .review__item(
@@ -21,7 +22,7 @@ script(type="text/x-template")#reviews__template
                             .review__autor
                                 .avatar.avatar--review
                                     .avatar__block
-                                        img(:src="review.photo").avatar__image
+                                        img(:src="`${baseURL}${review.photo}`").avatar__image
                                 .review__about
                                     .review__name {{review.author}}
                                     .review__profession {{review.occ}}

@@ -1,34 +1,42 @@
 [
     {
+      "id": 0,
+      "title": "Мини-сайт компании Workadium",
+      "techs": "HTML5, CSS, CSS-анимации, SASS",
+      "photo": "workadium.jpg",
+      "link": "http://coworking.igorbezmestin.ru/",
+      "description": "Это второй проект с использованием SASS"
+    },
+    {
       "id": 1,
-      "title": "Лендинг бургерной Mr. Burger",
-      "skills": "HTML, Sass, JavaScript, JQuery, YandexAPI, FlexBox",
-      "photo": "slider-image3.jpg",
-      "link": "//rambler.ru",
-      "desc": "Дипломная работа. Сайт адаптивен для всех устройств. Здесь реализованы такие технологии, как OnePageScroll, Api-медиа (работа с видео), Yandex-Maps и форма обратной связи"
+      "title": "Мини-сайт компании AirPlanet",
+      "techs": "HTML5, CSS, CSS-анимации",
+      "photo": "airplanet.jpg",
+      "link": "http://airplanet.igorbezmestin.ru/",
+      "description": "Это самый первый проект."
     },
     {
       "id": 2,
-      "title": "Сайт компании AirLines",
-      "skills": "HTML, CSS",
-      "photo": "slider-image1.jpg",
-      "link": "//google.com",
-      "desc": "Это первый проект"
+      "title": "Лендинг",
+      "techs": "Gulp, SASS, PUG, yarn",
+      "photo": "anketa_cccr.jpg",
+      "link": "http://testcsssr.igorbezmestin.ru/",
+      "description": "Лендинг с контактной информацией, навыками и уровнем владения JS (сайт адаптивен)"
     },
     {
       "id": 3,
-      "title": "Сайт коворкинга",
-      "skills": "HTML, CSS",
-      "photo": "slider-image2.jpg",
-      "link": "//yandex.ru",
-      "desc": "Это второй проект"
-    },   
+      "title": "Лендинг бургерной Mr. Burger",
+      "techs": "HTML5, Sass, JavaScript, JQuery, YandexAPI, FlexBox",
+      "photo": "burger_project.jpg",
+      "link": "http://burger.igorbezmestin.ru/",
+      "description": "Дипломная работа. Сайт адаптивен для всех устройств. Здесь реализованы такие технологии, как OnePageScroll, Api-медиа (работа с видео), Yandex-Maps и форма обратной связи"
+    },
     {
-        "id": 4,
-        "title": "Заголовок",
-        "skills": "HTML, CSS, JavaScript, JQuery",
-        "photo": "slider-image4.jpg",
-        "link": "//rambler.ru",
-        "desc": "Описание"
-      }
+      "id": 4,
+      "title": "Single Page Application",
+      "techs": "Vue.js, Webpack, Pug, PostCSS, RegExp, FlexBox, CSS Grid, SVG",
+      "photo": "testGD.png",
+      "link": "http://testGD.igorbezmestin.ru/",
+      "description": "Проект-мокап интерфейса телефона, контактов для iPhone X (рекомендуется запускать в devTools с эмулятором мобильного устройства)"
+    }
   ]

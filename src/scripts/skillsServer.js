@@ -13,7 +13,7 @@ const skillItem = {
             const circle = this.$refs['color-circle']; //получим атрибут ref
             const dashArray = parseInt(getComputedStyle(circle).getPropertyValue('stroke-dasharray'));
 
-            const percent = dashArray / 100 * (100 - this.skill.value);
+            const percent = dashArray / 100 * (100 - this.skill.percent);
             circle.style.strokeDashoffset = percent;
         }
     },
@@ -29,7 +29,8 @@ const skillsRow = {
         skillItem
     },
 
-    props: {    // регистрируем принимаемое св-во skill из основного Vue-экземпляра  
+    props: {    // регистрируем принимаемое св-во skill из основного Vue-экземпляра        
+        skillList: Object,
         group: Object
     },
 
@@ -48,12 +49,19 @@ new Vue({
     },
     data() {    // данные
         return {
-            skillGroup: {}
+            skillGroup: {},
+            skillList: {}
         }
     },
 
-    created() { // стадия создания
-        const data = require('../data/skills.json');
-        this.skillGroup = data;
+    async created() { // стадия создания
+        const categories = await axios.get(CONSTS.BASEURL+'categories/'+CONSTS.MY_USER_ID)
+            .then(response => {
+                this.skillGroup = { ...response.data };
+            });
+        const skills = await axios.get(CONSTS.BASEURL+'skills/'+CONSTS.MY_USER_ID)
+            .then(response => {
+                this.skillList = { ...response.data };
+            });
     }
 })

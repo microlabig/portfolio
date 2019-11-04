@@ -6,15 +6,17 @@ script(type="text/x-template")#skills-list
                 li.skills__item(v-for="group in skillGroup" :key="group.id")
                     skills-row(
                         :group="group"
+                        :skillList="skillList"
                     )
 
 script(type="text/x-template")#skills-row
     .skills__row
-        .skills__title {{group.skillGroup}}
+        .skills__title {{group.category}}
         ul.skills__tech-list                
             li(
-                v-for="skill in group.skills"
-                :key="skill.title"
+                v-for="skill in skillList"
+                :key="skill.id"
+                v-if="skill.category === group.id"
             ).skills__tech-item
                 skillItem(
                     :skill="skill"                    
