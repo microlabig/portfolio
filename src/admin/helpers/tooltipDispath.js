@@ -1,3 +1,5 @@
+// Работа с тултипами
+
 // когда все хорошо
 export const good = (t, text) => {
     t.setColTooltip("green");

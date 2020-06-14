@@ -4,23 +4,29 @@
 script(type="text/x-template")#slider-container
     .works__widget
         .slider(v-if="Object.keys(works).length > 0")                   
-            //- прокидываем внутрь массив works из data() основного компонента в display        
+            //- прокидываем внутрь массив works из data() основного компонента в display 
             display(            
                 :works="works"
                 :currentWork="currentWork"
                 :currentIndex="currentIndex"
+                :timerWorkSliderId="timerWorkSliderId"
+                :DELAY="DELAY"
                 @slide="handleSlide"
-                @clickthumbs="handleClickThumbs"            
+                @clickthumbs="handleClickThumbs"
             )
             info(
                 :currentWork="currentWork"
-            )             
+            )
 
 //-  ---------------------------------
 //-  картинки display
 //-  ---------------------------------
 script(type="text/x-template")#slider-display
-    .slider__preview        
+    .slider__preview
+        slider_scroll(
+            :timerWorkSliderId="timerWorkSliderId"
+            :DELAY="DELAY"
+        )
         .slider__preview-block(:data-slide="currentWork.sliderIndex")
             //- :src="`${baseURL}${currentWork.photo}`"
             ul.slider__preview-list
@@ -38,7 +44,7 @@ script(type="text/x-template")#slider-display
             thumbs(
                 :works="reversedWorks"
                 :currentWork="currentWork"
-                @clickthumbs="index => $emit('clickthumbs',index)"
+                @clickthumbs="index => $emit('clickthumbs', index)"
             )
         //- прокидываем в btns событие и связываем с переменной direction            
         btns(
@@ -100,3 +106,16 @@ script(type="text/x-template")#slider-tags
     ul.slider__tag-list
         li.slider__tag-item(v-for="tag in tagsArray")
             .slider__tag-text {{tag}} 
+
+//-  ---------------------------------
+//-  таймер скролла работ
+//-  ---------------------------------
+script(type="text/x-template")#slider-scroll
+    .slider__scroll
+        div.slider__current(
+            :style="{'animation-duration': DELAY+'ms'}"
+            :class=`{
+                animation: isClearedTimerInterval,
+                'animation_forward': !isClearedTimerInterval
+            }`
+        )

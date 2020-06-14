@@ -1,10 +1,10 @@
 // -------------
-// "works2" - вторые версии JS b PUG, которые берут данные из JSON, т.к. сервер loftschool почему-то удаляет информацию о работах и многое чего (???)
+// "works2" - вторые версии JS и PUG, которые берут данные из JSON, т.к. сервер loftschool почему-то удаляет информацию о работах и многое чего (???)
 // -------------
 
 import Vue from 'vue';
 
-const BASEURL = ''
+const BASEURL = '';
 
 // ----------
 //  теги tags
@@ -48,12 +48,32 @@ const btns = {
     template: "#slider-btns"   
 };
 
+
+const slider_scroll = {
+    template: "#slider-scroll",
+    props: {
+        timerWorkSliderId: Number,
+        DELAY: Number,
+    },
+    watch: {
+        timerWorkSliderId() {
+            this.isClearedTimerInterval = !this.isClearedTimerInterval;
+        }
+    },
+    data() {
+        return {
+            isClearedTimerInterval: false
+        }
+    }
+};
+
 // -----------------
 //  картинки display
 // -----------------
 const display = {
     template: "#slider-display",
     components: {
+        slider_scroll,
         btns,   // подключаем компонент btns
         thumbs    // подключаем компонент thumbs
     },
@@ -61,7 +81,9 @@ const display = {
         works: Array, // массив works 
         currentWork: Object,
         currentIndex: Number,
-        direction: String
+        direction: String,
+        timerWorkSliderId: Number,
+        DELAY: Number
     },
     computed: {
         // перевернем список работ по вертикали (т.к. не по макету)
@@ -112,7 +134,11 @@ let worksSlider = new Vue ({
         return {
             works: [],   // для чтения JSON-файла works.json
             currentIndex: 0, // индекс текущей работы
-            indexOffset: 3
+            indexOffset: 3,
+            DELAY: 7000, // автоматическая прокрутка слайдера 
+            timerWorkSliderId: setInterval( () => { // интервальный таймер автоматической прокрутки
+                this.handleSlide('prev');
+            }, this.DELAY)
         }
     },
 
@@ -130,7 +156,6 @@ let worksSlider = new Vue ({
     },
 
     methods: { // ддя описания методов
-
         // закольцевание навигацию
         makeInfiniteLoopForCurrentIndex(value) {
             const worksAmount = this.works.length - 1; // индексы начинаются с нуля (zerobase)
@@ -138,7 +163,7 @@ let worksSlider = new Vue ({
             if (value < 0) this.currentIndex = worksAmount;
         },
 
-        //обработка нажатий кнопок 
+        // обработка нажатий кнопок 
         handleSlide(direction) {      
             switch (direction) {
                 case 'next':
@@ -151,9 +176,10 @@ let worksSlider = new Vue ({
                     this.works.shift();     
                     break;
             }
+            this.clearSlideIntervalTimer();
         },
 
-        //обработка нажатий на миниатюры
+        // обработка нажатий на миниатюры
         handleClickThumbs(arrayIndex) {   
             for (let i = 0; i < this.indexOffset - arrayIndex - 1; i++) {                
                 setTimeout(() => {
@@ -161,15 +187,26 @@ let worksSlider = new Vue ({
                     this.works.shift(); 
                 }, 25);
             }
+            this.clearSlideIntervalTimer();
+        },
+
+        // сброс интервального таймера
+        clearSlideIntervalTimer() {
+            if (this.timerWorkSliderId) {
+                clearInterval(this.timerWorkSliderId);
+                this.timerWorkSliderId = setInterval( () => {
+                    this.handleSlide('prev');
+                }, this.DELAY);
+            }
         },
 
         // обработка путей к картинкам
         makeArrWithRequiredImages(data) {
-            return data.map( item=>{ // метод map возвращает новый массив из перебранных и переработанных callback-функцией элементов массива data
+            return data.map( (item) => { // метод map возвращает новый массив из перебранных и переработанных callback-функцией элементов массива data
                 const requiredPic = require(`../images/content/work/${item.photo}`); // преобразует имена изображений в имена с хеш-суммами (на продакшн)
                 item.photo = requiredPic;
                 return item;
-            })
+            });
         }
     },
 
@@ -190,11 +227,3 @@ let worksSlider = new Vue ({
         });
     }
 });
-
-// автоматическая прокрутка слайдера 
-const DELAY = 7000;
-
-let timerWorkSliderId = setInterval( () => {
-    worksSlider.handleSlide('prev');
-}, DELAY)
-

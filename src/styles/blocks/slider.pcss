@@ -1,139 +1,137 @@
 .slider {
-    display: flex;   
+  display: flex;
 
-    @include tablets { 
-        flex-direction: column;
-    }
+  @include tablets {
+    flex-direction: column;
+  }
 }
 
-
 //--------- image --------
-.slider__preview{    
-    position: relative; 
-    //flex-shrink: 0;   
-    z-index: 1;   
-    //width: 70%;
-    flex-basis: 75%;
-    margin-right: 11%;
+.slider__preview {
+  position: relative;
+  //flex-shrink: 0;
+  z-index: 1;
+  //width: 70%;
+  flex-basis: 75%;
+  margin-right: 11%;
 
-    @include desktop { 
-        margin-right: 10%;
-    }
-    @include tablets { 
-        width: 100%;
-        margin-right: 8.7%;
-        margin-bottom: 8%;
-    }
-    @include phones-small {
-        margin-right: 0;
-        margin-bottom: 19%;
-    }
+  @include desktop {
+    margin-right: 10%;
+  }
+  @include tablets {
+    width: 100%;
+    margin-right: 8.7%;
+    margin-bottom: 8%;
+  }
+  @include phones-small {
+    margin-right: 0;
+    margin-bottom: 19%;
+  }
 }
 
 .slider__preview-block {
-    //overflow: hidden;
-    position: relative;    
+  //overflow: hidden;
+  position: relative;
 
-    &:before {
-        z-index: -1;
-        content: attr(data-slide);
-        position: absolute;
-        display: inline-block;
+  &:before {
+    z-index: -1;
+    content: attr(data-slide);
+    position: absolute;
+    display: inline-block;
 
-        left:100%;
-        top:50%;
-        transform: translateY(-60%);
+    left: 100%;
+    top: 50%;
+    transform: translateY(-60%);
 
-        font-size: 400px;
-        line-height: 1;
-        font-weight: $extra-bold;
-        color: rgba($light-color, 0.05); 
-        
-        margin-left: -8%;
+    font-size: 400px;
+    line-height: 1;
+    font-weight: $extra-bold;
+    color: rgba($light-color, 0.05);
 
-        @include desktop { 
-            transform: translateY(-75%);
-            margin-left: -9%;
-            font-size: 300px;
-        }
+    margin-left: -8%;
 
-        @include phones-small { 
-            display: none;
-        }
-    }    
+    @include desktop {
+      transform: translateY(-75%);
+      margin-left: -9%;
+      font-size: 300px;
+    }
+
+    @include phones-small {
+      display: none;
+    }
+  }
 }
 
 .slider__preview-list {
-    //position: absolute;
-    padding-top: 549px;//53%;
-    will-change: transform;
+  //position: absolute;
+  padding-top: 549px; //53%;
+  will-change: transform;
 
-    @include desktop { 
-        padding-top: 355px;
-    }
-    @include phones-small { 
-        padding-top: 234px;
-    }
-    
+  @include desktop {
+    padding-top: 355px;
+  }
+  @include phones-small {
+    padding-top: 234px;
+  }
 }
 
 .slider__preview-item {
-    position: absolute;
-    left: 999px;
-    top: 0;
-    opacity: 0;
-    transition: all .4s;
-    width: 100%; // для firefox
+  position: absolute;
+  left: 999px;
+  top: 0;
+  opacity: 0;
+  transition: all 0.4s;
+  width: 100%; // для firefox
 
-    &.active {
-        left: 0;
-        opacity: 1;        
-    }
+  &.active {
+    left: 0;
+    opacity: 1;
+  }
 }
 
 .slider__preview-image {
-    overflow: hidden;
-    width: 100%;
-    //max-width: 975px;
-    height: 549px;
+  overflow: hidden;
+  width: 100%;
+  //max-width: 975px;
+  height: 549px;
 
-    @include desktop { 
-        //max-width: 625px;
-        max-height: 355px;
-    }
+  @include desktop {
+    //max-width: 625px;
+    max-height: 355px;
+  }
 
-    @include tablets { 
-        //max-width: 631px;
-        max-height: 357px;
-    }
+  @include tablets {
+    //max-width: 631px;
+    max-height: 357px;
+  }
 
-    @include phones-small { 
-        //max-width: 328px;
-        max-height: 184px;
-    }
+  @include phones-small {
+    //max-width: 328px;
+    max-height: 184px;
+  }
 }
 
-.slider__thumbs{
-    position: absolute;
-    
-    bottom: 0;
-    right: 0;  
-    overflow: hidden;
-    height: 54.6%;
+.slider__thumbs {
+  position: absolute;
 
-    @include desktop { 
-        height: 84%;
-        //overflow: hidden;
-        top: 16%;
-    }   
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  height: 54.6%;
 
-    @include tablets-small { 
-        display: none;
-    }   
+  @include desktop {
+    height: 84%;
+    //overflow: hidden;
+    top: 16%;
+  }
 
-    @include phones-small { 
-        display: none;
-    }   
+  @include tablets-small {
+    display: none;
+  }
+
+  @include phones-small {
+    display: none;
+  }
 }
 
 /* .slider__navigation {
@@ -141,208 +139,253 @@
 }
  */
 
- .slider__list {
-     position: relative;
-     will-change: transform;
- }
- 
-.slider__item {
-    cursor: pointer; 
+.slider__list {
+  position: relative;
+  will-change: transform;
+}
 
-    &.active .slider__image{
-        outline: 3px solid $slider-active-color;
-        outline-offset: -4px;
-        z-index: 10;
-        transition: outline .2s;
-    }
+.slider__item {
+  cursor: pointer;
+
+  &.active .slider__image {
+    outline: 3px solid $slider-active-color;
+    outline-offset: -4px;
+    z-index: 10;
+    transition: outline 0.2s;
+  }
 }
 
 .slider__preview-icon,
 .slider__image-icon {
-    object-fit: cover;
+  object-fit: cover;
 }
 
-.slider__image {    
-    position: relative;
-    width: 178px;
-    height: 100px;
-    //overflow: hidden;  
-    
-    &:before {
-        content: "";
-        position: absolute;
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(transparent,0);  
-        transition: background-color .3s;
-    }   
+.slider__image {
+  position: relative;
+  width: 178px;
+  height: 100px;
+  //overflow: hidden;
 
-    &:hover {
-        &:before {
-            background-color: rgba($active-menu-color,.4);  
-        }     
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(transparent, 0);
+    transition: background-color 0.3s;
+  }
+
+  &:hover {
+    &:before {
+      background-color: rgba($active-menu-color, 0.4);
     }
+  }
 }
 
 //------- navigation -------
 
 .slider__navigation {
-    @include phones-small {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-    }
+  @include phones-small {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }
 
 //------- number --------
-.slider__content{
-    position: relative;
-    flex-basis: 25%;
-    z-index: 1;
-    //width: 30%;
+.slider__content {
+  position: relative;
+  flex-basis: 25%;
+  z-index: 1;
+  //width: 30%;
 
-    @include tablets {
-        width: 100%;
-    }
+  @include tablets {
+    width: 100%;
+  }
 
-    @include phones-small {
-        width: 80%;
-        margin: 0 auto;
-    }
+  @include phones-small {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 //----- description -------
 
 .slider__description {
-    @include tablets { 
-        text-align: center;
-    }   
+  @include tablets {
+    text-align: center;
+  }
 
-    @include phones-small { 
-        text-align: left;
-    }   
+  @include phones-small {
+    text-align: left;
+  }
 }
-
 
 .slider__tag-list {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  margin-bottom: 10%;
+
+  @include desktop {
+    margin-bottom: 9%;
+  }
+  @include tablets {
+    justify-content: center;
+    //flex-wrap: nowrap;
+    margin-bottom: 1%;
+  }
+  @include phones-small {
     justify-content: flex-start;
-
-    margin-bottom: 10%;
-
-    @include desktop { 
-        margin-bottom: 9%;
-    }   
-    @include tablets { 
-        justify-content: center;
-        //flex-wrap: nowrap;
-        margin-bottom: 1%;
-    }   
-    @include phones-small {         
-        justify-content: flex-start;
-        margin-bottom: 2%;
-    }   
+    margin-bottom: 2%;
+  }
 }
 
-.slider__tag-item {    
-    background-color: rgba($tag-color, 0.1);
-    border-radius: 22.5px; 
-    padding: 0 22px;
-    margin-right: 6%;
-    margin-bottom: 10px;       
+.slider__tag-item {
+  background-color: rgba($tag-color, 0.1);
+  border-radius: 22.5px;
+  padding: 0 22px;
+  margin-right: 6%;
+  margin-bottom: 10px;
 
-    &:last-child {
-        margin-right: 0;
-    }
+  &:last-child {
+    margin-right: 0;
+  }
 
-    @include tablets { 
-        padding: 0 13px;
-        margin-right: 3%;
-    }
+  @include tablets {
+    padding: 0 13px;
+    margin-right: 3%;
+  }
 
-    @include phones-small {  
-        padding: 0 23px;
-        margin-right: 5%;
-    } 
+  @include phones-small {
+    padding: 0 23px;
+    margin-right: 5%;
+  }
 }
 
 .slider__tag-text {
-    text-align: center;
-    font-weight: $semi-bold;
-    font-size: 15px;
-    line-height: 48px;
-    color: rgba($light-color, 0.7);
-    
-    @include phones-small {
-        font-size: 13px;
-    }
+  text-align: center;
+  font-weight: $semi-bold;
+  font-size: 15px;
+  line-height: 48px;
+  color: rgba($light-color, 0.7);
+
+  @include phones-small {
+    font-size: 13px;
+  }
 }
 
 .slider__work {
-    margin-bottom: 10%;
-    @include desktop { 
-        margin-bottom: 11%;
-    }   
-    @include tablets { 
-        margin-bottom: 3%;        
-    } 
-    @include phones-small {  
-        margin-bottom: 9%;  
-    } 
+  margin-bottom: 10%;
+  @include desktop {
+    margin-bottom: 11%;
+  }
+  @include tablets {
+    margin-bottom: 3%;
+  }
+  @include phones-small {
+    margin-bottom: 9%;
+  }
 }
 
 .slider__work-title {
-    margin-bottom: 40px;
-    @include desktop { 
-        margin-bottom: 34px;
-    }   
-    @include tablets { 
-        margin-bottom: 18px;
-    }   
-    @include phones-small {  
-        margin-bottom: 10px;
-    } 
+  margin-bottom: 40px;
+  @include desktop {
+    margin-bottom: 34px;
+  }
+  @include tablets {
+    margin-bottom: 18px;
+  }
+  @include phones-small {
+    margin-bottom: 10px;
+  }
 }
 
 .slider__work-description {
-    font-weight: $semi-bold;
-    font-size: 16px;
-    color: rgba($light-color, 0.7);
-    line-height: 30px;
+  font-weight: $semi-bold;
+  font-size: 16px;
+  color: rgba($light-color, 0.7);
+  line-height: 30px;
 
-    @include tablets {         
-        font-size: 14px;
-        line-height: 24px;
-        padding: 0 16%;        
-    } 
+  @include tablets {
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0 16%;
+  }
 
-    @include phones-small {    
-        padding: 0;        
-    } 
+  @include phones-small {
+    padding: 0;
+  }
 }
 
-.slider__icon{
-    fill:$links-color;
-    width: 15px;
-    height: 15px;
-    margin-right: 20px;;
+.slider__icon {
+  fill: $links-color;
+  width: 15px;
+  height: 15px;
+  margin-right: 20px;
 }
-
 
 .slider__link {
-    font-size: 18px;
-    font-weight: $bold;
-    color: $links-color;
-    border-bottom: 1px solid transparent;
-    transition: border-bottom-color .2s;
+  font-size: 18px;
+  font-weight: $bold;
+  color: $links-color;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 0.2s;
 
-    &:hover {
-        border-bottom-color: $active-menu-color;    
-    }
+  &:hover {
+    border-bottom-color: $active-menu-color;
+  }
 
-    @include tablets { 
-        font-size: 14px;       
-    } 
+  @include tablets {
+    font-size: 14px;
+  }
+}
+
+// таймер скролла слайдера и его анимация
+.slider__scroll {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 3px;
+  z-index: 1;
+}
+
+.slider__current {
+  height: 100%;
+  background-image: linear-gradient(
+    to right,
+    $linear-endcolor,
+    $linear-startcolor
+  );
+  animation-play-state: running;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  &.animation {
+    animation-name: widthTo100Percent;
+  }
+  &.animation_forward {
+    animation-name: widthTo100Percent2;
+  }
+}
+
+@keyframes widthTo100Percent {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes widthTo100Percent2 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
