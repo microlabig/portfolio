@@ -26,17 +26,57 @@
     {
       "id": 3,
       "title": "Лендинг бургерной Mr. Burger",
-      "techs": "HTML5, Sass, JavaScript, JQuery, YandexAPI, FlexBox",
+      "techs": "HTML5, SASS, JavaScript, JQuery, YandexAPI, FlexBox",
       "photo": "burger_project.jpg",
       "link": "http://burger.igorbezmestin.ru/",
-      "description": "Дипломная работа. Сайт адаптивен для всех устройств. Здесь реализованы такие технологии, как OnePageScroll, Api-медиа (работа с видео), Yandex-Maps и форма обратной связи"
+      "description": "Бургерная. Сайт адаптивен для всех устройств. Здесь реализованы такие технологии, как OnePageScroll, Api-медиа (работа с видео), Yandex-Maps и форма обратной связи"
     },
     {
       "id": 4,
       "title": "Single Page Application",
       "techs": "Vue.js, Webpack, Pug, PostCSS, RegExp, FlexBox, CSS Grid, SVG",
-      "photo": "testGD.png",
+      "photo": "testGD.jpg",
       "link": "http://testGD.igorbezmestin.ru/",
-      "description": "Проект-мокап интерфейса телефона, контактов для iPhone X (рекомендуется запускать в devTools с эмулятором мобильного устройства)"
+      "description": "Проект-мокап интерфейса телефона, контактов для iPhone X."
+    },
+    {
+      "id": 5,
+      "title": "Геоотзыв",
+      "techs": "Vanila JS, ES6+, Yandex.Maps, SASS",
+      "photo": "geootziv.jpg",
+      "link": "http://geootzyv.igorbezmestin.ru/",
+      "description": "Работа с API геолокационных карт"
+    },
+    {
+      "id": 6,
+      "title": "Чат",
+      "techs": "Vanila JS, ES6+, WebSocket, FileApi, Pug, SASS, FlexBox, CSS Grid",
+      "photo": "chat.jpg",
+      "link": "http://chat.igorbezmestin.ru/",
+      "description": "Работа с WebSocket API"
+    },
+    {
+      "id": 7,
+      "title": "Loft-Taxi",
+      "techs": "SPA, React, Redux-Saga, MapBox, Material UI, JSX, Unit-test, FlexBox, CSS Grid",
+      "photo": "loft_taxi.jpg",
+      "link": "http://lofttaxi.igorbezmestin.ru/",
+      "description": "SPA-приложение Loft-такси на React.JS"
+    },
+    {
+      "id": 8,
+      "title": "Loft-System на Express.JS",
+      "techs": "SPA, React, Redux-Saga, Node.JS, Express.JS, MongoDB, Mongoose, socket.io, Docker, FlexBox, CSS Grid",
+      "photo": "express.jpg",
+      "link": "https://microlabig.herokuapp.com",
+      "description": "SPA-приложение вымышленного корпоративного сайта: новости, чат, панель администратора и пользовательские настройки на Express.JS"
+    },
+    {
+      "id": 9,
+      "title": "Loft-System на Koa.JS",
+      "techs": "SPA, React, Redux-Saga, Node.JS, Koa.JS, PostgreSQL, Sequelize, Passport, socket.io, Docker, FlexBox, CSS Grid",
+      "photo": "koa.jpg",
+      "link": "https://koa-ls.herokuapp.com/",
+      "description": "SPA-приложение вымышленного корпоративного сайта: новости, чат, панель администратора и пользовательские настройки на Koa.JS"
     }
   ]
