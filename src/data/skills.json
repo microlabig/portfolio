@@ -1,45 +1,61 @@
 [
     {
         "id": 0,
-        "skillGroup": "FrontEnd",
+        "skillGroup": "FrontEnd, BackEnd skills",
         "skills": [
             {
-                "title": "HTML5",
+                "title": "HTML5, CSS3",
                 "value": 90
             },
             {
-                "title": "CSS3",
-                "value": 80
+                "title": "SCSS, PostCSS",
+                "value": 70
             },
             {
-                "title": "JavaScript",
+                "title": "JS ES6+, JQuery",
+                "value": 75
+            },
+            {
+                "title": "Vue.js",
                 "value": 65
             },
             {
-                "title": "JQuery и Vue.js",
-                "value": 40
+                "title": "React.js",
+                "value": 60
+            },
+            {
+                "title": "Node.js",
+                "value": 60
             }
         ]
     },
     {
         "id": 1,
-        "skillGroup": "Workflow",
+        "skillGroup": "Workflow, Tools",
         "skills": [
             {
-                "title": "GIT",
-                "value": 40
-            },
-            {
-                "title": "Terminal",
+                "title": "GIT, Terminal",
                 "value": 55
             },
             {
-                "title": "Gulp",
+                "title": "Gulp, WebPack",
+                "value": 55
+            },
+            {
+                "title": "Sequelize",
+                "value": 35
+            },
+            {
+                "title": "Mongoose",
                 "value": 40
             },
             {
-                "title": "WebPack",
-                "value": 40
+                "title": "Docker",
+                "value": 45
+            },
+            {
+                "title": "Unit-tests",
+                "value": 45
             }
         ]
     }

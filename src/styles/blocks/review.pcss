@@ -21,14 +21,19 @@
             padding-right: 8%;
         } 
 
-        @include phones-small {  
-            padding-right: 0;
-        } 
+        @include tablets { 
+            padding-right: 0%;
+        }
+
+        // @include phones-small {  
+        //     padding-right: 0;
+        // } 
     }
 }
 
 .review__titlebox {
     display: flex;
+    align-items: center;
     
     & .title {
         margin-right: 8%;
@@ -129,6 +134,11 @@
     @include tablets { 
         width: 40%;
         margin-left: 5%;
+    } 
+
+    @include tablets-small { 
+        //width: 100%;
+        margin-left: 0%;
     } 
 
     @include phones-big { 

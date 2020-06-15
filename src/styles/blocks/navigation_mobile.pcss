@@ -54,11 +54,12 @@
                 }
             }
 
-            .menu__right {                 
+            .menu__right {
                 flex-basis: 43%;
                 flex-shrink: 0;
 
                 background-color: $white-color;
+                overflow: auto;
 
                 position: relative;
                 display: flex;
@@ -81,8 +82,11 @@
 
             .menu__logo {
                 position: absolute;
-                left: 40px;
-                top: 70px;
+                // left: 40px;
+                // top: 70px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
 
                 animation: fromLeft 1s;
             }
@@ -96,15 +100,16 @@
             .menu__close {
                 position: absolute;
                 right: 40px;
-                top: 70px;
+                top: 22px;
                 cursor: pointer;
                 width: 20px;
                 height: 20px;
-                background: svg-load('cross.svg', fill=$footer-color) center center no-repeat / contain;
+                background: svg-load('cross.svg', fill=$footer-color) center center no-repeat;
+                background-size: contain;
 
                 @include phones-small {
                     right: 32px;
-                    top: 32px;
+                    top: 24px;
                 }
             }
 
@@ -114,6 +119,10 @@
                 flex-direction: column;
 
                 margin-bottom: 60px;
+
+                @include tablets-small {
+                    margin-bottom: 15px;
+                }
             }
 
             .menu__item {
@@ -121,10 +130,13 @@
                 /* opacity: 0;
 
                 animation: opacityElement 2s infinite; */
+                @include landscape {
+                    margin-bottom: 14px;
+                }
 
                 &:last-child {
                     margin-bottom: 0;
-                }
+                }     
             }
 
             .menu__link {

@@ -1,5 +1,5 @@
 ;(function () {
-    const wrapper = document.querySelector('.wrappersections--end');
+    const wrapper = document.body; // querySelector('.wrappersections--end');
     const buddaWrapper = document.querySelector('.parallax--budda');
     const layers = buddaWrapper.children;
     const center = { // центр секции

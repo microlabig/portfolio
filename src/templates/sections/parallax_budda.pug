@@ -1,0 +1,7 @@
+section.parallax.parallax--budda            
+    .parallax__layer.parallax__layer--bg
+        +image('content/parallax/budda/bg.jpg', 'parallax__image-bg', 'Изображение')
+    - for (var numpic=1; numpic<=7; numpic++)
+        - var speed = numpic / 10;
+        .parallax__layer(data-speed=speed)
+            +image(`content/parallax/budda/${numpic}.png`, 'parallax__image', 'Изображение')

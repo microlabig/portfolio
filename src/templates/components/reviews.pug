@@ -16,7 +16,7 @@ script(type="text/x-template")#reviews__template
                         v-for="review in reviews"
                         :key="review.id"
                     ).carousel-cell
-                        .review__description
+                        blockquote.review__description
                             .review__text {{review.text}}
                             .review__autor
                                 .avatar.avatar--review

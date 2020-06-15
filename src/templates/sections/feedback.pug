@@ -1,0 +1,26 @@
+section#section_6.feedback
+    .container
+        .title.animated__s6-1
+            h2.title__elem Связаться со мной
+        form.form#form
+            .form__wrapper                  
+                .form__row
+                    div(data-text="Введите ваше имя").form__elem.name.animated__s6-2
+                        .form__elem-container.form__elem-container--user                                                
+                            input(type="text" placeholder="Имя Фамилия" name="name" required).form__elem-input
+                            .form__tooltip
+                                .form__tooltip-text 
+                    div(data-text="Введите ваш email").form__elem.email.animated__s6-3
+                        .form__elem-container.form__elem-container--envelope                        
+                            input(type="email" placeholder="email@study.com" name="email" required).form__elem-input
+                            .form__tooltip.email
+                                .form__tooltip-text 
+                .form__row.form__row--textarea
+                    div(data-text="Сообщение к письму").form__elem.comments
+                        .form__elem-container.form__elem-container--message                        
+                            textarea(type="textarea" name="comments" required placeholder="Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса").form__elem-input.form__elem-input--textarea
+                            .form__tooltip
+                                .form__tooltip-text 
+                .form__row.animated__s6-4
+                    .form__elem.form__elem--button
+                        button(type="submit").form__elem-button Отправить     

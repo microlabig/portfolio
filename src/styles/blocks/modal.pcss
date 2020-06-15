@@ -52,6 +52,10 @@
     }
 }
 
+.modal__mail {
+    color: $links-color;
+}
+
 .modal__button {
     margin: 0 auto;
 
@@ -101,11 +105,17 @@
         font-size: 2vw;
         margin-right: 3vw;
     }
+
+    @include phones { 
+        font-size: 3vw;
+        margin-right: 3vw;
+    }
 }
 
 .modal__tooltip-close {
     cursor: pointer;
     width: 20px;
     height: 20px;
-    background: svg-load('cross.svg', fill=$white-color) center center no-repeat / contain;
+    background: svg-load('cross.svg', fill=$white-color) center center no-repeat;
+    background-size: contain;
 }

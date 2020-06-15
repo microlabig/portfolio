@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Flickity from 'vue-flickity';
-import axios from 'axios';
+// import axios from 'axios';
 import {CONSTS} from '../helpers/consts';
 
 new Vue({
@@ -14,11 +14,12 @@ new Vue({
     data () {
         return {
             flickityOptions: {
+                draggable: true,
                 //initialIndex: 1,
                 prevNextButtons: false,
                 pageDots: false,
                 //groupCells: 1,
-                groupCells: window.screen.width > 948 ? 2 : 1,
+                groupCells: true, //window.screen.width > 948 ? 2 : 1,
                 //contain: document.querySelector('html').clientWidth > 320 ? true : false,
             },
             reviews: {},

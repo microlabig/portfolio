@@ -1,0 +1,17 @@
+header.header
+    .header__scroll
+        .header__scroll-progress
+            .header__scroll-progress--above
+            .header__scroll-progress--under                   
+    .header__logo.animated__s1-1
+        .logo                  
+            h2.logo__title ИБ
+    .header__menu
+        nav#navigation_menu                  
+
+    .header__social.animated__s1-2
+        include ./components/socials
+
+    #mobile-nav.mobile-nav
+        - for (var i=0; i<3; i++)                
+            .mobile-nav__line

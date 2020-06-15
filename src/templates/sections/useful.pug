@@ -1,0 +1,19 @@
+section#section_3.useful
+    .container
+        .useful__title
+            .title
+                h3.title-elem Чем я могу быть #[span.span-block]полезен вам
+            .useful__description Ниже я очень кратко представил свой багаж знаний в мире "веб". Мне очень нравиться заниматься веб-разработкой, постоянно развиваюсь в профессиональном и личностном плане.
+        .skills
+            .skills__content                    
+                .svg__lineargradient
+                    svg
+                        defs
+                            - var begin="#ad00ed", end="#5500f2";
+                            linearGradient(
+                                id = "gradient"
+                                x1="0%" y1="0%" x2="0%" y2="100%"
+                            )
+                                stop(offset="0%" stop-color=`${begin}`)
+                                stop(offset="100%" stop-color=`${end}`)
+                #skills-component 
