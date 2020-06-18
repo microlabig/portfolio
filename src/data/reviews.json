@@ -12,5 +12,12 @@
         "occ": "Преподаватель",
         "text": "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах",
         "photo": "review2.jpg"
+    },
+    {
+        "id": 2,
+        "author": "Evor",
+        "occ": "Hero",
+        "text": "Now the stronghold has a website. Everything is done on time and beautifully! Thx!",
+        "photo": "evor.png"
     }
 ]

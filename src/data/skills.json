@@ -16,11 +16,11 @@
                 "value": 75
             },
             {
-                "title": "Vue.js",
+                "title": "Vue.js, Vuex",
                 "value": 65
             },
             {
-                "title": "React.js",
+                "title": "React.js, Redux-Saga",
                 "value": 60
             },
             {

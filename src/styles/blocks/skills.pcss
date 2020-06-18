@@ -127,6 +127,7 @@
 
 
 .skills__title{
+    width: 80%;
     font-weight: $bold;
     font-size: 24px;
     color: $text-color;
@@ -137,7 +138,8 @@
         margin-bottom: 25px;
     }
 
-    @include tablets {         
+    @include tablets {     
+        width: 100%;    
         text-align: center;
         font-size: 18px;
         margin-bottom: 20px;
@@ -145,8 +147,11 @@
 }
 
 .skills__tech-list{
+    width: 80%;
+
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 
     @include tablets {         
         justify-content: center;
