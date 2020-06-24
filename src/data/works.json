@@ -58,25 +58,33 @@
     {
       "id": 7,
       "title": "Loft-Taxi",
-      "techs": "SPA, React, Redux-Saga, MapBox, Material UI, JSX, Unit-test, FlexBox, CSS Grid",
+      "techs": "SPA, React.js, Redux-Saga, MapBox, Material UI, JSX, Unit-test, FlexBox, CSS Grid",
       "photo": "loft_taxi.jpg",
       "link": "http://lofttaxi.igorbezmestin.ru/",
-      "description": "SPA-приложение Loft-такси на React.JS"
+      "description": "SPA-приложение Loft-такси на React.js.JS"
     },
     {
       "id": 8,
-      "title": "Loft-System на Express.JS",
-      "techs": "SPA, React, Redux-Saga, Node.JS, Express.JS, MongoDB, Mongoose, socket.io, Docker, FlexBox, CSS Grid",
+      "title": "Loft-System на Express.js",
+      "techs": "SPA, React.js, Redux-Saga, Node.js, Express.js, MongoDB, Mongoose, socket.io, Docker, FlexBox, CSS Grid",
       "photo": "express.jpg",
       "link": "https://microlabig.herokuapp.com",
-      "description": "SPA-приложение вымышленного корпоративного сайта: новости, чат, панель администратора и пользовательские настройки на Express.JS"
+      "description": "SPA-приложение вымышленного корпоративного сайта: новости, чат, панель администратора и пользовательские настройки на Express.js"
     },
     {
       "id": 9,
-      "title": "Loft-System на Koa.JS",
-      "techs": "SPA, React, Redux-Saga, Node.JS, Koa.JS, PostgreSQL, Sequelize, Passport, socket.io, Docker, FlexBox, CSS Grid",
+      "title": "Loft-System на Koa.js",
+      "techs": "SPA, React.js, Redux-Saga, Node.js, Koa.js, PostgreSQL, Sequelize, Passport, socket.io, Docker, FlexBox, CSS Grid",
       "photo": "koa.jpg",
       "link": "https://koa-ls.herokuapp.com/",
-      "description": "SPA-приложение вымышленного корпоративного сайта: новости, чат, панель администратора и пользовательские настройки на Koa.JS"
+      "description": "SPA-приложение вымышленного корпоративного сайта: новости, чат, панель администратора и пользовательские настройки на Koa.js"
+    },
+    {
+      "id": 10,
+      "title": "Сервис уведомлений",
+      "techs": "Node.js, Express.js, nodemailer, Telegram API, MongoDB, Docker",
+      "photo": "notifications.jpg",
+      "link": "https://github.com/microlabig/express-notify",
+      "description": "Приложение позволяет уведомлять о входящих запросах на сайте на email и телеграм"
     }
   ]

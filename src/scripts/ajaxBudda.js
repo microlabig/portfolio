@@ -1,4 +1,4 @@
-import {CONSTS} from '../helpers/consts';
+import { CONSTS } from '../helpers/consts';
 
 ;(function () {
     /* 
@@ -11,26 +11,12 @@ import {CONSTS} from '../helpers/consts';
     const tooltipButton = modal.querySelector('.modal__tooltip-close'); // находим кнопку "Х"
 
     // показываем модалку
-    let showModal = function (error) {
-        let color, text;
-
-        if (error >= 400) {
-            color = 'brown';
-            text = 'Сервер перегружен';
-        } else if (error === -1 || error === undefined) {
-            color = 'red';
-            text = 'Сообщение не отправлено';
-        } else {
-            color = 'green';
-            //text = 'Сообщение отправлено';
-            text = 'Отправка сообщений приостановлена на неопределенное время';
-        }
+    const showModal = (success, message) => {
+        const color = success ? 'green' : 'red';
+        const text = success ? 'Сообщение отправлено' : message;
 
         if (tooltip.classList.contains('red')) {
             tooltip.classList.remove('red');       
-        }
-        if (tooltip.classList.contains('brown')) {
-            tooltip.classList.remove('brown');
         }
         if (tooltip.classList.contains('green')) {
             tooltip.classList.remove('green');
@@ -42,7 +28,7 @@ import {CONSTS} from '../helpers/consts';
     };
 
     // скрываем модалку
-    let closeModal = function () {
+    const closeModal = () => {
         modal.classList.remove('show');
     };
 
@@ -60,28 +46,20 @@ import {CONSTS} from '../helpers/consts';
     });
     
 
-
     /*
         Ajax и промис
     */
     //отправляем данные и создаем новый промис для принятия ответа от сервера
-    function SendData(object) {        
-        const ajax = new Promise(function (resolve) {
-            // отправляем запрос на сервер
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", CONSTS.BASEURLFEEDBACK);           
-            xhr.responseType = "json";
-            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest"); //добавлям заголовок, чтобы не было ошибки 302       
-
-            xhr.send(object);
-
-            xhr.addEventListener('load', function () {
-                resolve(xhr.response);
-            });            
+    const sendData = (object) => {
+        return fetch(`${CONSTS.BASEURL_FEEDBACK}/api/mail`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: object,
+            redirect: 'follow',
         });
-        return ajax;
     }
-
 
     /*
         Валидация и отправка данных
@@ -89,16 +67,16 @@ import {CONSTS} from '../helpers/consts';
     const button = document.querySelector('#form').querySelector('.form__elem-button');
 
     //валидация всех данных
-    function validate(form) {
+    const validate = (form) => {
         let IsValidate = true;
         if (!validateFieldAndShowMessage(form.elements.name)) IsValidate = false;
-        if (!validateFieldAndShowMessage(form.elements.comments)) IsValidate = false;
+        if (!validateFieldAndShowMessage(form.elements.comment)) IsValidate = false;
         if (!validateFieldAndShowMessage(form.elements.email)) IsValidate = false;
         return IsValidate;
     }
 
     //валидация полей
-    function validateFieldAndShowMessage(field) {
+    const validateFieldAndShowMessage = (field) => {
         const sibling = field.nextElementSibling.querySelector('.form__tooltip-text'); // ищем текстовое поле для передачи информации
         const parent = field.parentElement.parentElement; // ищем label
 
@@ -126,28 +104,35 @@ import {CONSTS} from '../helpers/consts';
         // подготовка данных
         let email = form.elements.email.value;
         let name = form.elements.name.value;
-        let comments = form.elements.comments.value;
-
-        let obj = new FormData(document.forms.formrequest);
-        obj.append("name", name);
-            obj.append("phone", "88007553535"); // временно для сервера loftshool
-        obj.append("comment", comments);            
-        obj.append("to", email);
+        let comment = form.elements.comment.value;
 
         if (validate(form)) { // если все данные валидны 
+            const obj = new URLSearchParams();
+
+            obj.append("name", name);
+            obj.append("email", email);
+            obj.append("comment", comment);
+            obj.append("from", "portfolio");
 
             target.disabled = true; // дисаблим кнопку
             target.classList.add('disabled');  
 
-            SendData(obj).then(function(response) {
-                showModal(response.status,response.text);
-                tooltip.classList.add("show"); 
+            sendData(obj)
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Ошибка отправки данных на сервер');
+                    }
+                })
+                .then(({success, message}) => {
+                    showModal(success, message);
+                    tooltip.classList.add("show"); 
 
-                target.disabled = false; // энаблим кнопку
-                target.classList.remove('disabled'); 
-            });
-            
+                    target.disabled = false; // энаблим кнопку
+                    target.classList.remove('disabled'); 
+                })
+                .catch(console.error);
         }
     });
-
 })();

@@ -16,36 +16,35 @@ const mobileMenuBtn = document.querySelector('#mobile-nav');
     документация https://developer.mozilla.org/ru/docs/Web/API/Element/scrollIntoView
 
 ------------------------------- */
+const DURATION = 300; // гладкая продолжительность скрола
 
-window.smoothScrollTo = (function () {
+const smoothScrollTo = (target, duration) => {
     let timer, start, factor;
+    let offset = window.pageYOffset,
+        delta = target - window.pageYOffset;  // Y-offset difference
 
-    return function (target, duration) {
-        let offset = window.pageYOffset,
-            delta = target - window.pageYOffset; // Y-offset difference
-        duration = duration || 1000;              // default 1 sec animation
-        start = Date.now();                       // get start time
-        factor = 0;
+    duration = duration || 1000;              // default 1 sec animation
+    start = Date.now();                       // get start time
+    factor = 0;
 
-        if (timer) {
-            clearInterval(timer); // stop any running animations
+    if (timer) {
+        clearInterval(timer); // stop any running animations
+    }
+
+    function step() {
+        let y;
+        factor = (Date.now() - start) / duration; // get interpolation factor
+        if (factor >= 1) {
+            clearInterval(timer); // stop animation
+            factor = 1;           // clip to max 1.0
         }
+        y = factor * delta + offset;
+        window.scrollBy(0, y - window.pageYOffset);
+    }
 
-        function step() {
-            let y;
-            factor = (Date.now() - start) / duration; // get interpolation factor
-            if (factor >= 1) {
-                clearInterval(timer); // stop animation
-                factor = 1;           // clip to max 1.0
-            }
-            y = factor * delta + offset;
-            window.scrollBy(0, y - window.pageYOffset);
-        }
-
-        timer = setInterval(step, 10);
-        return timer;
-    };
-}());
+    timer = setInterval(step, 10);
+    return timer;
+};
 
 
 //---------------
@@ -73,9 +72,8 @@ new Vue({
         scrollToSection(href) {
             this.showMenu = false;
             const section = document.getElementById(href);
-            section.scrollIntoView({ behavior: "smooth" });
-
-            //smoothScrollTo(section.getBoundingClientRect().y); 
+            // section.scrollIntoView({ behavior: "smooth" });
+            smoothScrollTo(section.getBoundingClientRect().top + pageYOffset - 65, DURATION); // 65 - высота основного меню
         }
     }
 
@@ -106,7 +104,8 @@ new Vue({
         scrollToSection(href) {
             this.showMenu = false;
             const section = document.getElementById(href);
-            section.scrollIntoView({ behavior: "smooth" });
+            // section.scrollIntoView({ behavior: "smooth" });
+            smoothScrollTo(section.getBoundingClientRect().top + pageYOffset - 65, DURATION); // 65 - высота основного меню
         }
     }
 });
@@ -123,7 +122,7 @@ const listItem = {
     }
 }
 
-
+// мобильное меню
 const menuMobileVue = new Vue({
     el: "#navigation_menu--mobile",
     template: "#navigation--mobile",
@@ -150,7 +149,8 @@ const menuMobileVue = new Vue({
         scrollToSection(href) {
             this.showMenu = false;
             const section = document.getElementById(href);
-            section.scrollIntoView({ behavior: "smooth" });
+            // section.scrollIntoView({ behavior: "smooth" });
+            smoothScrollTo(section.getBoundingClientRect().top + pageYOffset - 51, DURATION); // 51 - высота основного меню
         }
     }
 });
@@ -173,23 +173,25 @@ const headerLogo = document.querySelector('.header__logo');
 const hero = document.querySelector('.hero');
 
 setTimeout(() => {
-    hero.scrollIntoView({ behavior: "smooth" });    
+    // hero.scrollIntoView({ behavior: "smooth" });    
+    smoothScrollTo(hero.getBoundingClientRect().top + pageYOffset, DURATION);
 }, 1000);
 
 headerLogo.addEventListener('click', e => {
-    hero.scrollIntoView({ behavior: "smooth" });
+    // hero.scrollIntoView({ behavior: "smooth" });
+    smoothScrollTo(hero.getBoundingClientRect().top + pageYOffset, DURATION);
 });
 
 
-
 //--------------
-//кнопка скролл
+// кнопка скролл
 //--------------
 
 const scrollButton = document.querySelector('.scroll__block');
 
 scrollButton.addEventListener('click', e => {
-    scrollButton.scrollIntoView({ behavior: "smooth" });
+    // scrollButton.scrollIntoView({ behavior: "smooth" });
+    smoothScrollTo(scrollButton.getBoundingClientRect().top + pageYOffset, DURATION);
 });
 
 

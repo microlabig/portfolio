@@ -39,7 +39,7 @@
 
     @include tablets {
         flex: 1;
-        margin-bottom: -1%;
+        margin-bottom: 10px;
     }  
     @include phones-big {
         text-align: center;
@@ -76,8 +76,10 @@
     color: rgba($light-color, 0.5);
     line-height: 30px;
 
+    margin-bottom: 20px;
+
     @include tablets {
-        margin-bottom: 41px;
+        margin-bottom: 10px;// 41px;
         line-height: 24px;
     }     
 }
@@ -102,4 +104,10 @@
     /* @include phones-small {  
         line-height: 24px;
     }  */
+}
+
+.description__name-link {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $links-color;
 }
