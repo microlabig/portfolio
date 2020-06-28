@@ -45,6 +45,8 @@
   "admin-button-color-end": "#3f35cb",
   "admin-border-bottom-color": "rgba($light-color,.95)",
   "admin-button-add-color": "#00d70a",
-  "admin-button-discard-color": "#bf2929"
+  "admin-button-discard-color": "#bf2929",
+
+  "preloader-delay": ".7s"
 }
 

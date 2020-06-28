@@ -1,0 +1,132 @@
+// preloader 
+// https://codepen.io/xhepigerta/pen/bprWbR
+// https://nisnom.com/preloadery-loader/
+
+// инструкция в src/async/preloader
+
+
+#preloader {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.preloader {
+  &.hide {
+    .preloader__left {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-100%);
+    }
+
+    .preloader__right {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(200%);
+    }
+
+    .preloader__loader {
+      opacity: 0;
+      visibility: visible;
+    }
+  }
+}
+
+.preloader__left,
+.preloader__right {
+  position: absolute;
+  background: $white-color;
+  width: 50%;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(0%);
+
+  opacity: 1;
+  visibility: visible;
+  transition: all ease-out $preloader-delay;
+}
+
+.preloader__right {
+  transform: translateX(100%);
+}
+
+.preloader__loader {
+  position: relative;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100px;
+  height: 100px;
+  perspective: 780px; // 3D
+
+  opacity: 1;
+  visibility: visible;
+
+  transition: opacity ease-out $preloader-delay;
+}
+
+.preloader__inner {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 50%;
+
+  &.one {
+    left: 0%;
+    top: 0%;
+    animation: rotateOne 1.15s linear infinite;
+    border-bottom: 3px solid #5c5edc;
+  }
+
+  &.two {
+    right: 0%;
+    top: 0%;
+    animation: rotateTwo 1.15s linear infinite;
+    border-right: 3px solid $linear-startcolor;
+  }
+
+  &.three {
+    right: 0%;
+    bottom: 0%;
+    animation: rotateThree 1.15s linear infinite;
+    border-top: 3px solid $red-color;
+  }
+}
+
+@keyframes rotateOne {
+  0% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateTwo {
+  0% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateThree {
+  0% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}

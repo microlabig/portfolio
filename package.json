@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "FIXFIX": "webpack --progress --profile --colors --display-error-details --display-cached",
     "dev": "webpack-dev-server --mode=development --hot",
     "build": "rm -rf dist && webpack --mode=production --progress",
     "reg": "node reg-util.js"
@@ -17,7 +18,7 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.1",
     "acorn": "^6.0.5",
-    "autoprefixer": "^9.4.8",
+    "autoprefixer": "9.8.4",
     "babel-loader": "^8.0.5",
     "babel-preset-vue": "^2.0.2",
     "clean-webpack-plugin": "^2.0.1",
@@ -52,9 +53,6 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.0"
   },
-  "browserslist": [
-    "last 2 versions"
-  ],
   "dependencies": {
     "animate.css": "^3.7.0",
     "axios": "^0.18.0",

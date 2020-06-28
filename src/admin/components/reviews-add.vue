@@ -42,7 +42,7 @@
                         .form__row.form__row--textarea 
                             label(data-text="Отзыв").form__elem
                                 .form__elem-container.form__elem-container--message                        
-                                    textarea(type="textarea" v-model="review.text").form__elem-textarea
+                                    textarea(v-model="review.text").form__elem-textarea
                                     .form__tooltip.form__tooltip--textarea(
                                       :class="{'is-error': validation.hasError('review.text')}"
                                     )

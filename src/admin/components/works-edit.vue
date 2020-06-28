@@ -47,7 +47,7 @@
                         .form__row.form__row--textarea
                           label(data-text="Описание").form__elem
                             .form__elem-container
-                              textarea(type="textarea" v-model="workCopy.description").form__elem-textarea
+                              textarea(v-model="workCopy.description").form__elem-textarea
                               .form__tooltip.form__tooltip--textarea(
                                 :class="{'is-error': validation.hasError('workCopy.description')}"
                               )
