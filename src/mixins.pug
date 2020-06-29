@@ -7,4 +7,4 @@ mixin image(path, className, altText="Изображение")
   img(src=require(`images/${path}`) class=className alt=altText)
 
 mixin async_script(file, nameID='')
-  script(src=require(`./scripts/async/${file}`) async id=`${nameID}_script`)
+  script(src=require(`./scripts/async/${file}`) async id=`${nameID}-script`)

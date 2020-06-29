@@ -8,10 +8,14 @@
   Для загрузки HTML использем загрузку шаблона напрямую из скрипта
 
   Для добавления прелоадера на страницу был добавлен специальный pug-миксин async_script,
-  который следует разместить сразу после body
+  который следует разместить сразу после meta в head (или перед данным скриптом)
 */
 // задержка перед удалением прелоадера
 const DELAY = 1000;
+// id скрипта прелоадера
+const PRELOADER_SCRIPT_ID = "#preloader-script";
+// класс крутилки
+const PRELOADER_LOADER_CLASS = ".preloader__loader";
 
 // находим head документ
 const head = document.head || document.getElementsByTagName("head")[0];
@@ -19,10 +23,7 @@ const head = document.head || document.getElementsByTagName("head")[0];
 const body = document.body;
 // прелоадер
 let preloader = null;
-// скрипт прелоадера
-let preloaderScript = null;
 
-console.log("PRELOADER START");
 //--------------------------------------
 //        Отрисовка прелоадера
 //--------------------------------------
@@ -49,42 +50,53 @@ fetch("./async/preloader.mcss")
 
     // создаем элемент style
     const style = document.createElement("style");
-
+    const preloaderScript = document.querySelector(PRELOADER_SCRIPT_ID);
+    
     // определяем первый дочерний элемент - скрипт прелоадера
-    preloaderScript = body.querySelector("#preloader_script");
+    firstElementChild = body.firstElementChild;//querySelector("#preloader_script");
     // создаем элемент с прелоадером
     preloader = document.createElement("div");
     // заполняем атрибутами и необходимым html
     preloader.setAttribute("id", "preloader");
     preloader.classList.add("preloader");
     preloader.innerHTML = templatePreloaderHTML;
-    // вставляем прелоадер перед первым дочерним элементом body (скриптом прелоадера)
-    body.style.overflow = "hidden";
-    body.insertBefore(preloader, preloaderScript);
+
+    body.insertBefore(preloader, firstElementChild);
+    // вставим стили прелоадера
     style.type = "text/css";
-    // добавляем элемент style в head
-    head.appendChild(style);
+    // добавляем элемент style в head перед аснхронным скриптом
+    head.insertBefore(style, preloaderScript);
     // добавляем тест полученного css в style
     if (style.styleSheet) {
       style.styleSheet.cssText = css; // This is required for IE8 and below.
     } else {
       style.appendChild(document.createTextNode(css));
     }
+    // уберем прокрутки и добавим некоторые стили к body
+    body.style = `
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+    `;
+    // передвинем страницу наверх
+    window.scrollTo(0, 0);
+    console.log("PRELOADER START");
   })
   .catch(console.error);
 
 //--------------------------------------
 //    Слежение за загрузкой страницы
 //--------------------------------------
-// добавис обработчик по завершению
+// добавим обработчик (добавляется сразу) по завершению
 // загрузки страницы + небольшое время (DELAY)
-// добавляется сразу
 window.addEventListener("load", () => {
   setTimeout(() => {
     // найдем крутящийся лоадер
-    const loader = preloader.querySelector(".preloader__loader");
-
-    body.style.overflow = "auto";
+    const loader = preloader.querySelector(PRELOADER_LOADER_CLASS);
+    // вернем вертикальную прокрутку
+    body.style = `
+      overflow: auto;
+    `;
     // запустим анимацию удаления прелоадера
     if (!preloader.classList.contains("hide")) {
       preloader.classList.add("hide");
@@ -94,7 +106,6 @@ window.addEventListener("load", () => {
       console.log("PRELOADER END");
       // удалим прелоадер из DOM-дерева
       body.removeChild(preloader);
-      body.removeChild(preloaderScript);
     });
   }, DELAY);
 });

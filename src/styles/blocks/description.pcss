@@ -1,113 +1,117 @@
 .description {
-    flex: 1;    
-    
-    @include desktop {
-        flex: 0.9;
-    }  
+  flex: 1;
 
-    @include tablets {
-        font-size: 14px;
-    } 
+  @include desktop {
+    flex: 0.9;
+  }
+
+  @include tablets {
+    font-size: 14px;
+  }
 }
 
 .description__name-welcome,
 .description__name-about,
 .description__content {
-    font-weight: $semi-bold;
-    color: rgba($light-color, 0.4);
+  font-weight: $semi-bold;
+  color: rgba($light-color, 0.4);
 }
 
 .description__name-welcome {
-    font-weight: $semi-bold;
-    color: rgba($light-color, 0.5);
-    margin-bottom: 23px;
-    
-    @include desktop {
-        margin-bottom: 19px;
-    }  
-    @include tablets {
-        margin-bottom: 11px;
-    }  
+  font-weight: $semi-bold;
+  color: rgba($light-color, 0.5);
+  margin-bottom: 23px;
+
+  @include desktop {
+    margin-bottom: 19px;
+  }
+  @include tablets {
+    margin-bottom: 11px;
+  }
 }
 
 .description__name {
-    margin-bottom: 16%;
+  margin-bottom: 16%;
 
-    @include desktop {
-        margin-bottom: 14%;
-    }  
+  @include desktop {
+    margin-bottom: 14%;
+  }
 
-    @include tablets {
-        flex: 1;
-        margin-bottom: 10px;
-    }  
-    @include phones-big {
-        text-align: center;
-    }  
-    @include phones-small {        
-        margin-bottom: 30px;
-        font-size: 14px;
-        width: 95%;
-    } 
+  @include tablets {
+    flex: 1;
+    margin-bottom: 10px;
+  }
+  @include phones-big {
+    text-align: center;
+  }
+  @include phones-small {
+    margin-bottom: 30px;
+    font-size: 14px;
+    width: 95%;
+  }
 }
 
 .description__name-welcome {
-    @include tablets {
-        margin-bottom: 6.2px;
-    }
+  @include tablets {
+    margin-bottom: 6.2px;
+  }
 }
 
 .description__title {
-    margin-bottom: 5%;
+  margin-bottom: 5%;
 
-    @include tablets {
-        margin-bottom: 11%;
-    }
-    @include phones-big {
-        margin-bottom: 7%;
-    }
-    @include phones-small {
-         margin-bottom: 12%;
-    }
+  @include tablets {
+    margin-bottom: 11%;
+  }
+  @include phones-big {
+    margin-bottom: 7%;
+  }
+  @include phones-small {
+    margin-bottom: 12%;
+  }
 }
 
 .description__name-about {
-    font-weight: $semi-bold;
-    color: rgba($light-color, 0.5);
-    line-height: 30px;
+  font-weight: $semi-bold;
+  color: rgba($light-color, 0.5);
+  line-height: 30px;
 
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 
-    @include tablets {
-        margin-bottom: 10px;// 41px;
-        line-height: 24px;
-    }     
+  @include tablets {
+    margin-bottom: 10px; // 41px;
+    line-height: 24px;
+  }
 }
 
 .description__block {
-    @include phones-big {
-        text-align: center;
-    }
+  @include phones-big {
+    text-align: center;
+  }
 }
 
-
 .description__content {
-    font-style: normal;
-    line-height: 30px;
-    color: rgba($light-color, 0.5);
-    font-style: italic;
+  font-style: normal;
+  line-height: 30px;
+  color: rgba($light-color, 0.5);
+  font-style: italic;
 
-    @include tablets {  
-        line-height: 24px;
-    } 
+  @include tablets {
+    line-height: 24px;
+  }
 
-    /* @include phones-small {  
+  /* @include phones-small {  
         line-height: 24px;
     }  */
 }
 
 .description__name-link {
-    text-transform: uppercase;
-    font-weight: bold;
-    color: $links-color;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $links-color;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-bottom-color: $active-menu-color;
+  }
 }

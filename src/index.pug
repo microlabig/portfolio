@@ -6,10 +6,10 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    +async_script('preloader/', 'preloader')
     title Игорь Безместин | Портфолио
   body
-    //- include ./templates/components/preloader
-    +async_script('preloader/', 'preloader')
+    //- +async_script('preloader/', 'preloader')
 
     .wrapper
       main.maincontent
