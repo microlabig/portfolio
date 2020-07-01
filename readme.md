@@ -7,3 +7,5 @@
  
 **Ссылка на проект:** [https://www.igorbezmestin.ru/](https://www.igorbezmestin.ru/ "Проект Портфолио")
 
+**Ссылка на резюме:** [https://www.hh.ru/resume/0ffd953fff05649c9c0039ed1f523344466e4c](https://www.hh.ru/resume/0ffd953fff05649c9c0039ed1f523344466e4c "hh.ru")
+
