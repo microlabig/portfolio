@@ -49,7 +49,8 @@ module.exports = (env, argv) => {
       {
         loader: "babel-loader",
         options: {
-          presets: ["@babel/preset-env"],
+          comments: false,
+          presets: ["minify", "@babel/preset-env"], // minify - babel-preset-minify
           plugins: ["@babel/plugin-syntax-dynamic-import"],
         },
       },

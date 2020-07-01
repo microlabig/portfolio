@@ -20,6 +20,7 @@
     "acorn": "^6.0.5",
     "autoprefixer": "9.8.4",
     "babel-loader": "^8.0.5",
+    "babel-preset-minify": "^0.5.1",
     "babel-preset-vue": "^2.0.2",
     "clean-webpack-plugin": "^2.0.1",
     "cloc": "^2.4.0",
