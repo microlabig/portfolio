@@ -1,4 +1,4 @@
-import { animatedElements } from './scroll-objects';
+import { animatedElements } from "./scroll-objects";
 
 /*
     Для включения анимации отредактируйте файлы:
@@ -10,17 +10,17 @@ import { animatedElements } from './scroll-objects';
 const DELAY_ANIMATION = 300; // задержка анимации
 
 // создадим список элементов, для которых будем запускать их анимацию
-const sectionText = 'section';
+const sectionText = "section";
 const sectionLength = 6; // общее число секций
 const sectionId = [];
 const sections = [];
 
 // собрал ID всех секций
 for (let i = 1; i <= sectionLength; i++) {
-  sectionId.push(sectionText + '_' + i);
+  sectionId.push(sectionText + "_" + i);
 }
 // собрал все секции по их id в один массив
-sectionId.forEach(id => {
+sectionId.forEach((id) => {
   const s = document.getElementById(id);
   sections.push(s);
 });
@@ -44,7 +44,7 @@ function isPartiallyVisible(el) {
   let bottom = elementBoundary.bottom;
   let height = elementBoundary.height;
 
-  return ((top + height >= 0) && (height + window.innerHeight >= bottom));
+  return top + height >= 0 && height + window.innerHeight >= bottom;
 }
 
 // Определение полностью видимых элементов
@@ -59,12 +59,12 @@ function isFullyVisible(el) {
   let top = elementBoundary.top;
   let bottom = elementBoundary.bottom;
 
-  return ((top >= 0) && (bottom <= window.innerHeight));
+  return top >= 0 && bottom <= window.innerHeight;
 }
 
 let isScrolling = false;
 
-// вызовем throttleScroll - 
+// вызовем throttleScroll -
 window.addEventListener("scroll", throttleScroll, false);
 
 function throttleScroll(e) {
@@ -81,7 +81,8 @@ function throttleScroll(e) {
     Callback метод будет вызван с единственным аргументом, содержащим время, на которое 
     запланирована анимация.
     */
-    window.requestAnimationFrame(function () { // привязать данные параметры к частоте обновления кадров страницы
+    window.requestAnimationFrame(function() {
+      // привязать данные параметры к частоте обновления кадров страницы
       scrolling(e);
       isScrolling = false;
     });
@@ -89,9 +90,8 @@ function throttleScroll(e) {
   isScrolling = true;
 }
 
-// если документ загружен то также выховим функцию scrolling
+// если документ загружен то также вызовим функцию scrolling
 document.addEventListener("DOMContentLoaded", scrolling, false);
-
 
 function startAnimation(items, animationClass, options) {
   var arr = [...items];
@@ -100,11 +100,11 @@ function startAnimation(items, animationClass, options) {
   //var options = setup;
 
   function doAnimation(element) {
-    return new Promise(resolve => {
-      setTimeout(e => {
+    return new Promise((resolve) => {
+      setTimeout((e) => {
         if (element) {
           element.classList.add(animationElement);
-          element.addEventListener('animationend', function () {
+          element.addEventListener("animationend", function() {
             //element.classList.remove('opacityZero');
             element.style.opacity = 1;
           });
@@ -117,7 +117,8 @@ function startAnimation(items, animationClass, options) {
   (function _f() {
     var elem = arr[0];
 
-    if (counter <= options.length - 1) animationElement = options[counter].animation;
+    if (counter <= options.length - 1)
+      animationElement = options[counter].animation;
 
     if (arr.length > 0) {
       doAnimation(elem).then(() => {
@@ -134,113 +135,109 @@ function scrolling(e) {
   let currentArr = [];
   let currentElements = [];
 
-  sections.forEach((section,index) => {
-     let currSectionFully = 1;
+  sections.forEach((section, index) => {
+    let currSectionFully = 1;
 
     if (isPartiallyVisible(section)) {
-
-      animatedElements[currentSection].forEach(element => {
+      animatedElements[currentSection].forEach((element) => {
         currentArr.push(element);
       });
-      currentArr.forEach(element => {
+      currentArr.forEach((element) => {
         const el = section.querySelector(element);
         currentElements.push(el);
       });
 
       switch (currentSection) {
-        // section_1 hero            
+        // section_1 hero
         case 0:
-          startAnimation(currentElements, 'slideInLeft', [
+          startAnimation(currentElements, "slideInLeft", [
             {
-              animation: 'slideInLeft'
+              animation: "slideInLeft",
             },
             {
-              animation: 'slideInRight'
+              animation: "slideInRight",
             },
             {
-              animation: 'slideInUp'
+              animation: "slideInUp",
             },
             {
-              animation: 'slideInDown'
-            }
+              animation: "slideInDown",
+            },
           ]);
           break;
 
         // section_2 about
         case 1:
-          startAnimation(currentElements, 'slideInLeft', [
+          startAnimation(currentElements, "slideInLeft", [
             {
-              animation: 'fadeInDown'
+              animation: "fadeInDown",
             },
             {
-              animation: 'slideInLeft'
+              animation: "slideInLeft",
             },
             {
-              animation: 'fadeInDown'
-            }
+              animation: "fadeInDown",
+            },
           ]);
           break;
 
         // section_3 useful
         case 2:
-          startAnimation(currentElements, 'slideInLeft', [
+          startAnimation(currentElements, "slideInLeft", [
             {
-              animation: 'slideInUp'
+              animation: "slideInUp",
             },
             {
-              animation: 'slideInRight'
-            }
+              animation: "slideInRight",
+            },
           ]);
           break;
 
         // section_4 work
         case 3:
-          startAnimation(currentElements, 'slideInLeft', [
+          startAnimation(currentElements, "slideInLeft", [
             {
-              animation: 'slideInLeft'
+              animation: "slideInLeft",
             },
             {
-              animation: 'fadeInDown'
+              animation: "fadeInDown",
             },
             {
-              animation: 'slideInLeft'
-            }
+              animation: "slideInLeft",
+            },
           ]);
           break;
 
         // section_5 review
         case 4:
-          startAnimation(currentElements, 'slideInLeft', [
+          startAnimation(currentElements, "slideInLeft", [
             {
-              animation: 'slideInLeft'
+              animation: "slideInLeft",
             },
             {
-              animation: 'slideInUp'
-            }
+              animation: "slideInUp",
+            },
           ]);
           break;
 
         // section_6 feedback
         case 5:
-          startAnimation(currentElements, 'slideInLeft', [
+          startAnimation(currentElements, "slideInLeft", [
             {
-              animation: 'fadeInDown'
+              animation: "fadeInDown",
             },
             {
-              animation: 'slideInLeft'
-            }
+              animation: "slideInLeft",
+            },
           ]);
           break;
       }
       currentArr.length = 0;
-      currentElements.length = 0;   
+      currentElements.length = 0;
     }
     currentSection++;
-
   });
 }
-
-
 
 /* document.addEventListener("DOMContentLoaded", scrolling, false);
 sections.forEach(s => {
@@ -279,4 +276,3 @@ function scrolling(e) {
   }
  */
 //}
-

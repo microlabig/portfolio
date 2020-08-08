@@ -86,5 +86,13 @@
       "photo": "notifications.jpg",
       "link": "https://github.com/microlabig/express-notify",
       "description": "Приложение позволяет уведомлять о входящих запросах на сайте на email и телеграм"
+    },
+    {
+      "id": 11,
+      "title": "Сервис уведомлений",
+      "techs": "Vue.js, Vue-router, Vuex, Vuetify, Ymaps",
+      "photo": "weather.jpg",
+      "link": "http://weather.igorbezmestin.ru",
+      "description": "Приложение прогноза погоды по текущему местоположению пользователя"
     }
   ]
